@@ -1,3 +1,5 @@
+This project provides a basic example of how to use the Credit Key Javascript SDK in a modern SPA environment
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
