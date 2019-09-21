@@ -5,7 +5,7 @@ import './App.css';
 const publicKey = 'creditkeydev_2822baea77774929979f1e5964dd18b6'; // replace this with your public key issued by Credit Key support
 const client = new ck.Client(publicKey); // NOTE: if you have been setup on Credit Key's staging environment you will need to add a second optional argument of 'staging'
 const cart = [new ck.CartItem('1', 'Test Product', 1000, '1-TP', 1)];
-const address = new ck.Address('Test', 'User', 'Test Company', 'test@testing.com', '1 Test Rd', '', 'Testerville', 'CA', '11111');
+const address = new ck.Address('Test', 'User', 'Test Company', 'egoodman+' + Math.floor((Math.random() * 1000) + 1) + '@creditkey.com', '1 Test Rd', '', 'Testerville', 'CA', '11111', '6178160912');
 const charges = new ck.Charges(1000, 100, 0, 0, 1100);
 
 class App extends React.Component {
@@ -35,10 +35,10 @@ class App extends React.Component {
   }
 
   launchModal() {
-    const remoteId = 1;
-    const customerId = 1;
-    const returnUrl = window.location.hostname;
-    const cancelUrl = window.location.hostname;
+    const remoteId = Math.floor((Math.random() * 1000) + 1);
+    const customerId = Math.floor((Math.random() * 1000) + 1);
+    const returnUrl = window.location.protocol + '//' + window.location.host + '?id=1&storeId=2';
+    const cancelUrl = window.location.protocol + '//' + window.location.host;
 
     client.begin_checkout(cart, address, address, charges, remoteId, customerId, returnUrl, cancelUrl, 'modal')
       .then(res => ck.checkout(res.checkout_url))
