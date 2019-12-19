@@ -1,55 +1,182 @@
 import React from 'react';
 import ck from 'creditkey-js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSkullCrossbones, faPencilAlt, faIcicles } from '@fortawesome/free-solid-svg-icons'
+import Customer from './Customer';
 import './App.css';
+import 'bulma';
 
-const publicKey = 'creditkeydev_2822baea77774929979f1e5964dd18b6'; // replace this with your public key issued by Credit Key support
-const client = new ck.Client(publicKey); // NOTE: if you have been setup on Credit Key's staging environment you will need to add a second optional argument of 'staging'
 const cart = [new ck.CartItem('1', 'Test Product', 1000, '1-TP', 1)];
-const address = new ck.Address('Test', 'User', 'Test Company', 'egoodman+' + Math.floor((Math.random() * 1000) + 1) + '@creditkey.com', '1 Test Rd', '', 'Testerville', 'CA', '11111', '6178160912');
+const randomNum = Math.floor((Math.random() * 1000) + 1);
 const charges = new ck.Charges(1000, 100, 0, 0, 1100);
+
+function setupCkClient(host) {
+  if (host === 'localhost') {
+    return new ck.Client('creditkeydev_2822baea77774929979f1e5964dd18b6'); // development
+  } else {
+    return new ck.Client('creditkeytest_6d8e5758033846b4995993dd74dda57c', 'staging'); // staging
+  }
+
+  throw 'Unable to create Credit Key client, no host determined';
+}
+
+const client  = setupCkClient(window.location.hostname);
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      username: 'egoodman',
+      domain: 'creditkey.com',
+      phone: '6178160912',
       display: false,
-      marketing: ''
+      checkout: '',
+      checkout_button: '',
+      marketing: '',
+      marketing_button: ''
     }
   }
 
   componentDidMount() {
+    if (window.location.hostname !== 'localhost') {
+      this.setState({ username: 'activity', phone: '8443343636' });
+    }
+
     this.isDisplayed()
       .then(res => this.setState({ display: res }))
-      .then(res => this.marketingDisplay())
+      .then(res => this.display(charges, 'checkout', 'text', 'large'))
+      .then(res => this.setState({ checkout: res }))
+      .then(res => this.display(charges, 'checkout', 'button', 'small'))
+      .then(res => this.setState({ checkout_button: res }))
+      .then(res => this.display(charges, 'pdp', 'text', 'small'))
       .then(res => this.setState({ marketing: res }))
-      .catch(err => alert(err));
+      .then(res => this.display(charges, 'pdp', 'button', 'small'))
+      .then(res => this.setState({ marketing_button: res }))
+      .then(res => this.getCustomer(this.state.email, 1))
+      .catch(err => console.log(err));
   }
 
-  isDisplayed () { 
-    return client.is_displayed_in_checkout(cart)
+  getCustomer(email, customerId) {
+    return client.get_customer(email, customerId)
+      .then(res => console.log(res));
   }
 
-  marketingDisplay() {
-    return client.get_marketing_display(charges)
+  isDisplayed () {
+    return client.is_displayed_in_checkout(cart);
   }
 
-  launchModal() {
-    const remoteId = Math.floor((Math.random() * 1000) + 1);
-    const customerId = Math.floor((Math.random() * 1000) + 1);
+  display(charges, version, type, size) {
+    return client.get_marketing_display(charges, version, type, size);
+  }
+
+  addEmailTestingConditions(conditions) {
+    let addons = '';
+
+    if (Object.keys(conditions).length >= 1) {
+      for (let [key, value] of Object.entries(conditions)) {
+        addons += '+' + key + '+' + value;
+      }
+    }
+
+    return this.state.username + '+' + randomNum + addons + '@' + this.state.domain;
+  }
+
+  launchModal(conditions = {}) {
+    const remoteId = randomNum;
+    const customerId = randomNum;
     const returnUrl = window.location.protocol + '//' + window.location.host + '?id=1&storeId=2';
     const cancelUrl = window.location.protocol + '//' + window.location.host;
 
+    const email = this.addEmailTestingConditions(conditions);
+    const address = new ck.Address('Test', 'User', 'Test Company', email, '1 Test Rd', '', 'Testerville', 'CA', '11111', this.state.phone);
+
     client.begin_checkout(cart, address, address, charges, remoteId, customerId, returnUrl, cancelUrl, 'modal')
       .then(res => ck.checkout(res.checkout_url))
-      .catch(err => alert(err));
+      .catch(err => console.log(err));
+  }
+
+  onChange = e => {
+    this.setState({ username: e.target.value });
   }
 
   render() {
     return <div className="App">
-      <header className="App-header">
-        {this.state.display && <div onClick={this.launchModal} dangerouslySetInnerHTML={ { __html: this.state.marketing } } />}
-      </header>
+      <div className="section">
+        <div className="container">
+          <h1 className="title">Check Status</h1>
+          <Customer client={client} />
+        </div>
+      </div>
+
+      <div className="section">
+        <div className="container">
+          <h1 className="title">Email</h1>
+          <div className="columns is-gapless is-vcentered is-centered">
+            <div className="column is-narrow"><input type="text" className="input" name="username" id="username" onChange={this.onChange} value={this.state.username} /></div>
+            <div className="column is-narrow">+{randomNum}@creditkey.com</div>
+          </div>
+        </div>
+      </div>
+
+      <div className="section">
+        <div className="container">
+          <h1 className="title">Standard Checkout</h1>
+          <div className="columns">
+            <div className="column">
+              <div className="creditkey">
+                  {this.state.display && <div className="is-size-6" onClick={() => this.launchModal()} dangerouslySetInnerHTML={ { __html: this.state.checkout } } />}
+              </div>
+            </div>
+            <div className="column">
+              <div className="creditkey">
+                  {this.state.display && <div className="is-size-6" onClick={() => this.launchModal()} dangerouslySetInnerHTML={ { __html: this.state.checkout_button } } />}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="section">
+        <div className="container">
+          <h1 className="title">Pending and Decline Checkouts</h1>
+          <div className="columns">
+            <div className="column">
+              <a className="button is-medium is-info" onClick={() => this.launchModal({ fico: 500 })}>
+                <FontAwesomeIcon icon={faSkullCrossbones} />&nbsp;Checkout with Low FICO
+              </a>
+            </div>
+            <div className="column">
+              <a className="button is-medium is-info" onClick={() => this.launchModal({ lexis: 'bvi' })}>
+                <FontAwesomeIcon icon={faPencilAlt} />&nbsp;Checkout as Pending
+              </a>
+            </div>
+            <div className="column">
+              <a className="button is-medium is-info" onClick={() => this.launchModal({ equifax: 'frozen' })}>
+                <FontAwesomeIcon icon={faIcicles} />&nbsp;Checkout with Frozen Credit Report
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="section">
+        <div className="container">
+          <h1 className="title">Apply Now</h1>
+          <div className="columns">
+            <div className="column">
+              <div className="creditkey">
+                  {this.state.display && <div className="is-size-6" style={{ textDecoration: 'underline' }} dangerouslySetInnerHTML={ { __html: this.state.marketing } } />}
+              </div>
+            </div>
+            <div className="column">
+              <div className="creditkey">
+                  {this.state.display && <div className="is-size-6" style={{ textDecoration: 'underline' }} dangerouslySetInnerHTML={ { __html: this.state.marketing_button } } />}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   }
 }
