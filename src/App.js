@@ -6,40 +6,55 @@ import Customer from './Customer';
 import './App.css';
 import 'bulma';
 
-const publicKey = 'creditkeydev_2822baea77774929979f1e5964dd18b6'; // replace this with your public key issued by Credit Key support
-const client = new ck.Client(publicKey); // NOTE: if you have been setup on Credit Key's staging environment you will need to add a second optional argument of 'staging'
 const cart = [new ck.CartItem('1', 'Test Product', 1000, '1-TP', 1)];
-
 const randomNum = Math.floor((Math.random() * 1000) + 1);
-
-const username = 'egoodman';
-const domain = 'creditkey.com';
-const phone = '6178160912';
-const email = username + randomNum + '@' + domain;
-
-const address = new ck.Address('Test', 'User', 'Test Company', email, '1 Test Rd', '', 'Testerville', 'CA', '11111', phone);
 const charges = new ck.Charges(1000, 100, 0, 0, 1100);
+
+function setupCkClient(host) {
+  if (host === 'localhost') {
+    return new ck.Client('creditkeydev_2822baea77774929979f1e5964dd18b6'); // development
+  } else {
+    return new ck.Client('creditkeytest_6d8e5758033846b4995993dd74dda57c', 'staging'); // staging
+  }
+
+  throw 'Unable to create Credit Key client, no host determined';
+}
+
+const client  = setupCkClient(window.location.hostname);
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      username: 'egoodman',
+      domain: 'creditkey.com',
+      phone: '6178160912',
       display: false,
       checkout: '',
-      marketing: ''
+      checkout_button: '',
+      marketing: '',
+      marketing_button: ''
     }
   }
 
   componentDidMount() {
+    if (window.location.hostname !== 'localhost') {
+      this.setState({ username: 'activity', phone: '8443343636' });
+    }
+
     this.isDisplayed()
       .then(res => this.setState({ display: res }))
-      .then(res => this.display(charges, 'checkout', 'text', 'small'))
+      .then(res => this.display(charges, 'checkout', 'text', 'large'))
       .then(res => this.setState({ checkout: res }))
+      .then(res => this.display(charges, 'checkout', 'button', 'small'))
+      .then(res => this.setState({ checkout_button: res }))
       .then(res => this.display(charges, 'pdp', 'text', 'small'))
       .then(res => this.setState({ marketing: res }))
-      .then(res => this.getCustomer('egoodman+1002d@creditkey.com', 1))
-      .catch(err => alert(err));
+      .then(res => this.display(charges, 'pdp', 'button', 'small'))
+      .then(res => this.setState({ marketing_button: res }))
+      .then(res => this.getCustomer(this.state.email, 1))
+      .catch(err => console.log(err));
   }
 
   getCustomer(email, customerId) {
@@ -64,7 +79,7 @@ class App extends React.Component {
       }
     }
 
-    return username + randomNum + addons + '@' + domain;
+    return this.state.username + '+' + randomNum + addons + '@' + this.state.domain;
   }
 
   launchModal(conditions = {}) {
@@ -73,11 +88,16 @@ class App extends React.Component {
     const returnUrl = window.location.protocol + '//' + window.location.host + '?id=1&storeId=2';
     const cancelUrl = window.location.protocol + '//' + window.location.host;
 
-    address.data.email = this.addEmailTestingConditions(conditions);
+    const email = this.addEmailTestingConditions(conditions);
+    const address = new ck.Address('Test', 'User', 'Test Company', email, '1 Test Rd', '', 'Testerville', 'CA', '11111', this.state.phone);
 
     client.begin_checkout(cart, address, address, charges, remoteId, customerId, returnUrl, cancelUrl, 'modal')
       .then(res => ck.checkout(res.checkout_url))
-      .catch(err => alert(err));
+      .catch(err => console.log(err));
+  }
+
+  onChange = e => {
+    this.setState({ username: e.target.value });
   }
 
   render() {
@@ -91,11 +111,26 @@ class App extends React.Component {
 
       <div className="section">
         <div className="container">
+          <h1 className="title">Email</h1>
+          <div className="columns is-gapless is-vcentered is-centered">
+            <div className="column is-narrow"><input type="text" className="input" name="username" id="username" onChange={this.onChange} value={this.state.username} /></div>
+            <div className="column is-narrow">+{randomNum}@creditkey.com</div>
+          </div>
+        </div>
+      </div>
+
+      <div className="section">
+        <div className="container">
           <h1 className="title">Standard Checkout</h1>
           <div className="columns">
             <div className="column">
               <div className="creditkey">
                   {this.state.display && <div className="is-size-6" onClick={() => this.launchModal()} dangerouslySetInnerHTML={ { __html: this.state.checkout } } />}
+              </div>
+            </div>
+            <div className="column">
+              <div className="creditkey">
+                  {this.state.display && <div className="is-size-6" onClick={() => this.launchModal()} dangerouslySetInnerHTML={ { __html: this.state.checkout_button } } />}
               </div>
             </div>
           </div>
@@ -132,6 +167,11 @@ class App extends React.Component {
             <div className="column">
               <div className="creditkey">
                   {this.state.display && <div className="is-size-6" style={{ textDecoration: 'underline' }} dangerouslySetInnerHTML={ { __html: this.state.marketing } } />}
+              </div>
+            </div>
+            <div className="column">
+              <div className="creditkey">
+                  {this.state.display && <div className="is-size-6" style={{ textDecoration: 'underline' }} dangerouslySetInnerHTML={ { __html: this.state.marketing_button } } />}
               </div>
             </div>
           </div>
