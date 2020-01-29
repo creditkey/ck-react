@@ -29,7 +29,7 @@ class App extends React.Component {
     this.state = {
       username: 'egoodman',
       domain: 'creditkey.com',
-      phone: '6178160912',
+      phone: '+1 617-816-0912',
       display: false,
       checkout: '',
       checkout_button: '',
@@ -154,6 +154,11 @@ class App extends React.Component {
             <div className="column">
               <a className="button is-medium is-info" onClick={() => this.launchModal({ equifax: 'frozen' })}>
                 <FontAwesomeIcon icon={faIcicles} />&nbsp;Checkout with Frozen Credit Report
+              </a>
+            </div>
+            <div className="column">
+              <a className="button is-medium is-info" onClick={() => this.launchModal({ equifax: 'collections' })}>
+                <FontAwesomeIcon icon={faSkullCrossbones} />&nbsp;Checkout with Active Collections
               </a>
             </div>
           </div>
