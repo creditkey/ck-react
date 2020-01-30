@@ -7,7 +7,6 @@ import './App.css';
 import 'bulma';
 
 const cart = [new ck.CartItem('1', 'Test Product', 1000, '1-TP', 1)];
-const randomNum = Math.floor((Math.random() * 1000) + 1);
 const charges = new ck.Charges(1000, 100, 0, 0, 1100);
 
 function setupCkClient(host) {
@@ -72,6 +71,7 @@ class App extends React.Component {
 
   addEmailTestingConditions(conditions) {
     let addons = '';
+    let date = new Date();
 
     if (Object.keys(conditions).length >= 1) {
       for (let [key, value] of Object.entries(conditions)) {
@@ -79,12 +79,13 @@ class App extends React.Component {
       }
     }
 
-    return this.state.username + '+' + randomNum + addons + '@' + this.state.domain;
+    return this.state.username + '+' + date.getTime() + addons + '@' + this.state.domain;
   }
 
   launchModal(conditions = {}) {
-    const remoteId = randomNum;
-    const customerId = randomNum;
+    let date = new Date();
+    const remoteId = date.getTime();
+    const customerId = date.getTime();
     const returnUrl = window.location.protocol + '//' + window.location.host + '?id=1&storeId=2';
     const cancelUrl = window.location.protocol + '//' + window.location.host;
 
@@ -114,7 +115,7 @@ class App extends React.Component {
           <h1 className="title">Email</h1>
           <div className="columns is-gapless is-vcentered is-centered">
             <div className="column is-narrow"><input type="text" className="input" name="username" id="username" onChange={this.onChange} value={this.state.username} /></div>
-            <div className="column is-narrow">+{randomNum}@creditkey.com</div>
+            <div className="column is-narrow">@creditkey.com</div>
           </div>
         </div>
       </div>
@@ -156,9 +157,16 @@ class App extends React.Component {
                 <FontAwesomeIcon icon={faIcicles} />&nbsp;Checkout with Frozen Credit Report
               </a>
             </div>
+          </div>
+            <div className="columns">
             <div className="column">
               <a className="button is-medium is-info" onClick={() => this.launchModal({ equifax: 'collections' })}>
                 <FontAwesomeIcon icon={faSkullCrossbones} />&nbsp;Checkout with Active Collections
+              </a>
+            </div>
+            <div className="column">
+              <a className="button is-medium is-info" onClick={() => this.launchModal({ equifax: 'revolving' })}>
+                <FontAwesomeIcon icon={faSkullCrossbones} />&nbsp;Checkout with Low Revoling Credit
               </a>
             </div>
           </div>
