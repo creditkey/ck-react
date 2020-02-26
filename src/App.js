@@ -28,7 +28,7 @@ class App extends React.Component {
     this.state = {
       username: 'egoodman',
       domain: 'creditkey.com',
-      phone: '+1 617-816-0912',
+      phone: this.makePhoneNumber(),
       display: false,
       checkout: '',
       checkout_button: '',
@@ -54,6 +54,12 @@ class App extends React.Component {
       .then(res => this.setState({ marketing_button: res }))
       .then(res => this.getCustomer(this.state.email, 1))
       .catch(err => console.log(err));
+  }
+
+  makePhoneNumber() {
+    let segment = (min, max) => (min + Math.random() * (max - min)).toFixed();
+
+    return `+1 ${segment(100, 900)} ${segment(100, 900)} ${segment(1000, 1900)}`;
   }
 
   getCustomer(email, customerId) {
@@ -114,8 +120,16 @@ class App extends React.Component {
         <div className="container">
           <h1 className="title">Email</h1>
           <div className="columns is-gapless is-vcentered is-centered">
-            <div className="column is-narrow"><input type="text" className="input" name="username" id="username" onChange={this.onChange} value={this.state.username} /></div>
-            <div className="column is-narrow">@creditkey.com</div>
+            <div className="field has-addons">
+              <p className="control">
+                <input className="input" type="text" name="username" id="username" onChange={this.onChange} value={this.state.username} />
+              </p>
+              <p className="control">
+                <a className="button is-static">
+                  @creditkey.com
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </div>
