@@ -57,7 +57,7 @@ class App extends React.Component {
   makePhoneNumber() {
     let segment = (min, max) => (min + Math.random() * (max - min)).toFixed();
 
-    return `+1 ${segment(100, 900)} ${segment(100, 900)} ${segment(1000, 1900)}`;
+    return `+1 800 ${segment(2, 9)}${segment(0, 9)}${segment(2, 9)} ${segment(1000, 1900)}`;
   }
 
   getCustomer(email, customerId) {
