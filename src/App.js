@@ -7,11 +7,11 @@ import './App.css';
 import 'bulma';
 
 const cart = [new ck.CartItem('1', 'Test Product', 1000, '1-TP', 1)];
-const charges = new ck.Charges(1000, 100, 0, 0, 1100);
+const charges = new ck.Charges(1000, 100, 5.50, 0, 1105.50);
 
 function setupCkClient(host) {
   if (host === 'localhost') {
-    return new ck.Client('creditkeydev_2822baea77774929979f1e5964dd18b6'); // development
+  return new ck.Client('creditkeydev_2822baea77774929979f1e5964dd18b6'); // development
   } else {
     return new ck.Client('creditkeytest_6d8e5758033846b4995993dd74dda57c', 'staging'); // staging
   }
@@ -44,11 +44,9 @@ class App extends React.Component {
 
     this.isDisplayed()
       .then(res => this.setState({ display: res }))
-      .then(res => this.display(charges, 'checkout', 'text', 'large'))
+      .then(res => this.display(charges, 'checkout', 'text', 'small'))
       .then(res => this.setState({ checkout: res }))
-      .then(res => this.display(charges, 'checkout', 'button', 'small'))
-      .then(res => this.setState({ checkout_button: res }))
-      .then(res => this.display(charges, 'pdp', 'text', 'small'))
+      .then(res => this.display(charges, 'pdp', 'text', 'special'))
       .then(res => this.setState({ marketing: res }))
       .then(res => this.display(charges, 'pdp', 'button', 'small'))
       .then(res => this.setState({ marketing_button: res }))
@@ -136,7 +134,7 @@ class App extends React.Component {
 
       <div className="section">
         <div className="container">
-          <h1 className="title">Standard Checkout</h1>
+          <h1 className="title">Standard Checkout &amp; Apply Now</h1>
           <div className="columns">
             <div className="column">
               <div className="creditkey">
@@ -145,7 +143,14 @@ class App extends React.Component {
             </div>
             <div className="column">
               <div className="creditkey">
-                  {this.state.display && <div className="is-size-6" onClick={() => this.launchModal()} dangerouslySetInnerHTML={ { __html: this.state.checkout_button } } />}
+                  {this.state.display && <div className="is-size-6" dangerouslySetInnerHTML={ { __html: this.state.marketing_button } } />}
+              </div>
+            </div>
+          </div>
+          <div className="columns">
+            <div className="column">
+              <div className="creditkey">
+                  {this.state.display && <div className="is-size-6" dangerouslySetInnerHTML={ { __html: this.state.marketing } } />}
               </div>
             </div>
           </div>
@@ -182,24 +187,6 @@ class App extends React.Component {
               <a className="button is-medium is-info" onClick={() => this.launchModal({ equifax: 'revolving' })}>
                 <FontAwesomeIcon icon={faSkullCrossbones} />&nbsp;Checkout with Low Revoling Credit
               </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="section">
-        <div className="container">
-          <h1 className="title">Apply Now</h1>
-          <div className="columns">
-            <div className="column">
-              <div className="creditkey">
-                  {this.state.display && <div className="is-size-6" style={{ textDecoration: 'underline' }} dangerouslySetInnerHTML={ { __html: this.state.marketing } } />}
-              </div>
-            </div>
-            <div className="column">
-              <div className="creditkey">
-                  {this.state.display && <div className="is-size-6" style={{ textDecoration: 'underline' }} dangerouslySetInnerHTML={ { __html: this.state.marketing_button } } />}
-              </div>
             </div>
           </div>
         </div>
