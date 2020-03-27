@@ -139,6 +139,10 @@ class App extends React.Component {
             <div className="column">
               <div className="creditkey">
                   {this.state.display && <div className="is-size-6" onClick={() => this.launchModal()} dangerouslySetInnerHTML={ { __html: this.state.checkout } } />}
+                  <p>as Tier 2</p>
+                  {this.state.display && <div className="is-size-6" onClick={() => this.launchModal({ fico: 651 })} dangerouslySetInnerHTML={ { __html: this.state.checkout } } />}
+                  <p>as Tier 3</p>
+                  {this.state.display && <div className="is-size-6" onClick={() => this.launchModal({ fico: 601 })} dangerouslySetInnerHTML={ { __html: this.state.checkout } } />}
               </div>
             </div>
             <div className="column">
