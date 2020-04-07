@@ -1,7 +1,7 @@
 import React from 'react';
 import ck from 'creditkey-js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSkullCrossbones, faPencilAlt, faIcicles } from '@fortawesome/free-solid-svg-icons'
+import { faSadTear, faSkullCrossbones, faPencilAlt, faIcicles } from '@fortawesome/free-solid-svg-icons'
 import Customer from './Customer';
 import './App.css';
 import 'bulma';
@@ -28,6 +28,7 @@ class App extends React.Component {
     this.state = {
       username: 'egoodman',
       domain: 'creditkey.com',
+      email_override: '',
       phone: this.makePhoneNumber(),
       display: false,
       checkout: '',
@@ -94,7 +95,7 @@ class App extends React.Component {
     const cancelUrl = window.location.protocol + '//' + window.location.host;
 
     const email = this.addEmailTestingConditions(conditions);
-    const address = new ck.Address('Test', 'User', 'Test Company', email, '1 Test Rd', '', 'Testerville', 'CA', '11111', this.state.phone);
+    const address = new ck.Address('Test', 'User', 'Test Company', this.state.email_override !== '' ? this.state.email_override : email, '1 Test Rd', '', 'Testerville', 'CA', '11111', this.state.phone);
 
     client.begin_checkout(cart, address, address, charges, remoteId, customerId, returnUrl, cancelUrl, 'modal')
       .then(res => ck.checkout(res.checkout_url))
@@ -102,7 +103,7 @@ class App extends React.Component {
   }
 
   onChange = e => {
-    this.setState({ username: e.target.value });
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   render() {
@@ -118,15 +119,27 @@ class App extends React.Component {
         <div className="container">
           <h1 className="title">Email</h1>
           <div className="columns is-gapless is-vcentered is-centered">
-            <div className="field has-addons">
-              <p className="control">
-                <input className="input" type="text" name="username" id="username" onChange={this.onChange} value={this.state.username} />
-              </p>
-              <p className="control">
-                <a className="button is-static">
-                  @creditkey.com
-                </a>
-              </p>
+            <div className="column is-narrow">
+              <div className="field has-addons">
+                <p className="control">
+                  <input className="input" type="text" name="username" id="username" onChange={this.onChange} value={this.state.username} />
+                </p>
+                <p className="control">
+                  <a className="button is-static">
+                    @creditkey.com
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="columns is-gapless is-vcentered is-centered">
+            <div className="column is-one-third">
+              <div className="field">
+                <p className="control">
+                  <input className="input" type="text" name="email_override" id="email_override" placeholder="Email Override" onChange={this.onChange} value={this.state.email_override} />
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -181,7 +194,7 @@ class App extends React.Component {
               </a>
             </div>
           </div>
-            <div className="columns">
+          <div className="columns">
             <div className="column">
               <a className="button is-medium is-info" onClick={() => this.launchModal({ equifax: 'collections' })}>
                 <FontAwesomeIcon icon={faSkullCrossbones} />&nbsp;Checkout with Active Collections
@@ -190,6 +203,18 @@ class App extends React.Component {
             <div className="column">
               <a className="button is-medium is-info" onClick={() => this.launchModal({ equifax: 'revolving' })}>
                 <FontAwesomeIcon icon={faSkullCrossbones} />&nbsp;Checkout with Low Revoling Credit
+              </a>
+            </div>
+            <div className="column">
+              <a className="button is-medium is-info" onClick={() => this.launchModal({ equifax: 'fraud' })}>
+                <FontAwesomeIcon icon={faSadTear} />&nbsp;Checkout with Fraud Alert
+              </a>
+            </div>
+          </div>
+          <div className="columns">
+            <div className="column">
+              <a className="button is-medium is-info" onClick={() => this.launchModal({ iovation: 'fail' })}>
+                <FontAwesomeIcon icon={faSadTear} />&nbsp;Checkout with Iovation Failure
               </a>
             </div>
           </div>
