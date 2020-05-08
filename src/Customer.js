@@ -1,7 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
-import ck from 'creditkey-js';
 
 class Customer extends React.Component {
   constructor(props) {
@@ -16,7 +15,7 @@ class Customer extends React.Component {
   onChange = e => {
     this.setState({ email: e.target.value });
 
-    if (e.target.value == '') {
+    if (e.target.value === '') {
       this.setState({ status: '' });
     }
 
@@ -28,22 +27,15 @@ class Customer extends React.Component {
   }
 
   render() {
-    return <div className="columns">
-      <div className="column" />
-      <div className="column is-half">
-        <div className="field">
+    return <div className="field">
           <p className="control has-icons-left">
-            <input type="text" className="input" name="email" value={this.state.email} onChange={this.onChange} />
+            <input type="text" className="input" name="email" placeholder="Check Status" value={this.state.email} onChange={this.onChange} />
             <span className="icon is-small is-left">
               <FontAwesomeIcon icon={faEnvelope} />
             </span>
           </p>
-        </div>
-      </div>
-      <div className="column has-text-left is-size-5">
-        {this.state.status != '' && <div>{this.state.status}</div>}
-      </div>
-    </div>;
+          {this.state.status !== '' && <div>{this.state.status}</div>}
+        </div>;
   }
 }
 
