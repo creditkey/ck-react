@@ -127,7 +127,7 @@ class App extends React.Component {
       
       <hr/>
       <div className="container">
-        <h1 className="title">Override Options</h1>
+        <h1 className="subtitle">Override Options</h1>
         <div className="columns">
 
           <div className="column">
@@ -173,30 +173,30 @@ class App extends React.Component {
 
       <hr/>
 
-      <h1 className="title">Standard Checkout &amp; Apply Now</h1>
+      <h1 className="subtitle">Standard Checkout &amp; Apply Now</h1>
       <div className="columns">
-        <div className="column">
-          <div className="creditkey">
-              {this.state.display && <div className="is-size-6" onClick={() => this.launchModal()} dangerouslySetInnerHTML={ { __html: this.state.checkout } } />}
-              <p>as Tier 2</p>
-              {this.state.display && <div className="is-size-6" onClick={() => this.launchModal({ fico: 651 })} dangerouslySetInnerHTML={ { __html: this.state.checkout } } />}
-              <p>as Tier 3</p>
-              {this.state.display && <div className="is-size-6" onClick={() => this.launchModal({ fico: 601 })} dangerouslySetInnerHTML={ { __html: this.state.checkout } } />}
-          </div>
+        <div className="column" style={{ borderRight: '1px solid #eeeeee' }}>
+          <div className="has-text-weight-semibold">Tier 1</div>
+          {this.state.display && <div className="is-size-6 checkout" onClick={() => this.launchModal()} dangerouslySetInnerHTML={ { __html: this.state.checkout } } />}
+          <hr/>
+          <div className="has-text-weight-semibold">Tier 2</div>
+          {this.state.display && <div className="is-size-6 checkout" onClick={() => this.launchModal({ fico: 651 })} dangerouslySetInnerHTML={ { __html: this.state.checkout } } />}
+          <hr/>
+          <div className="has-text-weight-semibold">Tier 3</div>
+          {this.state.display && <div className="is-size-6 checkout" onClick={() => this.launchModal({ fico: 601 })} dangerouslySetInnerHTML={ { __html: this.state.checkout } } />}
         </div>
         <div className="column">
-          <div className="creditkey">
-            <p>Standard Apply Now</p>
-            {this.state.display && <div className="is-size-6" dangerouslySetInnerHTML={ { __html: this.state.marketing_button } } />}
-            <p>Special Apply Now</p>
-            {this.state.display && <div className="is-size-6" dangerouslySetInnerHTML={ { __html: this.state.marketing } } />}
-          </div>
+          <div className="has-text-weight-semibold">Apply Now</div>
+          {this.state.display && <div className="is-size-6" dangerouslySetInnerHTML={ { __html: this.state.marketing_button } } />}
+          <hr/>
+          <div className="has-text-weight-semibold">Alternative Apply Now</div>
+          {this.state.display && <div className="is-size-6" dangerouslySetInnerHTML={ { __html: this.state.marketing } } />}
         </div>
       </div>
 
       <hr/>
 
-      <h1 className="title">Pending and Decline Checkouts</h1>
+      <h1 className="subtitle">Pending and Decline Checkouts</h1>
       <div className="columns">
         <div className="column">
           <a className="button is-medium is-info" onClick={() => this.launchModal({ fico: 500 })}>
