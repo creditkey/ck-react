@@ -6,15 +6,21 @@ import Customer from './Customer';
 import './App.css';
 import 'bulma';
 
-function setupCkClient(host) {
-  if (host === 'localhost') {
-    return new ck.Client('creditkeydev_2822baea77774929979f1e5964dd18b6'); // development
-  } else {
-    return new ck.Client('creditkeytest_6d8e5758033846b4995993dd74dda57c', 'staging'); // staging
-  }
+let d = Symbol('development');
+let s = Symbol('staging');
+let p = Symbol('production');
+
+const platform = {
+  [d]: { key: 'creditkeydev_2822baea77774929979f1e5964dd18b6' },
+  [s]: { key: 'creditkeytest_6d8e5758033846b4995993dd74dda57c' },
+  [p]: { key: 'creditkeysamplestore_2d3170af046347cdaf0171e06c08ca77' }
 }
 
-const client  = setupCkClient(window.location.hostname);
+function setupCkClient(env = d) {
+  return new ck.Client(platform[env].key, env.description);
+}
+
+const client  = setupCkClient();
 
 function makePhoneNumber() {
   let segment = (min, max) => (min + Math.random() * (max - min)).toFixed();
@@ -117,7 +123,7 @@ class App extends React.Component {
     const address = new ck.Address('Test', 'User', 'Test Company', this.state.email_override !== '' ? this.state.email_override : email, '1 Test Rd', '', 'Testerville', 'CA', '11111', this.state.phone);
 
     client.begin_checkout(this.state.cart, address, address, this.calcCharges(), remoteId, customerId, returnUrl, cancelUrl, 'modal')
-      .then(res => ck.checkout(res.checkout_url))
+      .then(res => conditions.redirect ? window.location = res.checkout_url : ck.checkout(res.checkout_url))
       .catch(err => console.log(err));
   }
 
@@ -184,6 +190,9 @@ class App extends React.Component {
           <hr/>
           <div className="has-text-weight-semibold">Tier 3</div>
           {this.state.display && <div className="is-size-6 checkout" onClick={() => this.launchModal({ fico: 601 })} dangerouslySetInnerHTML={ { __html: this.state.checkout } } />}
+          <hr/>
+          <div className="has-text-weight-semibold">Full Page Redirect</div>
+          {this.state.display && <div className="is-size-6 checkout" onClick={() => this.launchModal({ redirect: true })} dangerouslySetInnerHTML={ { __html: this.state.checkout } } />}
         </div>
         <div className="column">
           <div className="has-text-weight-semibold">Apply Now</div>
@@ -235,6 +244,18 @@ class App extends React.Component {
         <div className="column">
           <a className="button is-medium is-info" onClick={() => this.launchModal({ iovation: 'fail' })}>
             <FontAwesomeIcon icon={faSadTear} />&nbsp;Checkout with Iovation Failure
+          </a>
+        </div>
+        <div className="column">
+          <a className="button is-medium is-info" onClick={() => this.launchModal({ equifax: 'trades_and_collections' })}>
+            <FontAwesomeIcon icon={faSkullCrossbones} />&nbsp;Checkout with Collections and too few Trades
+          </a>
+        </div>
+      </div>
+      <div className="columns">
+        <div className="column">
+          <a className="button is-medium is-info" onClick={() => this.launchModal({ fico: 500, equifax: 'trades_and_collections' })}>
+            <FontAwesomeIcon icon={faSkullCrossbones} />&nbsp;Checkout with Collections, too few Trades and low FICO
           </a>
         </div>
       </div>
