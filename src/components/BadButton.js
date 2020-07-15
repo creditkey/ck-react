@@ -5,7 +5,7 @@ import loadModal from '../lib/load_modal';
 
 export default function BadButton(props) {
   return (
-    <a className="button is-medium is-info" onClick={() => loadModal(props.config, {...props}, calcCharges(props.cart))}>
+    <a className="button is-medium is-fullwidth is-danger is-outlined" onClick={() => loadModal(props.config, {...props}, calcCharges(props.cart))}>
       <FontAwesomeIcon icon={props.icon} />&nbsp;<span>{props.label}</span>
     </a>
   );

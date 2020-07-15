@@ -51,6 +51,8 @@ export default function App() {
           </div>
         </div>
 
+        <hr/>
+
         <h1 className="subtitle">Standard Checkout &amp; Apply Now</h1>
         <div className="columns">
           <div className="column" style={{ borderRight: '1px solid #eeeeee' }}>
@@ -96,9 +98,11 @@ export default function App() {
           </div>
         </div>
 
+        <hr/>
+
         <h1 className="subtitle">Pending and Decline Checkouts</h1>
         <div className="columns">
-          <div className="column">
+          <div className="column is-one-third">
             <BadButton 
               {...state} 
               config={{ fico: 500 }}
@@ -106,7 +110,7 @@ export default function App() {
               label="Checkout with low FICO"
             />
           </div>
-          <div className="column">
+          <div className="column is-one-third">
             <BadButton 
               {...state} 
               config={{ lexis: 'bvi' }}
@@ -124,7 +128,7 @@ export default function App() {
           </div>
         </div>
         <div className="columns">
-          <div className="column">
+          <div className="column is-one-third">
             <BadButton 
               {...state} 
               config={{ equifax: 'collections' }}
@@ -132,7 +136,7 @@ export default function App() {
               label="Checkout with Active Collections"
             />
           </div>
-          <div className="column">
+          <div className="column is-one-third">
             <BadButton 
               {...state} 
               config={{ equifax: 'revolving' }}
@@ -150,7 +154,7 @@ export default function App() {
           </div>
         </div>
         <div className="columns">
-          <div className="column">
+          <div className="column is-half">
             <BadButton 
               {...state} 
               config={{ equifax: 'trades_and_collections' }}
@@ -158,9 +162,7 @@ export default function App() {
               label="Checkout with Collections and too few trades"
             />
           </div>
-        </div>
-        <div className="columns">
-          <div className="column">
+          <div className="column is-half">
             <BadButton 
               {...state} 
               config={{ fico: 500, equifax: 'trades_and_collections' }}
