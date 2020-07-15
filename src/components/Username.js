@@ -1,10 +1,12 @@
 import React from 'react';
 
 export default function Username(props) {
-  const updateUsername = username => props.dispatch({
-    type: 'UPDATE_USERNAME',
-    username: username
-  });
+  const updateUsername = value => {
+    return props.dispatch({
+      type: 'UPDATE_USERNAME',
+      username: value
+    });
+  }
 
   return (
     <div className="field has-addons">

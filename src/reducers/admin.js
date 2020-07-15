@@ -1,4 +1,6 @@
-const setState = (state, newState) => Object.assign(newState, state);
+const setState = (state, newState) => {
+  return {...state, ...newState};
+}
 
 export default function reducer(state, action) {
   switch(action.type) {

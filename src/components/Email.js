@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 export default function Email(props) {
-  const updateEmail = email => props.dispatch({
+  const updateEmail = value => props.dispatch({
     type: 'UPDATE_EMAIL',
-    email: email
+    email: value
   });
 
   return (
@@ -18,7 +18,8 @@ export default function Email(props) {
           name="email_override" 
           id="email_override" 
           placeholder="Email Override" 
-          onChange={e => updateEmail(e.target.value)} value={props.email} />
+          onChange={e => updateEmail(e.target.value)} 
+          value={props.email} />
 
         <span className="icon is-small is-left">
           <FontAwesomeIcon icon={faEnvelope} />

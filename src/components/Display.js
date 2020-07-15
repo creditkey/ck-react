@@ -17,7 +17,7 @@ export default function Display(props) {
   useEffect(() => {
     client.get_marketing_display(charges, config.type, config.display, config.size)
       .then(res => setDisplay(res));
-  });
+  }, [props.cart]);
 
   return (
     <div 
