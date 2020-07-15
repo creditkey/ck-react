@@ -26,7 +26,9 @@ export default function App() {
 
   return (
     <div className="App">
-      <h1 className="title has-text-centered"><img src="ck-mark.svg" style={{ verticalAlign:'middle' }} /> CK React Test App</h1>
+      <h1 className="title has-text-centered" style={{ margin: '10px 0 0 0' }}>
+        <img src="ck-mark.svg" style={{ verticalAlign:'middle' }} /> CK React Test App
+      </h1>
 
       <hr/>
       <div className="container">
