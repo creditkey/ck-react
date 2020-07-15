@@ -11,6 +11,7 @@ const platform = {
 }
 
 function setupCkClient(env = d) {
+  if (window.location.hostname !== 'localhost') env = s;
   return new ck.Client(platform[env].key, env.description);
 }
 
