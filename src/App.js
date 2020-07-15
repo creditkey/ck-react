@@ -9,8 +9,6 @@ import Email from './components/Email';
 import Pricing from './components/Pricing';
 import Display from './components/Display';
 import BadButton from './components/BadButton';
-import './App.css';
-import 'bulma';
 
 const initialState = {
   cart: [new ck.CartItem('1', 'Test Product', 1000, '1-TP', 1)],
