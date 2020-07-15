@@ -1,266 +1,175 @@
-import React from 'react';
+import React, { useReducer, useState }  from 'react';
 import ck from 'creditkey-js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDollarSign, faEnvelope, faSadTear, faSkullCrossbones, faPencilAlt, faIcicles } from '@fortawesome/free-solid-svg-icons'
-import Customer from './Customer';
+import { faSadTear, faSkullCrossbones, faPencilAlt, faIcicles } from '@fortawesome/free-solid-svg-icons'
+import { makePhoneNumber } from './lib/utils';
+import reducer from './reducers/admin';
+import Username from './components/Username';
+import Email from './components/Email';
+import Pricing from './components/Pricing';
+import Display from './components/Display';
+import BadButton from './components/BadButton';
 import './App.css';
 import 'bulma';
 
-let d = Symbol('development');
-let s = Symbol('staging');
-let p = Symbol('production');
-
-const platform = {
-  [d]: { key: 'creditkeydev_2822baea77774929979f1e5964dd18b6' },
-  [s]: { key: 'creditkeytest_6d8e5758033846b4995993dd74dda57c' },
-  [p]: { key: 'creditkeysamplestore_2d3170af046347cdaf0171e06c08ca77' }
+const initialState = {
+  cart: [new ck.CartItem('1', 'Test Product', 1000, '1-TP', 1)],
+  email_override: '',
+  phone: makePhoneNumber(),
+  username: 'egoodman'
 }
 
-function setupCkClient(env = d) {
-  return new ck.Client(platform[env].key, env.description);
-}
+export default function App() {
+  const [fico, setFico] = useState();
+  const [redirect, setRedirect] = useState(false);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-const client  = setupCkClient();
+  return (
+    <div className="App">
+      <h1 className="title has-text-centered"><img src="ck-mark.svg" style={{ verticalAlign:'middle' }} /> CK React Test App</h1>
 
-function makePhoneNumber() {
-  let segment = (min, max) => (min + Math.random() * (max - min)).toFixed();
-
-  return `+1 800 ${segment(2, 9)}${segment(0, 9)}${segment(2, 9)} ${segment(1000, 1900)}`;
-}
-
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      cart: [new ck.CartItem('1', 'Test Product', 1000, '1-TP', 1)],
-      username: 'egoodman',
-      domain: 'creditkey.com',
-      email_override: '',
-      phone: makePhoneNumber(), 
-      display: false,
-      checkout: '',
-      checkout_button: '',
-      marketing: '',
-      marketing_button: ''
-    }
-  }
-
-  componentDidMount() {
-    if (window.location.hostname !== 'localhost') {
-      this.setState({ username: 'activity', phone: '8443343636' });
-    }
-
-    this.loadDisplays();
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.cart !== this.state.cart) {
-      this.loadDisplays();
-    }
-  }
-
-  loadDisplays = () => {
-    client.is_displayed_in_checkout(this.state.cart) 
-      .then(res => this.setState({ display: res }))
-      .then(res => client.get_marketing_display(this.calcCharges(), 'checkout', 'text', 'small'))
-      .then(res => this.setState({ checkout: res }))
-      .then(res => client.get_marketing_display(this.calcCharges(), 'pdp', 'text', 'special'))
-      .then(res => this.setState({ marketing: res }))
-      .then(res => client.get_marketing_display(this.calcCharges(), 'pdp', 'button', 'small'))
-      .then(res => this.setState({ marketing_button: res }))
-      .then(res => this.getCustomer(this.state.email, 1))
-      .catch(err => console.log(err));
-  }
-
-  onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-
-  setCartItemPrice = e => {
-    let cartItem = this.state.cart[0];
-    cartItem.data.price = parseInt(e.target.value);
-    this.setState({ cart: [cartItem] });
-  }
-
-  calcCharges = () => {
-    let charges =  new ck.Charges(0, 100, 5.50, 0, 105.50);
-
-    this.state.cart.forEach(c => {
-      charges.data.total += c.data.price;
-      charges.data.grand_total += c.data.price;
-    });
-
-    return charges;
-  }
-
-  getCustomer(email, customerId) {
-    return client.get_customer(email, customerId)
-      .then(res => console.log(res));
-  }
-
-  addEmailTestingConditions(conditions) {
-    let addons = '';
-    let date = new Date();
-
-    if (Object.keys(conditions).length >= 1) {
-      for (let [key, value] of Object.entries(conditions)) {
-        addons += '+' + key + '+' + value;
-      }
-    }
-
-    return this.state.username + '+' + date.getTime() + addons + '@' + this.state.domain;
-  }
-
-  launchModal(conditions = {}) {
-    let date = new Date();
-    const remoteId = date.getTime();
-    const customerId = date.getTime();
-    const returnUrl = window.location.protocol + '//' + window.location.host + '?id=1&storeId=2';
-    const cancelUrl = window.location.protocol + '//' + window.location.host;
-
-    const email = this.addEmailTestingConditions(conditions);
-    const address = new ck.Address('Test', 'User', 'Test Company', this.state.email_override !== '' ? this.state.email_override : email, '1 Test Rd', '', 'Testerville', 'CA', '11111', this.state.phone);
-
-    client.begin_checkout(this.state.cart, address, address, this.calcCharges(), remoteId, customerId, returnUrl, cancelUrl, 'modal')
-      .then(res => conditions.redirect ? window.location = res.checkout_url : ck.checkout(res.checkout_url))
-      .catch(err => console.log(err));
-  }
-
-  render() {
-    return <div className="App">
-      <h1 className="title"><img src="ck-mark.svg" style={{verticalAlign:'middle'}} /> CK React Test App</h1>
-      
       <hr/>
       <div className="container">
         <h1 className="subtitle">Override Options</h1>
         <div className="columns">
-
           <div className="column">
-            <Customer client={client} />
+            <Username 
+              dispatch={dispatch} 
+              username={state.username} />
           </div>
-
           <div className="column">
-            <div className="field has-addons">
-              <p className="control">
-                <input className="input" type="text" name="username" id="username" onChange={this.onChange} value={this.state.username} />
-              </p>
-              <p className="control">
-                <a className="button is-static">
-                  @creditkey.com
-                </a>
-              </p>
+            <Email 
+              dispatch={dispatch}
+              email={state.email_override}
+            />
+          </div>
+          <div className="column">
+            <Pricing
+              cart={state.cart}
+              dispatch={dispatch}
+            />
+          </div>
+        </div>
+
+        <h1 className="subtitle">Standard Checkout &amp; Apply Now</h1>
+        <div className="columns">
+          <div className="column" style={{ borderRight: '1px solid #eeeeee' }}>
+            <div className="tabs">
+              <ul>
+                <li className={!fico ? 'is-active' : undefined}><a onClick={() => setFico(null) }>Tier 1</a></li>
+                <li className={fico === 651 ? 'is-active' : undefined}><a onClick={() => setFico(651)}>Tier 2</a></li>
+                <li className={fico === 601 ? 'is-active' : undefined}><a onClick={() => setFico(601)}>Tier 3</a></li>
+              </ul>
             </div>
-          </div>
 
+            <p>
+              <input 
+                type="checkbox" 
+                onChange={() => setRedirect(!redirect)} 
+                checked={redirect} 
+                value={redirect} /> Use Redirect
+            </p>
+
+            <Display 
+              {...state}
+              conditions={{ fico: fico }}
+              redirect={redirect} />
+          </div>
           <div className="column">
-            <div className="field">
-              <p className="control has-icons-left">
-                <input className="input" type="text" name="email_override" id="email_override" placeholder="Email Override" onChange={this.onChange} value={this.state.email_override} />
-                <span className="icon is-small is-left">
-                  <FontAwesomeIcon icon={faEnvelope} />
-                </span>
-              </p>
-            </div>
+            <div className="has-text-weight-semibold">Apply Now</div>
+            <Display 
+              {...state}
+              conditions={{ apply: true }}
+              config={{
+                type: 'pdp'
+              }} />
+            <hr/>
+            <div className="has-text-weight-semibold">Alternative Apply Now</div>
+            <Display 
+              {...state}
+              conditions={{ apply: true }}
+              config={{
+                type: 'pdp',
+                display: 'text',
+                size: 'special'
+              }} />
           </div>
+        </div>
 
+        <h1 className="subtitle">Pending and Decline Checkouts</h1>
+        <div className="columns">
           <div className="column">
-            <div className="field">
-              <p className="control has-icons-left">
-                <input className="input" type="text" name="price_override" id="price_override" placeholder="Price Override" onChange={this.setCartItemPrice} value={this.state.price_override} />
-                <span className="icon is-small is-left">
-                  <FontAwesomeIcon icon={faDollarSign} />
-                </span>
-              </p>
-            </div>
+            <BadButton 
+              {...state} 
+              config={{ fico: 500 }}
+              icon={faSkullCrossbones}
+              label="Checkout with low FICO"
+            />
+          </div>
+          <div className="column">
+            <BadButton 
+              {...state} 
+              config={{ lexis: 'bvi' }}
+              icon={faPencilAlt}
+              label="Checkout as Pending"
+            />
+          </div>
+          <div className="column">
+            <BadButton 
+              {...state} 
+              config={{ equifax: 'frozen' }}
+              icon={faIcicles}
+              label="Checkout with Frozen Credit Report"
+            />
           </div>
         </div>
-      </div>
-
-      <hr/>
-
-      <h1 className="subtitle">Standard Checkout &amp; Apply Now</h1>
-      <div className="columns">
-        <div className="column" style={{ borderRight: '1px solid #eeeeee' }}>
-          <div className="has-text-weight-semibold">Tier 1</div>
-          {this.state.display && <div className="is-size-6 checkout" onClick={() => this.launchModal()} dangerouslySetInnerHTML={ { __html: this.state.checkout } } />}
-          <hr/>
-          <div className="has-text-weight-semibold">Tier 2</div>
-          {this.state.display && <div className="is-size-6 checkout" onClick={() => this.launchModal({ fico: 651 })} dangerouslySetInnerHTML={ { __html: this.state.checkout } } />}
-          <hr/>
-          <div className="has-text-weight-semibold">Tier 3</div>
-          {this.state.display && <div className="is-size-6 checkout" onClick={() => this.launchModal({ fico: 601 })} dangerouslySetInnerHTML={ { __html: this.state.checkout } } />}
-          <hr/>
-          <div className="has-text-weight-semibold">Full Page Redirect</div>
-          {this.state.display && <div className="is-size-6 checkout" onClick={() => this.launchModal({ redirect: true })} dangerouslySetInnerHTML={ { __html: this.state.checkout } } />}
+        <div className="columns">
+          <div className="column">
+            <BadButton 
+              {...state} 
+              config={{ equifax: 'collections' }}
+              icon={faSkullCrossbones}
+              label="Checkout with Active Collections"
+            />
+          </div>
+          <div className="column">
+            <BadButton 
+              {...state} 
+              config={{ equifax: 'revolving' }}
+              icon={faSkullCrossbones}
+              label="Checkout with Low Revolving Credit"
+            />
+          </div>
+          <div className="column">
+            <BadButton 
+              {...state} 
+              config={{ equifax: 'fraud' }}
+              icon={faSadTear}
+              label="Checkout with Fraud Alert"
+            />
+          </div>
         </div>
-        <div className="column">
-          <div className="has-text-weight-semibold">Apply Now</div>
-          {this.state.display && <div className="is-size-6" dangerouslySetInnerHTML={ { __html: this.state.marketing_button } } />}
-          <hr/>
-          <div className="has-text-weight-semibold">Alternative Apply Now</div>
-          {this.state.display && <div className="is-size-6" dangerouslySetInnerHTML={ { __html: this.state.marketing } } />}
+        <div className="columns">
+          <div className="column">
+            <BadButton 
+              {...state} 
+              config={{ equifax: 'trades_and_collections' }}
+              icon={faSkullCrossbones}
+              label="Checkout with Collections and too few trades"
+            />
+          </div>
         </div>
-      </div>
-
-      <hr/>
-
-      <h1 className="subtitle">Pending and Decline Checkouts</h1>
-      <div className="columns">
-        <div className="column">
-          <a className="button is-medium is-info" onClick={() => this.launchModal({ fico: 500 })}>
-            <FontAwesomeIcon icon={faSkullCrossbones} />&nbsp;Checkout with Low FICO
-          </a>
-        </div>
-        <div className="column">
-          <a className="button is-medium is-info" onClick={() => this.launchModal({ lexis: 'bvi' })}>
-            <FontAwesomeIcon icon={faPencilAlt} />&nbsp;Checkout as Pending
-          </a>
-        </div>
-        <div className="column">
-          <a className="button is-medium is-info" onClick={() => this.launchModal({ equifax: 'frozen' })}>
-            <FontAwesomeIcon icon={faIcicles} />&nbsp;Checkout with Frozen Credit Report
-          </a>
-        </div>
-      </div>
-      <div className="columns">
-        <div className="column">
-          <a className="button is-medium is-info" onClick={() => this.launchModal({ equifax: 'collections' })}>
-            <FontAwesomeIcon icon={faSkullCrossbones} />&nbsp;Checkout with Active Collections
-          </a>
-        </div>
-        <div className="column">
-          <a className="button is-medium is-info" onClick={() => this.launchModal({ equifax: 'revolving' })}>
-            <FontAwesomeIcon icon={faSkullCrossbones} />&nbsp;Checkout with Low Revolving Credit
-          </a>
-        </div>
-        <div className="column">
-          <a className="button is-medium is-info" onClick={() => this.launchModal({ equifax: 'fraud' })}>
-            <FontAwesomeIcon icon={faSadTear} />&nbsp;Checkout with Fraud Alert
-          </a>
-        </div>
-      </div>
-      <div className="columns">
-        <div className="column">
-          <a className="button is-medium is-info" onClick={() => this.launchModal({ iovation: 'fail' })}>
-            <FontAwesomeIcon icon={faSadTear} />&nbsp;Checkout with Iovation Failure
-          </a>
-        </div>
-        <div className="column">
-          <a className="button is-medium is-info" onClick={() => this.launchModal({ equifax: 'trades_and_collections' })}>
-            <FontAwesomeIcon icon={faSkullCrossbones} />&nbsp;Checkout with Collections and too few Trades
-          </a>
-        </div>
-      </div>
-      <div className="columns">
-        <div className="column">
-          <a className="button is-medium is-info" onClick={() => this.launchModal({ fico: 500, equifax: 'trades_and_collections' })}>
-            <FontAwesomeIcon icon={faSkullCrossbones} />&nbsp;Checkout with Collections, too few Trades and low FICO
-          </a>
+        <div className="columns">
+          <div className="column">
+            <BadButton 
+              {...state} 
+              config={{ fico: 500, equifax: 'trades_and_collections' }}
+              icon={faSkullCrossbones}
+              label="Checkout with Collections and too few trades and Low FICO"
+            />
+          </div>
         </div>
       </div>
     </div>
-  }
+  )
 }
-
-export default App;
