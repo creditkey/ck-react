@@ -3965,8 +3965,10 @@ create-hmac@^1.1.0, create-hmac@^1.1.4, create-hmac@^1.1.7:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-"creditkey-js@file:../creditkey-js":
+creditkey-js@^1.0.72:
   version "1.0.72"
+  resolved "https://registry.yarnpkg.com/creditkey-js/-/creditkey-js-1.0.72.tgz#3886cb2002e49e2af4202b432595b857f1131ccd"
+  integrity sha512-0wX01t2pdhsg3IZIX6ELW7yW6Y4ZZQlMrbgiH2A2Rp8Ad1wmcAerh9lTf7kvIedjADhCwgV/d5rm2xYaJ8Y+RQ==
   dependencies:
     bulma "^0.7.2"
     lodash "^4.17.15"
