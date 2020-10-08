@@ -14,7 +14,7 @@ const initialState = {
   cart: [new ck.CartItem('1', 'Test Product', 1000, '1-TP', 1)],
   email_override: '',
   phone: makePhoneNumber(),
-  username: 'egoodman'
+  username: process.env.REACT_APP_USERNAME
 }
 
 export default function App() {
