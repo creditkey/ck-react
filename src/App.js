@@ -59,8 +59,9 @@ export default function App() {
             <div className="tabs">
               <ul>
                 <li className={!fico ? 'is-active' : undefined}><a onClick={() => setFico(null) }>Tier 1</a></li>
-                <li className={fico === 651 ? 'is-active' : undefined}><a onClick={() => setFico(651)}>Tier 2</a></li>
-                <li className={fico === 601 ? 'is-active' : undefined}><a onClick={() => setFico(601)}>Tier 3</a></li>
+                <li className={fico === 681 ? 'is-active' : undefined}><a onClick={() => setFico(681)}>Tier 2</a></li>
+                <li className={fico === 641 ? 'is-active' : undefined}><a onClick={() => setFico(641)}>Tier 3</a></li>
+                <li className={fico === 601 ? 'is-active' : undefined}><a onClick={() => setFico(601)}>Tier 4</a></li>
               </ul>
             </div>
 
