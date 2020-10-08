@@ -66,11 +66,13 @@ export default function App() {
             </div>
 
             <p>
-              <input 
-                type="checkbox" 
-                onChange={() => setRedirect(!redirect)} 
-                checked={redirect} 
-                value={redirect} /> Use Redirect
+              <input
+                type="checkbox"
+                id="use_redirect"
+                onChange={() => setRedirect(!redirect)}
+                checked={redirect}
+                value={redirect} />
+              <label htmlFor="use_redirect">Use Redirect</ label>
             </p>
 
             <Display 
