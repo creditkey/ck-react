@@ -89,6 +89,15 @@ export default function App() {
                 type: 'pdp'
               }} />
             <hr/>
+            <div className="has-text-weight-semibold">Text Apply Now</div>
+            <Display 
+              {...state}
+              conditions={{ apply: true }}
+              config={{
+                type: 'pdp',
+                display: 'text'
+              }} />
+            <hr/>
             <div className="has-text-weight-semibold">Alternative Apply Now</div>
             <Display 
               {...state}
@@ -108,6 +117,7 @@ export default function App() {
           <div className="column is-one-third">
             <BadButton 
               {...state} 
+              redirect={redirect}
               config={{ fico: 500 }}
               icon={faSkullCrossbones}
               label="Checkout with low FICO"
@@ -116,6 +126,7 @@ export default function App() {
           <div className="column is-one-third">
             <BadButton 
               {...state} 
+              redirect={redirect}
               config={{ lexis: 'bvi' }}
               icon={faPencilAlt}
               label="Checkout as Pending"
@@ -124,6 +135,7 @@ export default function App() {
           <div className="column">
             <BadButton 
               {...state} 
+              redirect={redirect}
               config={{ equifax: 'frozen' }}
               icon={faIcicles}
               label="Checkout with Frozen Credit Report"
@@ -134,6 +146,7 @@ export default function App() {
           <div className="column is-one-third">
             <BadButton 
               {...state} 
+              redirect={redirect}
               config={{ equifax: 'collections' }}
               icon={faSkullCrossbones}
               label="Checkout with Active Collections"
@@ -142,6 +155,7 @@ export default function App() {
           <div className="column is-one-third">
             <BadButton 
               {...state} 
+              redirect={redirect}
               config={{ equifax: 'revolving' }}
               icon={faSkullCrossbones}
               label="Checkout with Low Revolving Credit"
@@ -150,6 +164,7 @@ export default function App() {
           <div className="column">
             <BadButton 
               {...state} 
+              redirect={redirect}
               config={{ equifax: 'fraud' }}
               icon={faSadTear}
               label="Checkout with Fraud Alert"
@@ -160,6 +175,7 @@ export default function App() {
           <div className="column is-half">
             <BadButton 
               {...state} 
+              redirect={redirect}
               config={{ equifax: 'trades_and_collections' }}
               icon={faSkullCrossbones}
               label="Checkout with Collections and too few trades"
@@ -168,6 +184,7 @@ export default function App() {
           <div className="column is-half">
             <BadButton 
               {...state} 
+              redirect={redirect}
               config={{ fico: 500, equifax: 'trades_and_collections' }}
               icon={faSkullCrossbones}
               label="Checkout with Collections and too few trades and Low FICO"
