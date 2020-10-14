@@ -1,8 +1,10 @@
 const setState = (state, newState) => {
-  return {...state, ...newState};
-}
+  return { ...state, ...newState };
+};
 
-export default function reducer(state, action) {
+export const initialState = {};
+
+export default function AdminReducer(state, action) {
   switch(action.type) {
     case 'UPDATE_EMAIL':
       return setState(state, { email_override: action.email });
@@ -18,4 +20,4 @@ export default function reducer(state, action) {
     default:
       return state;
   }
-}
+};

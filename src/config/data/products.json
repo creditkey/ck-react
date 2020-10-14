@@ -1,0 +1,15 @@
+{
+  "ice-machine": {
+    "slug": "ice-machine",
+    "name": "Ice Machine",
+    "images": ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.webp"],
+    "thumb": "5.webp",
+    "color": "Silver",
+    "price": 354900,
+    "original-price": 400000,
+    "description": "This self-monitoring cube ice machine is equipped with external indicator lights, which alert your staff when it's time to perform normal maintenance or call for service before there's an emergency. The result is today's most reliable, foolproof ice system, as its one-touch concept saves time and money. And because it's the most energy efficient, there's no smarter choice.",
+    "company": "Scotsman",
+    "id": "ACB123",
+    "sku": "sku"
+  }
+}
