@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ck from "creditkey-js";
 import { client, makePhoneNumber } from "../lib/utils";
 import useCart from "../hooks/cart";
+import currency from "currency.js";
 
 export default function CkPaymentOption(props) {
   const { cart, cartProducts, subTotal, total, taxes } = useCart();
@@ -23,7 +24,7 @@ export default function CkPaymentOption(props) {
       new ck.CartItem(
         item.id,
         item.name,
-        item.price / 100,
+        currency(item.price).format(),
         item.sku,
         cart.items[item.slug]
       )

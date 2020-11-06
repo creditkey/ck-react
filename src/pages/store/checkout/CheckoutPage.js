@@ -1,5 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import currency from "currency.js";
+
 import "./styles.css";
 import ContactStep from "../../../components/checkout_steps/ContactStep";
 import ShippingStep from "../../../components/checkout_steps/ShippingStep";
@@ -33,7 +35,7 @@ function cartItem(item, cart) {
       </th>
       <td className="product__price">
         <span className="order-summary__emphasis skeleton-while-loading">
-          ${item.price / 100}
+          {currency(item.price).format()}
         </span>
       </td>
     </tr>
@@ -191,7 +193,7 @@ function CheckoutPage() {
                             className="order-summary__emphasis skeleton-while-loading"
                             data-checkout-subtotal-price-target="59000"
                           >
-                            ${subTotal}
+                            {currency(subTotal).format()}
                           </span>
                         </td>
                       </tr>
@@ -216,7 +218,7 @@ function CheckoutPage() {
                         </th>
                         <td className="total-line__price">
                           <span className="order-summary__emphasis skeleton-while-loading">
-                            ${taxes}
+                            {currency(taxes).format()}
                           </span>
                         </td>
                       </tr>
@@ -236,7 +238,7 @@ function CheckoutPage() {
                             USD
                           </span>
                           <span className="payment-due__price skeleton-while-loading--lg">
-                            ${total}
+                            {currency(total).format()}
                           </span>
                         </td>
                       </tr>
