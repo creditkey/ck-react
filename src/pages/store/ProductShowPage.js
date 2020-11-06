@@ -4,9 +4,11 @@ import Layout from "../../components/theme/layout/Layout";
 import { Link } from "react-router-dom";
 import currency from "currency.js";
 
+import ck from "creditkey-js";
 import products from "../../config/data/products.json";
 import { cartContext } from "../../Context";
 import { actions } from "../../reducers/cart";
+import Display from '../../components/Display';
 
 const getImagePath = (slug, img) => `/images/products/${slug}/${img}`;
 
@@ -43,6 +45,7 @@ function ProductShowPage({ match }) {
                     <button
                       className="product-gallery--media-thumbnail product-gallery--image-thumbnail"
                       type="button"
+                      key={img}
                     >
                       <span
                         className="product-gallery--media-thumbnail-img-wrapper"
@@ -65,14 +68,14 @@ function ProductShowPage({ match }) {
               <div className="product-details">
                 <h1 className="product-title">{product.name}</h1>
 
-                <div className="product-vendor">
-                  by {product.company}
-                </div>
+                <div className="product-vendor">by {product.company}</div>
 
                 <div className="product-pricing" aria-live="polite">
                   <div className="product--price ">
                     <div className="price--main" data-price="">
-                      <span className="money">{currency(product.price).format()}</span>
+                      <span className="money">
+                        {currency(product.price).format()}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -84,7 +87,7 @@ function ProductShowPage({ match }) {
                 <div>
                   <button
                     className="product-form--atc-button mdc-ripple-surface mdc-ripple-upgraded"
-                    style={{ marginLeft: "-5px" }}
+                    style={{ marginLeft: "-5px", width: "100%" }}
                     onClick={() =>
                       cartDispatch({
                         type: actions.addItem,
@@ -94,6 +97,20 @@ function ProductShowPage({ match }) {
                   >
                     Add to cart
                   </button>
+
+                  <div
+                    style={{ marginTop: "20px" }}
+                    className="has-text-centered"
+                  >
+                    <Display
+                      cart={[
+                        new ck.Charges(product.price, 0, 0, 0, product.price),
+                      ]}
+                      config={{ type: "pdp" }}
+                      conditions={{ apply: false }}
+                      redirect={true}
+                    />
+                  </div>
 
                   <aside className="share-buttons">
                     <span className="share-buttons--title"> Share this: </span>
@@ -164,7 +181,7 @@ function ProductShowPage({ match }) {
                             fill="currentColor"
                             fillRule="evenodd"
                             d="M9.7 9.8h4.8v2.5c.7-1.4 2.5-2.8 5.1-2.8 5.2 0 6.4 3 6.4 8.4V28h-5.2v-8.8c0-3.1-.7-4.9-2.5-4.9-2.4 0-3.4 1.9-3.4 4.9V28H9.7V9.8zm-9 18H6V9.5H.7v18.3zm6-24.2c0 2-1.5 3.5-3.4 3.5C1.5 7.1 0 5.5 0 3.6 0 1.6 1.5 0 3.3 0c1.9 0 3.4 1.6 3.4 3.6z"
-                            clip-rule="evenodd"
+                            clipRule="evenodd"
                           ></path>
                         </svg>
                         <span className="visually-hidden">
