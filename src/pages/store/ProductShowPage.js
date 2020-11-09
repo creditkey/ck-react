@@ -65,7 +65,7 @@ function ProductShowPage({ match }) {
                 <h1 className="product-title">{product.name}</h1>
 
                 <div className="product-vendor">
-                  by &nbsp; {product.company}
+                  by {product.company}
                 </div>
 
                 <div className="product-pricing" aria-live="polite">
