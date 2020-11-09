@@ -104,7 +104,7 @@ function ProductShowPage({ match }) {
                   >
                     <Display
                       cart={[
-                        new ck.Charges(product.price, 0, 0, 0, product.price),
+                        new ck.CartItem(product.price, 0, 0, 0, product.price),
                       ]}
                       config={{ type: "pdp" }}
                       conditions={{ apply: false }}
