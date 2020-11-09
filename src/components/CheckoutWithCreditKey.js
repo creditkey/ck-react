@@ -1,5 +1,4 @@
 import React from "react";
-import ck from "creditkey-js";
 import { client } from "../lib/utils";
 
 export default function CheckoutWithCreditKey({ address, cartItems, charges }) {

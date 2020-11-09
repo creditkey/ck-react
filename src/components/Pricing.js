@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDollarSign } from '@fortawesome/free-solid-svg-icons'
 
 export default function Pricing(props) {
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState(props.cart[0].data.price);
   const updatePrice = price => props.dispatch({
     type: 'UPDATE_PRICE',
     price: price
@@ -23,7 +23,7 @@ export default function Pricing(props) {
             setPrice(e.target.value);
             return updatePrice(e.target.value);
           }}
-          value={props.cart[0].data.price} />
+          value={price} />
 
         <span className="icon is-small is-left">
           <FontAwesomeIcon icon={faDollarSign} />

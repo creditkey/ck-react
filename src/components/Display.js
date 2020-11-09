@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import ck from 'creditkey-js';
 import { calcCharges, client } from '../lib/utils';
 import loadModal from '../lib/load_modal';
 
@@ -15,9 +14,10 @@ export default function Display(props) {
   const charges = calcCharges(props.cart)
 
   useEffect(() => {
-    client.get_marketing_display(charges, config.type, config.display, config.size)
-      .then(res => setDisplay(res));
-  }, [props.cart]);
+    client
+      .get_marketing_display(charges, config.type, config.display, config.size)
+      .then((res) => setDisplay(res));
+  }, [charges, props.cart, config]);
 
   return (
     <div 

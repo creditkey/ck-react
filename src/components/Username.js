@@ -20,9 +20,9 @@ export default function Username(props) {
           value={props.username} />
       </p>
       <p className="control">
-        <a className="button is-static">
+        <button className="button is-static">
           @creditkey.com
-        </a>
+        </button>
       </p>
     </div>
   )

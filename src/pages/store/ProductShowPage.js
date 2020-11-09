@@ -36,7 +36,7 @@ function ProductShowPage({ match }) {
               <div className="product-gallery-viewer product-gallery--has-media">
                 <img
                   src={getImagePath(slug, selectedImage)}
-                  alt="Product Image"
+                  alt="Product Thumbnail"
                 />
               </div>
               <div className="product-gallery--navigation">
@@ -53,7 +53,7 @@ function ProductShowPage({ match }) {
                       >
                         <img
                           src={getImagePath(slug, img)}
-                          alt="Image Selector"
+                          alt="Alternate Angle"
                           className="product-gallery--media-thumbnail-img"
                           onClick={() => setSelectedImage(img)}
                         />
@@ -104,7 +104,13 @@ function ProductShowPage({ match }) {
                   >
                     <Display
                       cart={[
-                        new ck.CartItem(product.id, product.name, product.price, 1, product.sku),
+                        new ck.CartItem(
+                          product.id,
+                          product.name,
+                          product.price,
+                          1,
+                          product.sku
+                        ),
                       ]}
                       config={{ type: "pdp" }}
                       conditions={{ apply: false }}
@@ -118,7 +124,8 @@ function ProductShowPage({ match }) {
                       <a
                         className="share-buttons--button share-buttons--facebook"
                         target="_blank"
-                        href="//www.facebook.com/sharer.php"
+                        href="http://www.facebook.com/sharer.php"
+                        rel="noopener noreferrer"
                       >
                         <svg
                           aria-hidden="true"
@@ -142,7 +149,8 @@ function ProductShowPage({ match }) {
                       <a
                         className="share-buttons--button share-buttons--twitter"
                         target="_blank"
-                        href="//twitter.com/share"
+                        href="http://twitter.com/share"
+                        rel="noopener noreferrer"
                       >
                         <svg
                           aria-hidden="true"
@@ -166,7 +174,8 @@ function ProductShowPage({ match }) {
                       <a
                         className="share-buttons--button share-buttons--linkedin"
                         target="_blank"
-                        href="//www.linkedin.com/shareArticle"
+                        href="http://www.linkedin.com/shareArticle"
+                        rel="noopener noreferrer"
                       >
                         <svg
                           aria-hidden="true"
@@ -191,7 +200,8 @@ function ProductShowPage({ match }) {
                       <a
                         className="share-buttons--button share-buttons--pinterest"
                         target="_blank"
-                        href="//pinterest.com/pin/create/button/"
+                        href="http://pinterest.com/pin/create/button/"
+                        rel="noopener noreferrer"
                       >
                         <svg
                           aria-hidden="true"
