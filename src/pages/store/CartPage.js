@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import currency from "currency.js";
 
@@ -21,7 +21,7 @@ function CartPage() {
         className="shopify-section cart--section"
         style={{ marginTop: "20px" }}
       >
-        {cartProducts.length == 0 && (
+        {cartProducts.length === 0 && (
           <>
             <div class="notification is-danger">
               This cart is empty. Consider one of our items below.

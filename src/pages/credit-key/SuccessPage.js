@@ -9,12 +9,14 @@ function CreditKeySuccessPage() {
 
   useEffect(() => {
     // Call the Credit Key API t
-    fetch(`http://localhost:8080/api/credit-key/complete_checkout?id=${creditKeyId}`)
+    fetch(
+      `http://localhost:8080/api/credit-key/complete_checkout?id=${creditKeyId}`
+    )
       .then((res) => res.json())
       .then((json) => {
         setCheckoutStatus(json);
       });
-  }, []);
+  }, [creditKeyId]);
 
   return (
     <Layout>

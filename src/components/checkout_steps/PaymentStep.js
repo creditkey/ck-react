@@ -71,9 +71,9 @@ export default function PaymentStep({ address, contactInfo, setStep }) {
             </div>
             <div>
               <label
-                style={{ display: "inline", float: "left", clear: "both" }}
+                style={{ display: "inline", float: "left", clear: "both", paddingTop: '12px' }}
               >
-                <CkPaymentOption address={address} contactInfo={contactInfo} />
+                <CkPaymentOption />
               </label>
             </div>
           </div>

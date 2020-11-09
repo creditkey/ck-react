@@ -1,6 +1,5 @@
 import React, { useReducer, useState } from "react";
 import ck from "creditkey-js";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSadTear,
   faSkullCrossbones,
@@ -30,7 +29,7 @@ function HomePage() {
   return (
     <div className="App">
       <h1 className="title has-text-centered" style={{ margin: "10px 0 0 0" }}>
-        <img src="ck-mark.svg" style={{ verticalAlign: "middle" }} /> CK React
+        <img src="ck-mark.svg" style={{ verticalAlign: "middle" }} alt="CK Logo" /> CK React
         Test App
       </h1>
 
@@ -58,13 +57,22 @@ function HomePage() {
             <div className="tabs">
               <ul>
                 <li className={!fico ? "is-active" : undefined}>
-                  <a onClick={() => setFico(null)}>Tier 1</a>
+                  <a href="?tier1" onClick={(e) => {
+                    e.preventDefault();
+                    setFico(null);
+                  }}>Tier 1</a>
                 </li>
                 <li className={fico === 651 ? "is-active" : undefined}>
-                  <a onClick={() => setFico(651)}>Tier 2</a>
+                  <a href="?tier2" onClick={(e) => {
+                    e.preventDefault();
+                    setFico(651);
+                  }}>Tier 2</a>
                 </li>
                 <li className={fico === 601 ? "is-active" : undefined}>
-                  <a onClick={() => setFico(601)}>Tier 3</a>
+                  <a href="?tier3" onClick={(e) => {
+                    e.preventDefault();
+                    setFico(601);
+                  }}>Tier 3</a>
                 </li>
               </ul>
             </div>
