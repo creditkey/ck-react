@@ -1,5 +1,6 @@
 import React from "react";
 import products from "../config/data/products.json";
+import currency from "currency.js";
 
 const productList = [
   products["ice-machine"],
@@ -55,7 +56,7 @@ export default function ProductList() {
                   <span class="productitem--badge badge--sale">
                     Save&nbsp;
                     <span class="money">
-                      ${(product["original-price"] - product.price) / 100}
+                      {currency(product["original-price"] - product.price).format()}
                     </span>
                   </span>
                 </figure>
@@ -74,12 +75,14 @@ export default function ProductList() {
                 <div class="productitem--price">
                   <div class="price--compare-at visible">
                     <span class="money">
-                      ${product["original-price"] / 100}
+                      {currency(product["original-price"]).format()}
                     </span>
                   </div>
 
                   <div class="price--main">
-                    <span class="money">${product["price"] / 100}</span>
+                    <span class="money">
+                      {currency(product["price"]).format()}
+                    </span>
                   </div>
                 </div>
               </div>

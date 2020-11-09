@@ -4,6 +4,7 @@ import CkPaymentOption from "../CkPaymentOption";
 import CheckoutWithCreditKey from "../CheckoutWithCreditKey";
 import { makePhoneNumber } from "../../lib/utils";
 import useCart from "../../hooks/cart";
+import currency from "currency.js";
 
 export default function PaymentStep({ address, contactInfo, setStep }) {
   const { cart, cartProducts, subTotal, total, taxes } = useCart();
@@ -25,7 +26,7 @@ export default function PaymentStep({ address, contactInfo, setStep }) {
       new ck.CartItem(
         item.id,
         item.name,
-        item.price / 100,
+        currency(item.price).format(),
         item.sku,
         cart.items[item.slug]
       )

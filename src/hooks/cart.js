@@ -12,7 +12,6 @@ function buildProductList(cart) {
     subTotal += product.price * cart.items[key];
   });
 
-  subTotal = subTotal / 100;
   return { cartProducts, subTotal };
 }
 

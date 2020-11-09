@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import currency from "currency.js";
+
 import ShoppingCartIcon from "../../components/theme/icons/ShoppingCartIcon";
 import Layout from "../../components/theme/layout/Layout";
 
@@ -42,7 +44,7 @@ function CartPage() {
                   <div className="cart-title-total" data-cart-title-total="">
                     Subtotal
                     <span className="money" data-cart-total="">
-                      ${subTotal}
+                      {currency(subTotal).format()}
                     </span>
                   </div>
                 </div>
@@ -93,7 +95,7 @@ function CartPage() {
                               Price&nbsp;
                             </span>
 
-                            <span className="money ">${item.price / 100}</span>
+                            <span className="money ">{currency(item.price).format()}</span>
                           </div>
                         </div>
 
@@ -164,7 +166,7 @@ function CartPage() {
                               aria-live="polite"
                               data-cartitem-total=""
                             >
-                              ${item.price / 100}
+                              {currency(item.price).format()}
                             </div>
                           </div>
 
@@ -206,7 +208,7 @@ function CartPage() {
                     <div className="cart-subtotal">
                       <span>Subtotal</span>
                       <span className="money" data-cart-total="">
-                        ${subTotal}
+                        {currency(subTotal).format()}
                       </span>
                     </div>
                   </div>

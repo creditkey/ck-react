@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import ChevronRightIcon from "../../components/theme/icons/ChevronRightIcon";
 import Layout from "../../components/theme/layout/Layout";
 import { Link } from "react-router-dom";
+import currency from "currency.js";
 
 import products from "../../config/data/products.json";
 import { cartContext } from "../../Context";
@@ -71,7 +72,7 @@ function ProductShowPage({ match }) {
                 <div className="product-pricing" aria-live="polite">
                   <div className="product--price ">
                     <div className="price--main" data-price="">
-                      <span className="money">${product.price / 100}</span>
+                      <span className="money">{currency(product.price).format()}</span>
                     </div>
                   </div>
                 </div>
