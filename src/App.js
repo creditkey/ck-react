@@ -17,6 +17,7 @@ const initialState = {
   username: process.env.REACT_APP_USERNAME
 }
 
+
 export default function App() {
   const [fico, setFico] = useState();
   const [redirect, setRedirect] = useState(false);
@@ -107,6 +108,14 @@ export default function App() {
                 display: 'text',
                 size: 'special'
               }} />
+              <hr/>
+              <div className="has-text-weight-semibold">Modal Apply Now</div>
+              <Display 
+                {...state}
+                conditions={{ apply: true }}
+                config={{
+                  type: 'modal-pdp'
+                }} />
           </div>
         </div>
 

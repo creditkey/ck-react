@@ -115,6 +115,14 @@ function HomePage() {
                 size: "special",
               }}
             />
+            <hr/>
+              <div className="has-text-weight-semibold">Modal Apply Now</div>
+              <Display 
+                {...state}
+                conditions={{ apply: true }}
+                config={{
+                  type: 'modal-pdp'
+                }} />
           </div>
         </div>
 
