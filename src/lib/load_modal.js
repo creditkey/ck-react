@@ -37,7 +37,7 @@ export default function LoadModal(conditions = {}, state, charges) {
       customerId,
       returnUrl,
       cancelUrl,
-      "modal"
+      state.redirect ? "redirect" : "modal"
     )
     .then((res) =>
       state.redirect
