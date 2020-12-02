@@ -10,7 +10,7 @@ import useCart from "../../../../hooks/cart";
 
 function cartItem(item, cart) {
   return (
-    <tr className="product" key={item}>
+    <tr className="product" key={item.slug}>
       <td className="product__image">
         <div className="product-thumbnail ">
           <div className="product-thumbnail__wrapper">

@@ -45,7 +45,7 @@ export default () => {
           const product = Product.find(item.category, item.slug);
 
           return (
-            <div className="column is-full cart-row">
+            <div className="column is-full cart-row" key={item.slug}>
               <div className="columns">
                 <div className="column is-2">
                   <ProductThumb product={product} />
