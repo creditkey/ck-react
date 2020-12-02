@@ -1,15 +1,17 @@
 import { useContext } from "react";
 import { cartContext } from "../Context";
-import products from "../config/data/products.json";
+
+import Product from "../models/product";
 
 function buildProductList(cart) {
   const cartProducts = [];
   let subTotal = 0;
 
-  Object.keys(cart.items).forEach((key) => {
-    const product = products[key];
+  cart.forEach((item) => {
+    const product = Product.find(item.category, item.slug);
+    product.qty = item.qty;
     cartProducts.push(product);
-    subTotal += product.price * cart.items[key];
+    subTotal += product.price * item.qty;
   });
 
   return { cartProducts, subTotal };

@@ -1,33 +1,60 @@
-const setState = (state, newState) => {
-  return { ...state, ...newState };
-};
+function itemFactory(action) {
+  return { category: action.category, slug: action.slug, qty: 1 };
+}
 
-export const initialState = {
-  items: {}
-};
+function isSameItem(item, action) {
+  return item.category === action.category && item.slug === action.slug;
+}
+
+export const initialState = [
+  itemFactory({ category: "ice-machines", slug: "ice-o-matic" }),
+  itemFactory({ category: "ice-machines", slug: "air-cooled" }),
+  itemFactory({ category: "ice-machines", slug: "water-cooled" }),
+  itemFactory({ category: "ice-machines", slug: "remote-condenser" }),
+];
 
 export const actions = {
   addItem: "ADD_ITEM",
   removeItem: "REMOVE_ITEM",
-  changeQuantity: "CHANGE_QUANTITY"
-}
+  changeQuantity: "CHANGE_QUANTITY",
+};
 
 export default function CartReducer(state, action) {
-  switch(action.type) {
+  const items = [];
+  let previouslyAdded = false;
+
+  switch (action.type) {
     case actions.addItem:
-      return setState(state, { items: { ...state.items, [action.key]: 1 } });
+      state.forEach((item) => {
+        if (isSameItem(item, action)) {
+          items.push({ ...item, qty: item.qty + 1 });
+          previouslyAdded = true;
+        } else {
+          items.push(item);
+        }
+      });
+      if (!previouslyAdded) items.push(itemFactory(action));
+      return items;
 
     case actions.removeItem:
-      const items = {};
-      Object.keys(state.items).forEach(key => {
-        if (key !== action.key) items.push(state.items[key])
+      state.forEach((item) => {
+        if (!isSameItem(item, action)) {
+          items.push(item);
+        }
       });
-      return setState(state, { items });
+      return items;
 
     case actions.changeQuantity:
-      return setState(state, { items: { ...state.items,  [action.key]: action.qty } });
-      
+      state.forEach((item) => {
+        if (isSameItem(item, action)) {
+          items.push({ ...item, qty: item.qty + 1 });
+        } else {
+          items.push(item);
+        }
+      });
+      return items;
+
     default:
       return state;
   }
-};
+}

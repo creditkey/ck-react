@@ -1,15 +1,65 @@
 {
-  "ice-machine": {
-    "slug": "ice-machine",
-    "name": "Ice Machine",
-    "images": ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.webp"],
-    "thumb": "5.webp",
-    "color": "Silver",
-    "price": 3549.00,
-    "original-price": 4000.00,
-    "description": "This self-monitoring cube ice machine is equipped with external indicator lights, which alert your staff when it's time to perform normal maintenance or call for service before there's an emergency. The result is today's most reliable, foolproof ice system, as its one-touch concept saves time and money. And because it's the most energy efficient, there's no smarter choice.",
-    "company": "Scotsman",
-    "id": "ACB123",
-    "sku": "sku"
-  }
+  "ice-machines": [
+    {
+      "slug": "ice-o-matic",
+      "name": "Ice-O-Matic",
+      "images": ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.webp"],
+      "thumb": "2.jpg",
+      "color": "Silver",
+      "salePrice": 3549.00,
+      "price": 4000.00,
+      "description": "This self-monitoring cube ice machine is equipped with external indicator lights, which alert your staff when it's time to perform normal maintenance or call for service before there's an emergency. The result is today's most reliable, foolproof ice system, as its one-touch concept saves time and money. And because it's the most energy efficient, there's no smarter choice.",
+      "company": "Scotsman",
+      "id": "ACB123",
+      "sku": "sku",
+      "category": "ice-machines"
+    },
+    {
+      "slug": "air-cooled",
+      "name": "Air Cooled",
+      "images": ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.webp"],
+      "thumb": "3.jpg",
+      "color": "Silver",
+      "salePrice": 3549.00,
+      "price": 4200.00,
+      "description": "This self-monitoring cube ice machine is equipped with external indicator lights, which alert your staff when it's time to perform normal maintenance or call for service before there's an emergency. The result is today's most reliable, foolproof ice system, as its one-touch concept saves time and money. And because it's the most energy efficient, there's no smarter choice.",
+      "company": "Scotsman",
+      "id": "ACB124",
+      "sku": "sku",
+      "category": "ice-machines"
+    },
+    {
+      "slug": "water-cooled",
+      "name": "Water Cooled",
+      "images": ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.webp"],
+      "thumb": "4.jpg",
+      "color": "Silver",
+      "salePrice": 3549.00,
+      "price": 4400.00,
+      "description": "This self-monitoring cube ice machine is equipped with external indicator lights, which alert your staff when it's time to perform normal maintenance or call for service before there's an emergency. The result is today's most reliable, foolproof ice system, as its one-touch concept saves time and money. And because it's the most energy efficient, there's no smarter choice.",
+      "company": "Scotsman",
+      "id": "ACB125",
+      "sku": "sku",
+      "category": "ice-machines"
+    },
+    {
+      "slug": "remote-condenser",
+      "name": "Remote Condenser",
+      "images": ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.webp"],
+      "thumb": "5.webp",
+      "color": "Silver",
+      "salePrice": 3549.00,
+      "price": 4800.00,
+      "description": "This self-monitoring cube ice machine is equipped with external indicator lights, which alert your staff when it's time to perform normal maintenance or call for service before there's an emergency. The result is today's most reliable, foolproof ice system, as its one-touch concept saves time and money. And because it's the most energy efficient, there's no smarter choice.",
+      "company": "Scotsman",
+      "id": "ACB126",
+      "sku": "sku",
+      "category": "ice-machines"
+    }
+  ],
+  "refrigerators": [],
+  "storage": [],
+  "transport": [],
+  "tabletops": [],
+  "disposables": []
 }
