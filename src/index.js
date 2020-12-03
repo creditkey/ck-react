@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 
 import Context from "./Context";
 
@@ -16,6 +16,7 @@ render(
       <BrowserRouter>
         <Route path="/store" component={StoreLayout} />
         <Route path="/dev" component={DevPage} />
+        <Redirect to="/store" />
       </BrowserRouter>
     </Context>
   </React.StrictMode>,
