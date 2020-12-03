@@ -6,12 +6,7 @@ function isSameItem(item, action) {
   return item.category === action.category && item.slug === action.slug;
 }
 
-export const initialState = [
-  itemFactory({ category: "ice-machines", slug: "ice-o-matic" }),
-  itemFactory({ category: "ice-machines", slug: "air-cooled" }),
-  itemFactory({ category: "ice-machines", slug: "water-cooled" }),
-  itemFactory({ category: "ice-machines", slug: "remote-condenser" }),
-];
+export const initialState = [];
 
 export const actions = {
   addItem: "ADD_ITEM",
