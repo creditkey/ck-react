@@ -2,8 +2,8 @@ import React from "react";
 import { client } from "../../lib/utils";
 
 export default function CheckoutWithCreditKey({ address, cartItems, charges }) {
-  const returnUrl = "http://localhost:3000/credit-key/success?id=%CKKEY%&";
-  const cancelUrl = "http://localhost:3000/credit-key/cancelled";
+  const returnUrl = "http://localhost:3000/store/credit-key/success?id=%CKKEY%&";
+  const cancelUrl = "http://localhost:3000/store/credit-key/cancelled";
   const remoteId = new Date().getTime();
 
   const begin = () => {

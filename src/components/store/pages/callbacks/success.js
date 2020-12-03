@@ -21,7 +21,12 @@ export default () => {
   return (
     <Page title="Success">
       <div className="column">
-        {!checkoutStatus && <p>Please wait while we load your order...</p>}
+        {!checkoutStatus && (
+          <p>Please wait while we load your order: {creditKeyId}</p>
+        )}
+        {checkoutStatus && (
+          <p>Your order with id "{creditKeyId} has been confirmed. Please wait for the hampsters to generate enough power for delivery. Good Day."</p>
+        )}
       </div>
     </Page>
   );

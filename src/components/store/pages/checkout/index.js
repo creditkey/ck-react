@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import currency from "currency.js";
 
-import "./styles.css";
+import "../../../../styles/checkout.css";
 import ContactStep from "./steps/contact";
 import ShippingStep from "./steps/shipping";
 import PaymentStep from "./steps/payment";
@@ -10,35 +10,38 @@ import useCart from "../../../../hooks/cart";
 
 function cartItem(item, cart) {
   return (
-    <tr className="product" key={item.slug}>
-      <td className="product__image">
-        <div className="product-thumbnail ">
-          <div className="product-thumbnail__wrapper">
-            <img
-              alt={item.name}
-              className="product-thumbnail__image"
-              src={item.thumbnail}
-            />
+    <>
+      <tr className="product" key={item.slug}>
+        <td className="product__image">
+          <div className="product-thumbnail ">
+            <div className="product-thumbnail__wrapper">
+              <img
+                alt={item.name}
+                className="product-thumbnail__image"
+                src={item.thumbnail}
+              />
+            </div>
+            <span className="product-thumbnail__quantity">{item.qty}</span>
           </div>
-          <span className="product-thumbnail__quantity">
-            {item.qty}
+        </td>
+        <th className="product__description" scope="row">
+          <span
+            className="product__description__name order-summary__emphasis"
+            style={{ marginLeft: "10px" }}
+          >
+            {item.name}
           </span>
-        </div>
-      </td>
-      <th className="product__description" scope="row">
-        <span
-          className="product__description__name order-summary__emphasis"
-          style={{ marginLeft: "10px" }}
-        >
-          {item.name}
-        </span>
-      </th>
-      <td className="product__price">
-        <span className="order-summary__emphasis skeleton-while-loading">
-          {currency(item.price).format()}
-        </span>
-      </td>
-    </tr>
+        </th>
+        <td className="product__price">
+          <span className="order-summary__emphasis skeleton-while-loading">
+            {currency(item.price).format()}
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+    </>
   );
 }
 
@@ -144,15 +147,6 @@ function CheckoutPage() {
           </footer>
         </div>
         <aside className="sidebar">
-          <div className="sidebar__header">
-            <a className="logo logo--left" href="https://www.creditkey.com">
-              <span className="logo__text heading-1">
-                Credit Key Demo Store
-              </span>
-            </a>
-
-            <h1 className="visually-hidden">Information</h1>
-          </div>
           <div className="sidebar__content">
             <div
               id="order-summary"
@@ -171,18 +165,7 @@ function CheckoutPage() {
                 </div>
 
                 <div className="order-summary__section order-summary__section--total-lines">
-                  <table className="total-line-table">
-                    <caption className="visually-hidden">Cost summary</caption>
-                    <thead>
-                      <tr>
-                        <th scope="col">
-                          <span className="visually-hidden">Description</span>
-                        </th>
-                        <th scope="col">
-                          <span className="visually-hidden">Price</span>
-                        </th>
-                      </tr>
-                    </thead>
+                  <table className="total-line-table">                    
                     <tbody className="total-line-table__tbody">
                       <tr className="total-line total-line--subtotal">
                         <th className="total-line__name" scope="row">
