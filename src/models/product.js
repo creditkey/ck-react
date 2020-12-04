@@ -22,6 +22,7 @@ class Product {
     this.thumbnail = `/images/products/${product.slug}/${product.thumb}`;
     this.url = `/store/products/${product.category}/${product.slug}`;
 
+    this.id = product.id;
     this.slug = product.slug;
     this.category = product.category;
     this.name = product.name;
@@ -31,6 +32,7 @@ class Product {
     this.price = product.salePrice || product.price;
     this.images = product.images;
     this.company = product.company;
+    this.sku = product.sku;
   }
 
   formattedOriginalPrice = () => currency(this.data.price).format();
