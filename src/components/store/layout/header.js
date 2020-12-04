@@ -15,11 +15,13 @@ export default () => {
       <div className="container">
         <nav className="navbar" role="navigation" aria-label="main">
           <div className="navbar-brand">
-            <img
-              className="atlas-logo"
-              src="/images/atlas-logo.png"
-              alt="Atlas Logo"
-            />
+            <Link to="/store">
+              <img
+                className="atlas-logo"
+                src="/images/atlas-logo.png"
+                alt="Atlas Logo"
+              />
+            </Link>
 
             <a
               href="#"
