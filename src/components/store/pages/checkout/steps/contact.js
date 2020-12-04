@@ -95,7 +95,7 @@ export default function ContactStep({ contactInfo, setContactInfo, setStep }) {
         </div>
       </div>
       <button
-        className="button-primary cart-title-button mdc-ripple-surface mdc-ripple-upgraded"
+        className="button is-danger"
         style={{ marginTop: "20px" }}
         onClick={() => setStep("shipping")}
       >
