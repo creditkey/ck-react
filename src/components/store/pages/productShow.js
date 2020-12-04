@@ -72,7 +72,7 @@ export default () => {
                     product.sku
                   ),
                 ]}
-                config={{ type: "pdp" }}
+                config={{ type: "pdp", display: 'text', size: 'special' }}
                 conditions={{ apply: false }}
                 redirect={true}
               />
