@@ -48,17 +48,17 @@ function cartItem(item, cart) {
 function CheckoutPage() {
   const { cart, cartProducts, subTotal, taxes, total } = useCart();
   const [contactInfo, setContactInfo] = useState({
-    email: `jturknett+${new Date().getTime()}@creditkey.com`,
-    firstName: "John",
-    lastName: "Turknett",
+    email: `support+${new Date().getTime()}@creditkey.com`,
+    firstName: "Credit",
+    lastName: "Key",
   });
   const [address, setAddress] = useState({
-    street: "1st Street",
+    street: "10573 W Pico Blvd",
     suite: "",
     country: "United States",
-    city: "Vermont",
-    state: "GA",
-    zip: "53526",
+    city: "Los Angeles",
+    state: "CA",
+    zip: "90064",
   });
   const [step, setStep] = useState("contact");
 

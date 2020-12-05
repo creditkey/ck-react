@@ -11,7 +11,7 @@ export default function PaymentStep({ address, contactInfo, setStep }) {
   const ckAddress = new ck.Address(
     contactInfo.firstName,
     contactInfo.lastName,
-    "Toys R US",
+    "Credit Key",
     contactInfo.email,
     address.street,
     address.suite,

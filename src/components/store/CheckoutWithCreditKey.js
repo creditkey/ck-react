@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import ck from 'creditkey-js';
+import {
+  faSpinner,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { client } from "../../lib/utils";
 
 export default function CheckoutWithCreditKey({ address, cartItems, charges }) {
   const returnUrl = "http://localhost:3000/store/credit-key/success?id=%CKKEY%&";
   const cancelUrl = "http://localhost:3000/store/credit-key/cancelled";
+  const [loading, setLoading] = useState(false);
   const remoteId = new Date().getTime();
 
   const begin = () => {
+    setLoading(true);
+
     client
       .begin_checkout(
         cartItems,
@@ -17,9 +25,9 @@ export default function CheckoutWithCreditKey({ address, cartItems, charges }) {
         remoteId,
         returnUrl,
         cancelUrl,
-        "modal"
+        "redirect"
       )
-      .then((res) => (window.location = res.checkout_url));
+      .then(res => ck.checkout(res.checkout_url, 'redirect'));
   };
 
   return (
@@ -31,7 +39,10 @@ export default function CheckoutWithCreditKey({ address, cartItems, charges }) {
         begin();
       }}
     >
-      Continue with Credit Key
+      {loading && <span className="icon">
+        <FontAwesomeIcon icon={faSpinner} spin />
+      </span>}
+      {loading && <>&nbsp;&nbsp;</>}Continue with Credit Key
     </button>
   );
 }
