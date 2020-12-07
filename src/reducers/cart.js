@@ -6,7 +6,17 @@ function isSameItem(item, action) {
   return item.category === action.category && item.slug === action.slug;
 }
 
-export const initialState = [];
+function persistState(state) {
+  localStorage.setItem('ck-cart', JSON.stringify(state));
+  return state;
+}
+
+function fetchState() {
+  const stored = localStorage.getItem("ck-cart");
+  return (stored) ? JSON.parse(stored) : [];
+}
+
+export const initialState = fetchState();
 
 export const actions = {
   addItem: "ADD_ITEM",
@@ -29,7 +39,7 @@ export default function CartReducer(state, action) {
         }
       });
       if (!previouslyAdded) items.push(itemFactory(action));
-      return items;
+      return persistState(items);
 
     case actions.removeItem:
       state.forEach((item) => {
@@ -37,7 +47,7 @@ export default function CartReducer(state, action) {
           items.push(item);
         }
       });
-      return items;
+      return persistState(items);
 
     case actions.changeQuantity:
       state.forEach((item) => {
@@ -47,7 +57,7 @@ export default function CartReducer(state, action) {
           items.push(item);
         }
       });
-      return items;
+      return persistState(items);
 
     default:
       return state;

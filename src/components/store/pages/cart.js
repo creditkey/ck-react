@@ -19,13 +19,15 @@ const CheckoutRightLevel = ({subTotal}) => {
         </div>
       </div>
       <div className="level-item">
-        <Link
-          to="/store/checkout"
-          className="button is-danger"
-        >
-          <ShoppingCartIcon />
-          Checkout
-        </Link>
+        {subTotal != "$0.00" && (
+          <Link
+            to="/store/checkout"
+            className="button is-danger"
+          >
+            <ShoppingCartIcon />
+            Checkout
+          </Link>
+        )}
       </div>
     </>
   );
@@ -94,13 +96,15 @@ export default () => {
 
       <div className="level">
         <div className="level-item">
-          <Link
-            to="/store/checkout"
-            className="button is-danger cart-checkout-button is-medium"
-          >
-            <ShoppingCartIcon />
-            Checkout
-          </Link>
+          {formattedSubTotal != "$0.00" && (
+            <Link
+              to="/store/checkout"
+              className="button is-danger cart-checkout-button is-medium"
+            >
+              <ShoppingCartIcon />
+              Checkout
+            </Link>
+          )}
         </div>
       </div>
     </Page>
