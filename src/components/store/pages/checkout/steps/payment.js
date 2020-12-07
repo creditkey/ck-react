@@ -5,14 +5,14 @@ import CheckoutWithCreditKey from "../../../CheckoutWithCreditKey";
 import { makePhoneNumber } from "../../../../../lib/utils";
 import useCart from "../../../../../hooks/cart";
 
-export default function PaymentStep({ address, contactInfo, setStep }) {
+export default function PaymentStep({ address, setStep }) {
   const { cartProducts, subTotal, total, taxes } = useCart();
   const [method, setMethod] = useState("creditkey");
   const ckAddress = new ck.Address(
-    contactInfo.firstName,
-    contactInfo.lastName,
+    address.first_name,
+    address.last_name,
     "Credit Key",
-    contactInfo.email,
+    address.email,
     address.street,
     address.suite,
     address.city,

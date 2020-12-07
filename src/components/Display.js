@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { calcCharges, client } from '../lib/utils';
-import loadModal from '../lib/load_modal';
+import loadCheckout from '../lib/load_checkout';
 
 export default function Display(props) {
   const [display, setDisplay] = useState();
@@ -22,7 +22,7 @@ export default function Display(props) {
   return (
     <div 
       className="is-size-6 checkout" 
-      onClick={() => !props.conditions.apply && loadModal(props.conditions, props, charges)} 
+      onClick={() => !props.conditions.apply && loadCheckout(props.conditions, props, charges)} 
       dangerouslySetInnerHTML={ { __html: display } } />
   );
 }

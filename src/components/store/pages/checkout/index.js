@@ -47,12 +47,10 @@ function cartItem(item, cart) {
 
 function CheckoutPage() {
   const { cart, cartProducts, subTotal, taxes, total } = useCart();
-  const [contactInfo, setContactInfo] = useState({
-    email: `support+${new Date().getTime()}@creditkey.com`,
-    firstName: "Credit",
-    lastName: "Key",
-  });
   const [address, setAddress] = useState({
+    first_name: 'Credit',
+    last_name: 'Key',
+    email: `support+${new Date().getTime()}@creditkey.com`,
     street: "10573 W Pico Blvd",
     suite: "",
     country: "United States",
@@ -105,8 +103,8 @@ function CheckoutPage() {
                 <div className="step__sections">
                   {step === "contact" && (
                     <ContactStep
-                      contactInfo={contactInfo}
-                      setContactInfo={setContactInfo}
+                      address={address}
+                      setAddress={setAddress}
                       setStep={setStep}
                     />
                   )}
@@ -119,7 +117,6 @@ function CheckoutPage() {
                   )}
                   {step === "payment" && (
                     <PaymentStep
-                      contactInfo={contactInfo}
                       address={address}
                       setStep={setStep}
                     />

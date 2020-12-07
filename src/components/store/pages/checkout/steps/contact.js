@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function ContactStep({ contactInfo, setContactInfo, setStep }) {
+export default function ContactStep({ address, setAddress, setStep }) {
   return (
     <div className="section section--contact-information">
       <div className="section__header">
@@ -32,12 +32,12 @@ export default function ContactStep({ contactInfo, setContactInfo, setStep }) {
                 name="checkout[email]"
                 id="checkout_email"
                 onChange={(e) => {
-                  setContactInfo({
-                    ...contactInfo,
+                  setAddress({
+                    ...address,
                     email: e.target.value,
                   });
                 }}
-                value={contactInfo.email}
+                value={address.email}
               />
             </div>
           </div>
@@ -57,12 +57,12 @@ export default function ContactStep({ contactInfo, setContactInfo, setStep }) {
                 name="checkout[shipping_address][first_name]"
                 id="checkout_shipping_address_first_name"
                 onChange={(e) => {
-                  setContactInfo({
-                    ...contactInfo,
-                    firstName: e.target.value,
+                  setAddress({
+                    ...address,
+                    first_name: e.target.value,
                   });
                 }}
-                value={contactInfo.firstName}
+                value={address.first_name}
               />
             </div>
           </div>
@@ -83,12 +83,12 @@ export default function ContactStep({ contactInfo, setContactInfo, setStep }) {
                 name="checkout[shipping_address][last_name]"
                 id="checkout_shipping_address_last_name"
                 onChange={(e) => {
-                  setContactInfo({
-                    ...contactInfo,
-                    lastName: e.target.value,
+                  setAddress({
+                    ...address,
+                    last_name: e.target.value,
                   });
                 }}
-                value={contactInfo.lastName}
+                value={address.last_name}
               />
             </div>
           </div>
