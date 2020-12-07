@@ -5,9 +5,8 @@ export default function LoadModal(conditions = {}, state, charges) {
   let date = new Date();
   const remoteId = date.getTime();
   const customerId = date.getTime();
-  const returnUrl =
-    "http://localhost:3000/credit-key/success?id=%CKKEY%&storeId=2";
-  const cancelUrl = "http://localhost:3000/credit-key/cancelled";
+  const returnUrl = "http://localhost:3000/store/credit-key/success?id=%CKKEY%&storeId=2";
+  const cancelUrl = "http://localhost:3000/store/credit-key/cancelled";
 
   const email = addEmailTestingConditions(
     state.username,
