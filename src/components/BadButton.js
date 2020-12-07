@@ -1,11 +1,11 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { calcCharges } from '../lib/utils';
-import loadModal from '../lib/load_modal';
+import loadCheckout from '../lib/load_checkout';
 
 export default function BadButton(props) {
   return (
-    <button className="button is-medium is-fullwidth is-danger is-outlined" onClick={() => loadModal(props.config, props, calcCharges(props.cart))}>
+    <button className="button is-medium is-fullwidth is-danger is-outlined" onClick={() => loadCheckout(props.config, props, calcCharges(props.cart))}>
       <FontAwesomeIcon icon={props.icon} />&nbsp;<span>{props.label}</span>
     </button>
   );

@@ -1,19 +1,22 @@
 import ck from "creditkey-js";
 import { client, addEmailTestingConditions } from "./utils";
 
-export default function LoadModal(conditions = {}, state, charges) {
+export default function LoadCheckout(conditions = {}, state, charges) {
   let date = new Date();
   const remoteId = date.getTime();
   const customerId = date.getTime();
   const returnUrl = "http://localhost:3000/store/credit-key/success?id=%CKKEY%&storeId=2";
   const cancelUrl = "http://localhost:3000/store/credit-key/cancelled";
 
+  let address;
+
   const email = addEmailTestingConditions(
     state.username,
     "creditkey.com",
     conditions
   );
-  const address = new ck.Address(
+
+  const defaultAddressData = new ck.Address(
     "Test",
     "User",
     "Test Company",
@@ -24,7 +27,9 @@ export default function LoadModal(conditions = {}, state, charges) {
     "CA",
     "11111",
     state.phone
-  );
+  )
+
+  state.address ? address = state.address : address = defaultAddressData;
 
   client
     .begin_checkout(

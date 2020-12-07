@@ -5,29 +5,19 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { client } from "../../lib/utils";
+import loadCheckout from '../../lib/load_checkout';
 
 export default function CheckoutWithCreditKey({ address, cartItems, charges }) {
-  const returnUrl = "http://localhost:3000/store/credit-key/success?id=%CKKEY%&";
-  const cancelUrl = "http://localhost:3000/store/credit-key/cancelled";
   const [loading, setLoading] = useState(false);
-  const remoteId = new Date().getTime();
 
   const begin = () => {
     setLoading(true);
 
-    client
-      .begin_checkout(
-        cartItems,
-        address,
-        address,
-        charges,
-        remoteId,
-        remoteId,
-        returnUrl,
-        cancelUrl,
-        "redirect"
-      )
-      .then(res => ck.checkout(res.checkout_url, 'redirect'));
+    return loadCheckout(
+      {}, 
+      { address: address, cart: cartItems, redirect: true }, 
+      charges, 
+    );
   };
 
   return (
