@@ -6,13 +6,13 @@ export default () => {
     <Page title="Home">
       <div className="columns is-multiline">
         <div className="column is-full">
-          <div className="button is-info is-fullwidth">One</div>
+          <img src="/images/banners/home-page-banner1.jpg" />
         </div>
         <div className="column is-one-third">
-          <div className="button is-info is-fullwidth">Two</div>
+          <img src="/images/banners/home-page-banner2.jpg" />
         </div>
         <div className="column is-two-thirds">
-          <div className="button is-info is-fullwidth">Three</div>
+          <img src="/images/banners/home-page-banner3.jpg" />
         </div>
       </div>
     </Page>

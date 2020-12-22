@@ -20,8 +20,11 @@ import Footer from "./footer";
 export default (props) => {
   return (
     <>
-      <section className="top-banner">
-        <div className="container has-text-centered">50px high Banner</div>
+      <section className="top-banner has-text-centered">
+        <img
+          className="is-centered"
+          src="/images/banners/home-page-top-banner.png"
+        />
       </section>
       <Header />
       <div className="container">
