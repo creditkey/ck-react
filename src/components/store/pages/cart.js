@@ -9,7 +9,7 @@ import Price from "../product/price";
 import useCart from "../../../hooks/cart";
 import ShoppingCartIcon from "../icons/ShoppingCartIcon";
 
-const CheckoutRightLevel = ({subTotal}) => {
+const CheckoutRightLevel = ({ subTotal }) => {
   return (
     <>
       <div className="level-item">
@@ -19,11 +19,8 @@ const CheckoutRightLevel = ({subTotal}) => {
         </div>
       </div>
       <div className="level-item">
-        {subTotal != "$0.00" && (
-          <Link
-            to="/store/checkout"
-            className="button is-danger"
-          >
+        {subTotal !== "$0.00" && (
+          <Link to="/store/checkout" className="button is-danger">
             <ShoppingCartIcon />
             Checkout
           </Link>
@@ -31,7 +28,7 @@ const CheckoutRightLevel = ({subTotal}) => {
       </div>
     </>
   );
-}
+};
 
 export default () => {
   const { cart, subTotal } = useCart();
@@ -96,7 +93,7 @@ export default () => {
 
       <div className="level">
         <div className="level-item">
-          {formattedSubTotal != "$0.00" && (
+          {formattedSubTotal !== "$0.00" && (
             <Link
               to="/store/checkout"
               className="button is-danger cart-checkout-button is-medium"
