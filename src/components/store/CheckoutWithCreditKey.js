@@ -1,11 +1,7 @@
 import React, { useState } from "react";
-import ck from 'creditkey-js';
-import {
-  faSpinner,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { client } from "../../lib/utils";
-import loadCheckout from '../../lib/load_checkout';
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import loadCheckout from "../../lib/load_checkout";
 
 export default function CheckoutWithCreditKey({ address, cartItems, charges }) {
   const [loading, setLoading] = useState(false);
@@ -14,9 +10,9 @@ export default function CheckoutWithCreditKey({ address, cartItems, charges }) {
     setLoading(true);
 
     return loadCheckout(
-      {}, 
-      { address: address, cart: cartItems, redirect: true }, 
-      charges, 
+      {},
+      { address: address, cart: cartItems, redirect: true },
+      charges
     );
   };
 
@@ -29,9 +25,11 @@ export default function CheckoutWithCreditKey({ address, cartItems, charges }) {
         begin();
       }}
     >
-      {loading && <span className="icon">
-        <FontAwesomeIcon icon={faSpinner} spin />
-      </span>}
+      {loading && (
+        <span className="icon">
+          <FontAwesomeIcon icon={faSpinner} spin />
+        </span>
+      )}
       {loading && <>&nbsp;&nbsp;</>}Continue with Credit Key
     </button>
   );
