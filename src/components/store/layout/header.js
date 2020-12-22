@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 // Icons
@@ -9,34 +9,28 @@ import useCart from "../../../hooks/cart";
 
 export default () => {
   const { cart } = useCart();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const burgerClick = () => setMenuOpen(!menuOpen);
+  const menuState = () => (menuOpen ? "is-active" : "");
 
   return (
     <header>
       <div className="container">
-        <nav className="navbar" role="navigation" aria-label="main">
-          <div className="navbar-brand">
-            <Link to="/store">
-              <img
-                className="atlas-logo"
-                src="/images/atlas-logo.png"
-                alt="Atlas Logo"
-              />
-            </Link>
-
-            <a
-              href="#"
-              role="button"
-              className="navbar-burger burger"
-              aria-label="menu"
-              aria-expanded="false"
-            >
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
+        <div className="level">
+          <div className="level-left">
+            <div className="level-item">
+              <Link to="/store">
+                <img
+                  className="atlas-logo"
+                  src="/images/atlas-logo.png"
+                  alt="Atlas Logo"
+                />
+              </Link>
+            </div>
           </div>
 
-          <div className="navbar-item is-expanded">
+          <div className="level-item is-expanded">
             <div className="field has-addons search">
               <p className="control is-expanded">
                 <input
@@ -53,21 +47,39 @@ export default () => {
             </div>
           </div>
 
-          <div className="navbar-end">
-            <div className="navbar-item">
-              <a href="#" className="button is-danger">CREATE A FREE ACCOUNT</a>
+          <div className="level-right">
+            <div className="level-item">
+              <a href="#" className="button is-danger">
+                CREATE A FREE ACCOUNT
+              </a>
             </div>
 
-            <div className="navbar-item">
+            <div className="level-item">
               <Link to="/store/cart">
                 <ShoppingCartIcon className="has-text-black" />
               </Link>
               <span className="tag is-info shopping-count">{cart.length}</span>
             </div>
           </div>
-        </nav>
-        <nav className="navbar" role="navigation" aria-label="navigation">
-          <div className="navbar-menu is-uppercase has-text-weight-semibold">
+        </div>
+
+        <nav className="navbar" role="navigation" aria-label="main">
+          <div className="navbar-brand">
+            <a
+              role="button"
+              className={`navbar-burger ${menuState()}`}
+              aria-label="menu"
+              aria-expanded="false"
+              onClick={burgerClick}
+            >
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+          <div
+            className={`navbar-menu is-uppercase has-text-weight-semibold ${menuState()}`}
+          >
             <div className="navbar-start">
               <Link className="navbar-item" to="/store/ice-machines">
                 Ice Machines
