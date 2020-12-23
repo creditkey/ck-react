@@ -6,6 +6,7 @@
 
 .search {
     width: 100%;
+    padding: 0px 10px 0px 10px;
 }
 
 .divider {
@@ -98,4 +99,12 @@
 
 .cart-checkout-button {
     min-width: 250px;
+}
+
+.container > .level > .level-item {
+    padding-top: 10px;
+}
+
+.container > .level > .level-right > .level-item {
+    padding-top: 10px;
 }
