@@ -13,6 +13,7 @@ export default () => {
 
   const burgerClick = () => setMenuOpen(!menuOpen);
   const menuState = () => (menuOpen ? "is-active" : "");
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <header>
@@ -81,19 +82,39 @@ export default () => {
             className={`navbar-menu is-uppercase has-text-weight-semibold ${menuState()}`}
           >
             <div className="navbar-start">
-              <Link className="navbar-item" to="/store/ice-machines">
+              <Link
+                className="navbar-item"
+                to="/store/ice-machines"
+                onClick={closeMenu}
+              >
                 Ice Machines
               </Link>
-              <Link className="navbar-item" to="/store/ice-machines">
+              <Link
+                className="navbar-item"
+                to="/store/ice-machines"
+                onClick={closeMenu}
+              >
                 Commercial Refrigeration
               </Link>
-              <Link className="navbar-item" to="/store/ice-machines">
+              <Link
+                className="navbar-item"
+                to="/store/ice-machines"
+                onClick={closeMenu}
+              >
                 Storage & Transport
               </Link>
-              <Link className="navbar-item" to="/store/ice-machines">
+              <Link
+                className="navbar-item"
+                to="/store/ice-machines"
+                onClick={closeMenu}
+              >
                 Tabletop
               </Link>
-              <Link className="navbar-item" to="/store/ice-machines">
+              <Link
+                className="navbar-item"
+                to="/store/ice-machines"
+                onClick={closeMenu}
+              >
                 Disposables
               </Link>
             </div>
