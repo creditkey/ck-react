@@ -1,5 +1,6 @@
 import React, { useReducer, useState } from "react";
 import ck from "creditkey-js";
+import { client } from '../lib/utils';
 import {
   faSadTear,
   faSkullCrossbones,
@@ -123,6 +124,35 @@ function DevPage() {
                 type: "pdp",
                 display: "text",
                 size: "special",
+              }}
+            />
+            <hr />
+            <div className="has-text-weight-semibold">
+              Modal Apply Now
+            </div>
+            <Display
+              {...state}
+              conditions={{ apply: true }}
+              config={{
+                type: "pdp",
+                display: "button",
+                size: "medium",
+                extra: "static"
+              }}
+            />
+            <hr />
+            <div className="has-text-weight-semibold">
+              Modal Apply Now for Cart Page
+            </div>
+            <Display
+              {...state}
+              conditions={{ apply: true }}
+              config={{
+                type: "pdp",
+                display: "button",
+                size: "medium",
+                extra: "static",
+                cart: true
               }}
             />
           </div>
