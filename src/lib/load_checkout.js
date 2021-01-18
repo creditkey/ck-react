@@ -41,7 +41,8 @@ export default function LoadCheckout(conditions = {}, state, charges) {
       customerId,
       returnUrl,
       cancelUrl,
-      state.redirect ? "redirect" : "modal"
+      state.redirect ? "redirect" : "modal",
+      state.merchant_data
     )
     .then((res) =>
       state.redirect

@@ -17,6 +17,12 @@ export default function AdminReducer(state, action) {
     case 'UPDATE_USERNAME':
       return setState(state, { username: action.username });
 
+    case 'UPDATE_VIRTUAL_CARD':
+      let merchant_data = state.merchant_data;
+      merchant_data.virtual_card = action.virtual_card;
+
+      return setState(state, { merchant_data });
+
     default:
       return state;
   }

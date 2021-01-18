@@ -21,6 +21,7 @@ const initialState = {
   email_override: "",
   phone: makePhoneNumber(),
   username: process.env.REACT_APP_USERNAME,
+  merchant_data: {virtual_card: false}
 };
 
 function DevPage() {
@@ -85,6 +86,16 @@ function DevPage() {
                 value={redirect}
               />
               <label htmlFor="use_redirect">Use Redirect</label>
+            </p>
+            <p>
+              <input
+                type="checkbox"
+                id="use_virtual_card"
+                onChange={() => dispatch({ type: 'UPDATE_VIRTUAL_CARD', virtual_card: !state.merchant_data.virtual_card})}
+                checked={state.merchant_data.virtual_card}
+                value={state.merchant_data.virtual_card}
+              />
+              <label htmlFor="use_virtual_card">Virtual Card Checkout</label>
             </p>
 
             <Display
