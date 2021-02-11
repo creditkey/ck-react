@@ -1,14 +1,12 @@
-import { useContext } from "react";
 import currency from "currency.js";
 
 import products from "../config/data/products.json";
-import { cartContext } from "../Context";
 import { actions } from "../reducers/cart";
 
 class Product {
-  static find = (category, slug) => {
+  static find = (category, slug, dispatch) => {
     const filtered = products[category]?.filter((item) => slug === item.slug);
-    return filtered?.length ? new this(filtered[0]) : null;
+    return filtered?.length ? new this(filtered[0], dispatch) : null;
   };
 
   static forCategory = (category) =>
@@ -16,9 +14,9 @@ class Product {
 
   static formattedCategory = (category) => category.split("-").join(" ");
 
-  constructor(product) {
+  constructor(product, dispatch) {
     this.data = product;
-    this.cartDispatch = useContext(cartContext).cartDispatch;
+    this.cartDispatch = dispatch;
     this.thumbnail = `/images/products/${product.slug}/${product.thumb}`;
     this.url = `/store/products/${product.category}/${product.slug}`;
 

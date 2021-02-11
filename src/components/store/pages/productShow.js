@@ -6,10 +6,12 @@ import Product from "../../../models/product";
 import Page from "../page";
 import Price from "../product/price";
 import Display from "../../Display";
+import useCart from "../../../hooks/cart";
 
 export default () => {
+  const { cartDispatch } = useCart();
   const { category, slug } = useParams();
-  const product = Product.find(category, slug);
+  const product = Product.find(category, slug, cartDispatch);
 
   if (product) {
     const [selectedImage, setSelectedImage] = useState(product.images[0]);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import { Link } from "react-router-dom";
 import currency from "currency.js";
 
@@ -8,10 +8,10 @@ import ShippingStep from "./steps/shipping";
 import PaymentStep from "./steps/payment";
 import useCart from "../../../../hooks/cart";
 
-function cartItem(item, cart) {
+function cartItem(item) {
   return (
-    <>
-      <tr className="product" key={item.slug}>
+    <Fragment key={item.slug}>
+      <tr className="product">
         <td className="product__image">
           <div className="product-thumbnail ">
             <div className="product-thumbnail__wrapper">
@@ -41,7 +41,7 @@ function cartItem(item, cart) {
       <tr>
         <td>&nbsp;</td>
       </tr>
-    </>
+    </Fragment>
   );
 }
 
