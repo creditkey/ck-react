@@ -7,43 +7,7 @@ import ContactStep from "./steps/contact";
 import ShippingStep from "./steps/shipping";
 import PaymentStep from "./steps/payment";
 import useCart from "../../../../hooks/cart";
-
-function cartItem(item) {
-  return (
-    <Fragment key={item.slug}>
-      <tr className="product">
-        <td className="product__image">
-          <div className="product-thumbnail ">
-            <div className="product-thumbnail__wrapper">
-              <img
-                alt={item.name}
-                className="product-thumbnail__image"
-                src={item.thumbnail}
-              />
-            </div>
-            <span className="product-thumbnail__quantity">{item.qty}</span>
-          </div>
-        </td>
-        <th className="product__description" scope="row">
-          <span
-            className="product__description__name order-summary__emphasis"
-            style={{ marginLeft: "10px" }}
-          >
-            {item.name}
-          </span>
-        </th>
-        <td className="product__price">
-          <span className="order-summary__emphasis skeleton-while-loading">
-            {currency(item.price).format()}
-          </span>
-        </td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-      </tr>
-    </Fragment>
-  );
-}
+import OrderSummaryItem from "../../OrderSummaryItem";
 
 function CheckoutPage() {
   const { cart, cartProducts, subTotal, taxes, total } = useCart();
@@ -155,7 +119,7 @@ function CheckoutPage() {
                   <div className="order-summary__section__content">
                     <table className="product-table">
                       <tbody data-order-summary-section="line-items">
-                        {cartProducts.map((item) => cartItem(item, cart))}
+                        {cartProducts.map((item) => <OrderSummaryItem item={item} key={item.slug} />)}
                       </tbody>
                     </table>
                   </div>
