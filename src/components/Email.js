@@ -5,11 +5,6 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 export default function Email(props) {
   
   const [email, setEmail] = useState("")
-
-  // const updateEmail = value => props.dispatch({
-  //   type: 'UPDATE_EMAIL',
-  //   email: value
-  // });
   const updateEmail = value => {
     setEmail(value)
     props.dispatch({
