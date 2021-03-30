@@ -158,11 +158,10 @@ function DevPage() {
           </div>
         </div>
 
-        <hr />
-
+        <hr /> 
         <h1 className="subtitle">Pending and Decline Checkouts</h1>
         <div className="columns">
-          <div className="column is-one-third">
+          {/* <div className="column is-one-third">
             <BadButton
               {...state}
               redirect={redirect}
@@ -237,7 +236,7 @@ function DevPage() {
               icon={faSkullCrossbones}
               label="Checkout with Collections and too few trades and Low FICO"
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
