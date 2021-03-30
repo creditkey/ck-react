@@ -13,6 +13,7 @@ import Username from "../components/Username";
 import Email from "../components/Email";
 import Pricing from "../components/Pricing";
 import Display from "../components/Display";
+import ApplyFlow from "../components/ApplyFlow";
 import BadButton from "../components/BadButton";
 
 import "../styles/index.scss";
@@ -52,6 +53,9 @@ function DevPage() {
           </div>
           <div className="column">
             <Pricing cart={state.cart} dispatch={dispatch} />
+          </div>
+          <div className="column">
+            <ApplyFlow cart={state.cart} dispatch={dispatch} />
           </div>
         </div>
 
