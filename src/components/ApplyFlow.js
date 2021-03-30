@@ -4,19 +4,11 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 export default function Email(props) {
 
-  const [flow, setFlow] = useState(null)
-
-  // const updateEmail = value => props.dispatch({
-  //   type: 'UPDATE_EMAIL',
-  //   email: value
-  // });
-
+  const [applyFlow, setApplyFlow] = useState(null)
   const updateChoice = value => {
-    // setFlow(value)
-    console.log(value)
     props.dispatch({
       type: 'UPDATE_FLOW',
-      flow: flow
+      apply_flow: value
     });
   };
 
@@ -29,11 +21,11 @@ export default function Email(props) {
           name="apply_flow"
           id="apply_flow"
           onChange={e => {
-            setFlow(e.target.value);
+            setApplyFlow(e.target.value);
             return updateChoice(e.target.value);
           }}
-          value={flow}>
-          <option>Select an option</option>
+          value={applyFlow}>
+          <option>Select an Apply Now option</option>
           <option>Apply Now</option>
           <option>Text Apply Now</option>
           <option>Alternative Apply Now</option>

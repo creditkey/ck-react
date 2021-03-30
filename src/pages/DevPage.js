@@ -23,6 +23,7 @@ const initialState = {
   email_override: "",
   phone: makePhoneNumber(),
   username: process.env.REACT_APP_USERNAME,
+  apply_flow: "Select an Apply Now ption",
 };
 
 function DevPage() {
@@ -55,7 +56,7 @@ function DevPage() {
             <Pricing cart={state.cart} dispatch={dispatch} />
           </div>
           <div className="column">
-            <ApplyFlow cart={state.cart} dispatch={dispatch} />
+            <ApplyFlow applyFlow={state.applyFlow} dispatch={dispatch} />
           </div>
         </div>
 
