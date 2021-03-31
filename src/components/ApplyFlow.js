@@ -2,15 +2,8 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
-export default function Email(props) {
-
-  const [applyFlow, setApplyFlow] = useState(null)
-  const updateChoice = value => {
-    props.dispatch({
-      type: 'UPDATE_FLOW',
-      apply_flow: value
-    });
-  };
+export default function ApplyFlow(props) {
+  const [applyFlow, setApplyFlow] = useState(props.applyFlow)
 
   return (
     <div className="field">
@@ -20,12 +13,10 @@ export default function Email(props) {
           className="select"
           name="apply_flow"
           id="apply_flow"
-          onChange={e => {
-            setApplyFlow(e.target.value);
-            return updateChoice(e.target.value);
-          }}
-          value={applyFlow}>
-          <option>Select an Apply Now option</option>
+          value={applyFlow}
+          onChange={e => setApplyFlow(e.target.value)}
+          >
+          <option>Select an Apply Now Option</option>
           <option>Apply Now</option>
           <option>Text Apply Now</option>
           <option>Alternative Apply Now</option>
