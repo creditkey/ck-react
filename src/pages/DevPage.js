@@ -18,6 +18,28 @@ import BadButton from "../components/BadButton";
 
 import "../styles/index.scss";
 
+export const applyFlows = [{
+    label: 'Apply Now',
+    dom: <Display
+            {...state}
+            conditions={{ apply: true }}
+            config={{
+              type: "pdp",
+            }}
+          />
+  }, {
+    label: 'Text Apply Now',
+    dom: <Display
+            {...state}
+            conditions={{ apply: true }}
+            config={{
+              type: "pdp",
+              display: "text",
+            }}
+          />
+  }
+];
+
 const initialState = {
   cart: [new ck.CartItem("1", "Test Product", 1000, "1-TP", 1)],
   email_override: "",
@@ -32,99 +54,94 @@ function DevPage() {
   const [applyFlow, setApplyFlow] = useState(null)
 
   const renderDisplay = () => {
-    if (applyFlow === "Apply Now") {
-      return (
-        <>
-          <div className="has-text-weight-semibold">Apply Now</div>
-          <Display
-            {...state}
-            conditions={{ apply: true }}
-            config={{
-              type: "pdp",
-            }}
-          />
-          <hr />
-        </>
-      )
-    } else if (applyFlow === "Text Apply Now") {
-      return (
-        <>
-          <div className="has-text-weight-semibold">Text Apply Now</div>
-          <Display
-            {...state}
-            conditions={{ apply: true }}
-            config={{
-              type: "pdp",
-              display: "text",
-            }}
-          />
-          <hr />
-        </>
-      )
-    } else if (applyFlow === "Alternative Apply Now") {
-      return (
-        <>
-          < div className="has-text-weight-semibold">
-            Alternative Apply Now
-            </div>
-          <Display
-            {...state}
-            conditions={{ apply: true }}
-            config={{
-              type: "pdp",
-              display: "text",
-              size: "special",
-            }}
-          />
-          <hr />
-        </>
-      )
-    } else if (applyFlow === "Modal Apply Now") {
-      return (
-        <>
-          <div className="has-text-weight-semibold">
-            Modal Apply Now
-            </div>
-          <Display
-            {...state}
-            conditions={{ apply: true }}
-            config={{
-              type: "pdp",
-              display: "button",
-              size: "medium",
-              extra: "static"
-            }}
-          />
-          <hr />
-        </>
-      )
-    } else if (applyFlow === "Modal Apply Now for Cart Page") {
-      return (
-        <>
-          <div className="has-text-weight-semibold">
-            Modal Apply Now for Cart Page
-            </div>
-          <Display
-            {...state}
-            conditions={{ apply: true }}
-            config={{
-              type: "pdp",
-              display: "button",
-              size: "medium",
-              extra: "static",
-              cart: true
-            }}
-          />
-          <hr />
-        </>
-      )
-    } else {
-      return (
-        <div className="has-text-weight-semibold">
-          Select an option from the dropdown above
-        </div>
-      )
-    }
+
+    const display = applyFlows.find(f => f.label === applyFlow);
+
+    return <>
+      <div className="has-text-weight-semibold">{applyFlow}</div>
+      {display}
+    </>
+
+    /*if (applyFlow === "Apply Now") {*/
+      //return (
+        //<>
+          //<div className="has-text-weight-semibold">Apply Now</div>
+          
+          //<hr />
+        //</>
+      //)
+    //} else if (applyFlow === "Text Apply Now") {
+      //return (
+        //<>
+          //<div className="has-text-weight-semibold">Text Apply Now</div>
+          
+          //<hr />
+        //</>
+      //)
+    //} else if (applyFlow === "Alternative Apply Now") {
+      //return (
+        //<>
+          //< div className="has-text-weight-semibold">
+            //Alternative Apply Now
+            //</div>
+          //<Display
+            //{...state}
+            //conditions={{ apply: true }}
+            //config={{
+              //type: "pdp",
+              //display: "text",
+              //size: "special",
+            //}}
+          ///>
+          //<hr />
+        //</>
+      //)
+    //} else if (applyFlow === "Modal Apply Now") {
+      //return (
+        //<>
+          //<div className="has-text-weight-semibold">
+            //Modal Apply Now
+            //</div>
+          //<Display
+            //{...state}
+            //conditions={{ apply: true }}
+            //config={{
+              //type: "pdp",
+              //display: "button",
+              //size: "medium",
+              //extra: "static"
+            //}}
+          ///>
+          //<hr />
+        //</>
+      //)
+    //} else if (applyFlow === "Modal Apply Now for Cart Page") {
+      //return (
+        //<>
+          //<div className="has-text-weight-semibold">
+            //Modal Apply Now for Cart Page
+            //</div>
+          //<Display
+            //{...state}
+            //conditions={{ apply: true }}
+            //config={{
+              //type: "pdp",
+              //display: "button",
+              //size: "medium",
+              //extra: "static",
+              //cart: true
+            //}}
+          ///>
+          //<hr />
+        //</>
+      //)
+    //} else {
+      //return (
+        //<div className="has-text-weight-semibold">
+          //Select an option from the dropdown above
+        //</div>
+      //)
+    /*}*/
   }
 
   return (
