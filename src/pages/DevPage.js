@@ -31,6 +31,10 @@ function DevPage() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [applyFlow, setApplyFlow] = useState("Apply Now");
 
+  let handleFlow = (value) => {
+    setApplyFlow(value)
+  };
+
   const applyFlows = [{
     label: 'Apply Now',
     dom: <Display
@@ -92,8 +96,8 @@ function DevPage() {
   const renderDisplay = () => {
     const display = applyFlows.find(f => f.label === applyFlow);
     return <>
-      <div className="has-text-weight-semibold">{applyFlow}</div>
-      {display}
+      <div className="has-text-weight-semibold">{display.label}</div>
+      {display.dom}
     </>
   }
 
@@ -122,7 +126,7 @@ function DevPage() {
             <Pricing cart={state.cart} dispatch={dispatch} />
           </div>
           <div className="column">
-            <ApplyFlow applyFlow={applyFlow} applyFlows={applyFlows} />
+            <ApplyFlow applyFlow={applyFlow} setApplyFlow={setApplyFlow} handleFlow={handleFlow} />
           </div>
         </div>
         <hr />
