@@ -18,28 +18,6 @@ import BadButton from "../components/BadButton";
 
 import "../styles/index.scss";
 
-export const applyFlows = [{
-    label: 'Apply Now',
-    dom: <Display
-            {...state}
-            conditions={{ apply: true }}
-            config={{
-              type: "pdp",
-            }}
-          />
-  }, {
-    label: 'Text Apply Now',
-    dom: <Display
-            {...state}
-            conditions={{ apply: true }}
-            config={{
-              type: "pdp",
-              display: "text",
-            }}
-          />
-  }
-];
-
 const initialState = {
   cart: [new ck.CartItem("1", "Test Product", 1000, "1-TP", 1)],
   email_override: "",
@@ -51,97 +29,72 @@ function DevPage() {
   const [fico, setFico] = useState();
   const [redirect, setRedirect] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [applyFlow, setApplyFlow] = useState(null)
+  const [applyFlow, setApplyFlow] = useState("Apply Now");
+
+  const applyFlows = [{
+    label: 'Apply Now',
+    dom: <Display
+      {...state}
+      conditions={{ apply: true }}
+      config={{
+        type: "pdp",
+      }}
+    />
+  }, {
+    label: 'Text Apply Now',
+    dom: <Display
+      {...state}
+      conditions={{ apply: true }}
+      config={{
+        type: "pdp",
+        display: "text",
+      }}
+    />
+  }, {
+    label: 'Alternative Apply Now',
+    dom: <Display
+      {...state}
+      conditions={{ apply: true }}
+      config={{
+        type: "pdp",
+        display: "text",
+        size: "special",
+      }}
+    />
+  }, {
+    label: 'Modal Apply Now',
+    dom: <Display
+      {...state}
+      conditions={{ apply: true }}
+      config={{
+        type: "pdp",
+        display: "button",
+        size: "medium",
+        extra: "static"
+      }}
+    />
+  }, {
+    label: 'Modal Apply Now for Cart Page',
+    dom: <Display
+      {...state}
+      conditions={{ apply: true }}
+      config={{
+        type: "pdp",
+        display: "button",
+        size: "medium",
+        extra: "static",
+        cart: true
+      }}
+    />
+  }
+  ];
 
   const renderDisplay = () => {
-
     const display = applyFlows.find(f => f.label === applyFlow);
-
     return <>
       <div className="has-text-weight-semibold">{applyFlow}</div>
       {display}
     </>
-
-    /*if (applyFlow === "Apply Now") {*/
-      //return (
-        //<>
-          //<div className="has-text-weight-semibold">Apply Now</div>
-          
-          //<hr />
-        //</>
-      //)
-    //} else if (applyFlow === "Text Apply Now") {
-      //return (
-        //<>
-          //<div className="has-text-weight-semibold">Text Apply Now</div>
-          
-          //<hr />
-        //</>
-      //)
-    //} else if (applyFlow === "Alternative Apply Now") {
-      //return (
-        //<>
-          //< div className="has-text-weight-semibold">
-            //Alternative Apply Now
-            //</div>
-          //<Display
-            //{...state}
-            //conditions={{ apply: true }}
-            //config={{
-              //type: "pdp",
-              //display: "text",
-              //size: "special",
-            //}}
-          ///>
-          //<hr />
-        //</>
-      //)
-    //} else if (applyFlow === "Modal Apply Now") {
-      //return (
-        //<>
-          //<div className="has-text-weight-semibold">
-            //Modal Apply Now
-            //</div>
-          //<Display
-            //{...state}
-            //conditions={{ apply: true }}
-            //config={{
-              //type: "pdp",
-              //display: "button",
-              //size: "medium",
-              //extra: "static"
-            //}}
-          ///>
-          //<hr />
-        //</>
-      //)
-    //} else if (applyFlow === "Modal Apply Now for Cart Page") {
-      //return (
-        //<>
-          //<div className="has-text-weight-semibold">
-            //Modal Apply Now for Cart Page
-            //</div>
-          //<Display
-            //{...state}
-            //conditions={{ apply: true }}
-            //config={{
-              //type: "pdp",
-              //display: "button",
-              //size: "medium",
-              //extra: "static",
-              //cart: true
-            //}}
-          ///>
-          //<hr />
-        //</>
-      //)
-    //} else {
-      //return (
-        //<div className="has-text-weight-semibold">
-          //Select an option from the dropdown above
-        //</div>
-      //)
-    /*}*/
   }
 
   return (
@@ -169,12 +122,10 @@ function DevPage() {
             <Pricing cart={state.cart} dispatch={dispatch} />
           </div>
           <div className="column">
-            <ApplyFlow applyFlow={applyFlow} dispatch={dispatch} />
+            <ApplyFlow applyFlow={applyFlow} applyFlows={applyFlows} />
           </div>
         </div>
-
         <hr />
-
         <h1 className="subtitle">Standard Checkout &amp; Apply Now</h1>
         <div className="columns">
           <div className="column" style={{ borderRight: "1px solid #eeeeee" }}>
@@ -194,7 +145,6 @@ function DevPage() {
                 </li>
               </ul>
             </div>
-
             <p>
               <input
                 type="checkbox"
@@ -205,14 +155,15 @@ function DevPage() {
               />
               <label htmlFor="use_redirect">Use Redirect</label>
             </p>
-
             <Display
               {...state}
               conditions={{ fico: fico }}
               redirect={redirect}
             />
           </div>
-          {renderDisplay()}
+          <div className="column">
+            {renderDisplay()}
+          </div>
         </div>
       </div>
     </div>
@@ -220,151 +171,3 @@ function DevPage() {
 }
 
 export default DevPage;
-
-
-
-// <div className=“column”>
-//             <div className=“has-text-weight-semibold”>Apply Now</div>
-//             <Display
-//               {...state}
-//               conditions={{ apply: true }}
-//               config={{
-//                 type: “pdp”,
-//               }}
-//             />
-//             <hr />
-//             <div className=“has-text-weight-semibold”>Text Apply Now</div>
-//             <Display
-//               {...state}
-//               conditions={{ apply: true }}
-//               config={{
-//                 type: “pdp”,
-//                 display: “text”,
-//               }}
-//             />
-//             <hr />
-//             < div className=“has-text-weight-semibold”>
-//               Alternative Apply Now
-//             </div>
-//             <Display
-//               {...state}
-//               conditions={{ apply: true }}
-//               config={{
-//                 type: “pdp”,
-//                 display: “text”,
-//                 size: “special”,
-//               }}
-//             />
-//             <hr />
-//             <div className=“has-text-weight-semibold”>
-//               Modal Apply Now
-//             </div>
-//             <Display
-//               {...state}
-//               conditions={{ apply: true }}
-//               config={{
-//                 type: “pdp”,
-//                 display: “button”,
-//                 size: “medium”,
-//                 extra: “static”
-//               }}
-//             />
-//             <hr />
-//             <div className=“has-text-weight-semibold”>
-//               Modal Apply Now for Cart Page
-//             </div>
-//             <Display
-//               {...state}
-//               conditions={{ apply: true }}
-//               config={{
-//                 type: “pdp”,
-//                 display: “button”,
-//                 size: “medium”,
-//                 extra: “static”,
-//                 cart: true
-//               }}
-//             />
-//           </div>
-//         </div>
-
-//         <hr />
-//         <h1 className=“subtitle”>Pending and Decline Checkouts</h1>
-//         <div className=“columns”>
-//           <div className=“column is-one-third”>
-//             <BadButton
-//               {...state}
-//               redirect={redirect}
-//               config={{ fico: 500 }}
-//               icon={faSkullCrossbones}
-//               label=“Checkout with low FICO”
-//             />
-//           </div>
-//           <div className=“column is-one-third”>
-//             <BadButton
-//               {...state}
-//               redirect={redirect}
-//               config={{ lexis: “bvi” }}
-//               icon={faPencilAlt}
-//               label=“Checkout as Pending”
-//             />
-//           </div>
-//           <div className=“column”>
-//             <BadButton
-//               {...state}
-//               redirect={redirect}
-//               config={{ equifax: “frozen” }}
-//               icon={faIcicles}
-//               label=“Checkout with Frozen Credit Report”
-//             />
-//           </div>
-//         </div>
-//         <div className=“columns”>
-//           <div className=“column is-one-third”>
-//             <BadButton
-//               {...state}
-//               redirect={redirect}
-//               config={{ equifax: “collections” }}
-//               icon={faSkullCrossbones}
-//               label=“Checkout with Active Collections”
-//             />
-//           </div>
-//           <div className=“column is-one-third”>
-//             <BadButton
-//               {...state}
-//               redirect={redirect}
-//               config={{ equifax: “revolving” }}
-//               icon={faSkullCrossbones}
-//               label=“Checkout with Low Revolving Credit”
-//             />
-//           </div>
-//           <div className=“column”>
-//             <BadButton
-//               {...state}
-//               redirect={redirect}
-//               config={{ equifax: “fraud” }}
-//               icon={faSadTear}
-//               label=“Checkout with Fraud Alert”
-//             />
-//           </div>
-//         </div>
-//         <div className=“columns”>
-//           <div className=“column is-half”>
-//             <BadButton
-//               {...state}
-//               redirect={redirect}
-//               config={{ equifax: “trades_and_collections” }}
-//               icon={faSkullCrossbones}
-//               label=“Checkout with Collections and too few trades”
-//             />
-//           </div>
-//           <div className=“column is-half”>
-//             <BadButton
-//               {...state}
-//               redirect={redirect}
-//               config={{ fico: 500, equifax: “trades_and_collections” }}
-//               icon={faSkullCrossbones}
-//               label=“Checkout with Collections and too few trades and Low FICO”
-//             />
-//           </div> 
-//         </div> 
-//       </div>

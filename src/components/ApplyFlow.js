@@ -15,8 +15,7 @@ export default function ApplyFlow(props) {
           id="apply_flow"
           value={applyFlow}
           onChange={e => setApplyFlow(e.target.value)}
-          >
-          <option>Select an Apply Now Option</option>
+        >
           <option>Apply Now</option>
           <option>Text Apply Now</option>
           <option>Alternative Apply Now</option>
