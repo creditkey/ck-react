@@ -9,8 +9,6 @@ function Header() {
           CK React Demo
         </a>
       </h1>
-
-      <hr />
     </header>
   );
 }

@@ -1,8 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-import "../../../styles/store.css";
-
 // Pages
 import HomePage from "../pages/home";
 import CategoriesIndexPage from "../pages/categories";
@@ -21,10 +19,7 @@ export default (props) => {
   return (
     <>
       <section className="top-banner has-text-centered">
-        <img
-          className="is-centered"
-          src="/images/banners/home-page-top-banner.png"
-        />
+        <a href="#">BUY NOW, PAY LATER WITH CREDIT KEY  <span>PREQUALIFY NOW</span></a>
       </section>
       <Header />
       <div className="container">

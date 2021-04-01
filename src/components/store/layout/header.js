@@ -31,17 +31,17 @@ export default () => {
             </div>
           </div>
 
-          <div className="level-item is-expanded">
+          <div className="level-item is-expanded is-hidden-mobile">
             <div className="field has-addons search">
               <p className="control is-expanded">
                 <input
                   className="input"
                   type="text"
-                  placeholder="What are you looking for?"
+                  placeholder=""
                 />
               </p>
               <div className="control">
-                <Link to="/store" className="button is-danger">
+                <Link to="/store" className="button is-danger  is-hidden-mobile">
                   <SearchIcon />
                 </Link>
               </div>
@@ -49,13 +49,18 @@ export default () => {
           </div>
 
           <div className="level-right">
-            <div className="level-item">
+            <div className="level-item create-account is-hidden-mobile">
               <a href="#" className="button is-danger">
                 CREATE A FREE ACCOUNT
               </a>
             </div>
+            <div className="level-item login is-hidden-mobile">
+              <a href="#" className="">
+                Log In
+              </a>
+            </div>
 
-            <div className="level-item">
+            <div className="level-item cart">
               <Link to="/store/cart">
                 <ShoppingCartIcon className="has-text-black" />
               </Link>
@@ -117,12 +122,25 @@ export default () => {
               >
                 Disposables
               </Link>
+              <Link
+                className="navbar-item blue is-hidden-tablet"
+                to=""
+                onClick={closeMenu}
+              >
+                Log In
+              </Link>
+
+              <div className="level-item cart is-hidden-tablet">
+              <Link to="/store/cart">
+                <ShoppingCartIcon className="has-text-black" />
+              </Link>
+              <span className="tag is-info shopping-count">{cart.length}</span>
+            </div>
+
             </div>
           </div>
         </nav>
       </div>
-
-      <hr className="navbar-divider" />
     </header>
   );
 };

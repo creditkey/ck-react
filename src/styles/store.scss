@@ -1,0 +1,322 @@
+$breakpoints: (
+  xs: 576px,
+  sm: 768px,
+  md: 992px,
+  lg: 1200px
+);
+
+$black: #333333;
+$white: #ffffff;
+$blue: #3D9CE5;
+
+@mixin respond-above($breakpoint) {
+
+  // If the breakpoint exists in the map.
+  @if map-has-key($breakpoints, $breakpoint) {
+
+    // Get the breakpoint value.
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    // Write the media query.
+    @media (min-width: $breakpoint-value) {
+      @content;
+    }
+
+
+  // If the breakpoint doesn't exist in the map.
+  } @else {
+
+    // Log a warning.
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+@mixin respond-below($breakpoint) {
+
+  // If the breakpoint exists in the map.
+  @if map-has-key($breakpoints, $breakpoint) {
+
+    // Get the breakpoint value.
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    // Write the media query.
+    @media (max-width: ($breakpoint-value - 1)) {
+      @content;
+    }
+
+  // If the breakpoint doesn't exist in the map.
+  } @else {
+
+    // Log a warning.
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+
+}
+
+p {
+    color: #444444;
+}
+
+a {
+    color: #000000;
+}
+
+.main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+}
+
+.top-banner {
+    background: #172C37;
+    height: 50px;
+    a {
+        font-size: 13px;
+        line-height: 50px;
+        color: white;
+        opacity: .67;
+        span {
+            text-decoration: underline;
+        }
+        @include respond-below(sm) {
+            font-size: 10px;
+        }
+    }
+}
+  
+header {
+    padding-top: 10px;
+    -webkit-box-shadow: 0px -20px 20px 10px rgba(0,0,0,0.85); 
+    box-shadow: 0px -20px 20px 10px rgba(0,0,0,0.85);
+    .atlas-logo {
+        height: 40px;
+        width: auto;
+        margin-top: 10px;
+    }
+    .search {
+        width: 100%;
+        padding: 0px 10px 0px 10px;
+    }
+    .container {
+        .level {
+            padding-top: 24px;
+            .level-left {
+                @include respond-below(sm) {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                }
+            }
+            .level-item {
+                &.is-expanded {
+                    padding-left: 30px;
+                    padding-right: 30px;
+                    .control {
+                        margin-top: 10px;
+                        input, .button{
+                            border-radius: 1;
+                        }
+                        .button {
+                            background-color: #000000;
+                        }
+                    }
+                }
+                &.login {
+                    font-size: 13px;
+                    color: #000000;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    &:visited {
+                        color: #000000;
+                    }
+                }
+                &.create-account {
+                    @include respond-below(sm) {
+                        position: absolute;
+                        top: 0;
+                        right: 60px;
+                    }
+                }
+            }
+            
+            .cart {
+                
+                .shopping-count {
+                    position: relative;
+                    top: -10px;
+                    left: -5px;
+                }
+                @include respond-below(sm) {
+                    width: 50px;
+                    position: absolute;
+                    top: 10px;
+                    right: 60px;
+                }
+
+            }
+            .level-right {
+                .button {
+                    height: 46px;
+                    font-size: 13px;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    background-color: #3D9CE5;
+                }
+            }
+            .tag:not(body) {
+                border-radius: 20px;
+
+            }
+        }
+    }
+    nav {
+        .navbar-item {
+            font-family: Open Sans;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 22px;
+            letter-spacing: 0em;
+            text-align: center;
+            color: #000000;
+            &:hover {
+                color: #3D9CE5;
+                background-color: transparent;
+            }
+            &.blue {
+                color: $blue;
+            }
+        }
+    }
+}
+
+
+.footer {
+    margin-top: auto;
+}
+
+
+
+.homepage-wrapper {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+
+
+.divider {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid grey;
+}
+
+
+
+
+
+
+// Category Page
+.card-image {
+    position: relative;
+    padding-top: 12px;
+}
+
+.grid-amount-saved {
+    position: absolute;
+    bottom: 0px;
+    left: 15px;
+    padding: 5px;
+}
+
+.grid-company {
+    margin-top: -10px;
+}
+
+.grid-original-price {
+    text-decoration: line-through;
+    position: relative;
+    bottom: -15px;
+}
+
+.pdp-company {
+    margin-top: -20px;
+    margin-bottom: 10px;
+}
+
+.pdp-price {
+    font-size: 1.4em;
+}
+
+
+
+
+// Product page
+.pdp-add-to-cart {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.pdp-description {
+    margin-top: 20px;
+}
+
+.pdp-share {
+    li {
+        display: inline;
+        padding-right: 5px;
+        .tag {
+            color: white;
+        }
+        .facebook {
+            background: #3E5C9A;
+        }
+        .twitter {
+            background: #55ACEE;
+        }
+        .linkedin {
+            background: #2867B2;
+        }
+        .pinterest {
+            background: #bd1c1c;
+        }
+    }
+    
+} 
+
+.pdp-gallery-thumbnails img {
+    width: 70px;
+    margin-left: 10px;
+}
+
+.pdp-ck-display {
+    margin: 20px 0px;
+}
+
+
+// Cart Page
+.cart-row {
+    border-top: 1px solid rgb(221, 220, 220);
+}
+
+.cart-row > .columns > .cart-v-center {
+    padding-top: 86px;
+}
+
+.cart-checkout-button {
+    min-width: 250px;
+}
+
+.container > .level > .level-right > .level-item {
+    padding-top: 10px;
+}
+
+.checkout {
+    cursor: pointer;
+}

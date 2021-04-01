@@ -14,7 +14,6 @@ export default ({ title, right, children }) => {
         </div>
       </div>
       <br />
-
       {children}
     </div>
   );
