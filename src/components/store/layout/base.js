@@ -24,6 +24,7 @@ export default (props) => {
         <img
           className="is-centered"
           src="/images/banners/home-page-top-banner.png"
+          alt="Home Page Top Banner"
         />
       </section>
       <Header />
