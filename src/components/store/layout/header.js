@@ -18,7 +18,7 @@ export default () => {
   return (
     <header>
       <div className="container">
-        <div className="level">
+        <div className="level is-hidden-mobile">
           <div className="level-left">
             <div className="level-item">
               <Link to="/store">
@@ -31,7 +31,7 @@ export default () => {
             </div>
           </div>
 
-          <div className="level-item is-expanded is-hidden-mobile">
+          <div className="level-item is-expanded">
             <div className="field has-addons search">
               <p className="control is-expanded">
                 <input
@@ -41,7 +41,7 @@ export default () => {
                 />
               </p>
               <div className="control">
-                <Link to="/store" className="button is-danger  is-hidden-mobile">
+                <Link to="/store" className="button is-danger">
                   <SearchIcon />
                 </Link>
               </div>
@@ -49,18 +49,18 @@ export default () => {
           </div>
 
           <div className="level-right">
-            <div className="level-item create-account is-hidden-mobile">
+            <div className="level-item create-account">
               <a href="#" className="button is-danger">
                 CREATE A FREE ACCOUNT
               </a>
             </div>
-            <div className="level-item login is-hidden-mobile">
+            <div className="level-item login">
               <a href="#" className="">
                 Log In
               </a>
             </div>
 
-            <div className="level-item cart">
+            <div className="level-item cart is-hidden-mobile">
               <Link to="/store/cart">
                 <ShoppingCartIcon className="has-text-black" />
               </Link>
@@ -70,6 +70,15 @@ export default () => {
         </div>
 
         <nav className="navbar" role="navigation" aria-label="main">
+        <div className="mobile-logo has-text-centered is-hidden-tablet">
+              <Link to="/store">
+                <img
+                  className="atlas-logo"
+                  src="/images/atlas-logo.png"
+                  alt="Atlas Logo"
+                />
+              </Link>
+            </div>
           <div className="navbar-brand">
             <a
               role="button"
@@ -82,6 +91,12 @@ export default () => {
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
             </a>
+            <div className="level-item mobile-cart is-hidden-tablet">
+              <Link to="/store/cart">
+                <ShoppingCartIcon className="has-text-black" />
+              </Link>
+              <span className="tag is-info shopping-count">{cart.length}</span>
+            </div>
           </div>
           <div
             className={`navbar-menu is-uppercase has-text-weight-semibold ${menuState()}`}
@@ -129,14 +144,6 @@ export default () => {
               >
                 Log In
               </Link>
-
-              <div className="level-item cart is-hidden-tablet">
-              <Link to="/store/cart">
-                <ShoppingCartIcon className="has-text-black" />
-              </Link>
-              <span className="tag is-info shopping-count">{cart.length}</span>
-            </div>
-
             </div>
           </div>
         </nav>
