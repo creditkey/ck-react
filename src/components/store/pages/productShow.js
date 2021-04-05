@@ -16,26 +16,6 @@ export default () => {
 
     return (
       <Page>
-        <nav className="breadcrumb" aria-label="breadcrumbs">
-          <ul>
-            <li>
-              <Link className="is-uppercase" to="/store">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link className="is-uppercase" to={`/store/${category}`}>
-                {category}
-              </Link>
-            </li>
-            <li className="is-active">
-              <Link className="is-uppercase" to="#">
-                {product.name}
-              </Link>
-            </li>
-          </ul>
-        </nav>
-
         <div className="columns">
           <div className="column">
             <img
@@ -80,12 +60,23 @@ export default () => {
 
             <div className="pdp-add-to-cart">
               <button
-                className="button is-danger is-medium is-fullwidth"
+                className="button is-medium is-fullwidth"
                 onClick={() => product.addToCart()}
               >
                 <strong>Add to Cart</strong>
               </button>
             </div>
+
+            <div className="pdp-buy-it-now">
+              <button
+                className="button is-medium is-fullwidth"
+                onClick={() => product.addToCart()}
+              >
+                <strong>Buy It Now</strong>
+              </button>
+            </div>
+
+            <p className="pdp-description">{product.description}</p>
 
             <div>
               <strong>Share this:</strong>
@@ -189,8 +180,6 @@ export default () => {
                 </li>
               </ul>
             </div>
-
-            <p className="pdp-description">{product.description}</p>
           </div>
         </div>
       </Page>

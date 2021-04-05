@@ -30,11 +30,32 @@ main {
     margin-bottom: 120px;
 }
 
+.container {
+    @include respond-below(md) {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+.title {
+    text-transform: capitalize;
+    color: $black;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 34px;
+}
+
 .divider {
     margin-top: 10px;
     margin-bottom: 30px;
     border-bottom: 1px solid grey;
 }
+
+
+
+
 
 // Category Page
 .card-image {
@@ -59,6 +80,35 @@ main {
     bottom: -15px;
 }
 
+// Cart Page
+.cart-row {
+    border-top: 1px solid rgb(221, 220, 220);
+}
+
+.cart-row > .columns > .cart-v-center {
+    padding-top: 86px;
+}
+
+.cart-checkout-button {
+    min-width: 250px;
+}
+
+.container > .level > .level-right > .level-item {
+    padding-top: 10px;
+}
+
+.checkout {
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+// Product page
+
 .pdp-company {
     margin-top: -20px;
     margin-bottom: 10px;
@@ -67,14 +117,18 @@ main {
 .pdp-price {
     font-size: 1.4em;
 }
-
-
-
-
-// Product page
 .pdp-add-to-cart {
     margin-top: 20px;
     margin-bottom: 20px;
+    button {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+    }
+    
 }
 
 .pdp-description {

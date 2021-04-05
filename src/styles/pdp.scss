@@ -1,0 +1,101 @@
+@import 'variables.scss';
+
+
+
+// Product page
+.pdp-add-to-cart {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    .button {
+        border: 1px solid $black;
+        background: $white;
+        box-sizing: border-box;
+        border-radius: 3px;
+        strong {
+            text-transform: uppercase;
+            font-family: Lato;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 17px;
+            letter-spacing: 0em;
+            text-align: center;
+        }
+    }
+}
+
+.pdp-buy-it-now {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    .button {
+        border: 1px solid $black;
+        background: $black;
+        box-sizing: border-box;
+        border-radius: 3px;
+        strong {
+            color: $white;
+            text-transform: uppercase;
+            font-family: Lato;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 17px;
+            letter-spacing: 0em;
+            text-align: center;
+        }
+    }
+}
+
+
+.pdp-company {
+    margin-top: -20px;
+    margin-bottom: 10px;
+    color: $medium-grey;
+    font-family: Open Sans;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.pdp-price {
+    font-size: 1.4em;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+    color: $black;
+}
+
+.pdp-description {
+    margin-top: 20px;
+}
+
+.pdp-share {
+    li {
+        display: inline;
+        padding-right: 5px;
+        .tag {
+            color: white;
+        }
+        .facebook {
+            background: #3E5C9A;
+        }
+        .twitter {
+            background: #55ACEE;
+        }
+        .linkedin {
+            background: #2867B2;
+        }
+        .pinterest {
+            background: #bd1c1c;
+        }
+    }
+    
+} 
+
+.pdp-gallery-thumbnails img {
+    width: 70px;
+    margin-left: 10px;
+}
+
+.pdp-ck-display {
+    margin: 20px 0px;
+}

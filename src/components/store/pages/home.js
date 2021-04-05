@@ -58,7 +58,7 @@ export default () => {
                   </ul>
                 </div>
               </div>
-          </div>     
+          </div>  
         </div>
         <div className="column is-one-third card">
           <div class="media">

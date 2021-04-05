@@ -31,7 +31,7 @@ export default () => {
             </div>
           </div>
 
-          <div className="level-item is-expanded">
+          <div className="level-item is-expanded header-search">
             <div className="field has-addons search">
               <p className="control is-expanded">
                 <input

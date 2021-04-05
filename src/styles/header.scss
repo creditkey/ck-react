@@ -40,18 +40,19 @@ header {
                     top: 0;
                 }
             }
-            .level-item {
-                &.is-expanded {
-                    padding-left: 30px;
-                    padding-right: 30px;
-                    .control {
-                        margin-top: 10px;
-                        input, .button{
-                            border-radius: 1;
-                        }
-                        .button {
-                            background-color: #000000;
-                        }
+            .header-search {
+                padding-left: 30px;
+                padding-right: 30px;
+                @include respond-below(md) {
+                    display: none;
+                }
+                .control {
+                    margin-top: 10px;
+                    input, .button{
+                        border-radius: 1;
+                    }
+                    .button {
+                        background-color: #000000;
                     }
                 }
                 &.login {

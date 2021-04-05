@@ -2,7 +2,7 @@ import React from "react";
 
 export default ({ product }) => {
   return (
-    <strong className="has-text-danger">
+    <strong>
       {product.formattedPrice()}
     </strong>
   );
