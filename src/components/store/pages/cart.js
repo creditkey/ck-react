@@ -12,7 +12,7 @@ import ShoppingCartIcon from "../icons/ShoppingCartIcon";
 const CheckoutRightLevel = ({ subTotal }) => {
   return (
     <>
-      <div className="level-item">
+      {/* <div className="level-item">
         <div>
           <p>Subtotal</p>
           <p>{subTotal}</p>
@@ -25,7 +25,7 @@ const CheckoutRightLevel = ({ subTotal }) => {
             Checkout
           </Link>
         )}
-      </div>
+      </div> */}
     </>
   );
 };
@@ -61,7 +61,7 @@ export default () => {
                 </div>
                 <div className="column is-1 cart-v-center">
                   <button
-                    className="button is-info"
+                    className="button"
                     onClick={() => product.removeFromCart()}
                   >
                     X
@@ -96,9 +96,8 @@ export default () => {
           {formattedSubTotal !== "$0.00" && (
             <Link
               to="/store/checkout"
-              className="button is-danger cart-checkout-button is-medium"
+              className="button cart-checkout-button is-medium"
             >
-              <ShoppingCartIcon />
               Checkout
             </Link>
           )}

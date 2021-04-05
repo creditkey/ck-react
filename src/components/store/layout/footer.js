@@ -28,14 +28,14 @@ export default (props) => {
                     </div>
                     <div className="column is-one-fourth">
                         <h3>FOLLOW US</h3>    
-                        <ul className="pdp-share">
+                        <ul className="footer-share">
                     <li>
                     <a 
                         target="_blank"
                         href="https://www.facebook.com/CreditKeyB2B"
                         rel="noopener noreferrer"
                     >
-                        <img src="/images/social/facebook.png" />
+                        <img src="/images/social/facebook.png" alt="facebook"/>
 
                     </a>
                     </li>
@@ -44,7 +44,7 @@ export default (props) => {
                         href="https://twitter.com/getcreditkey"
                         rel="noopener noreferrer"
                     >
-                       <img src="/images/social/twitter.png" />
+                       <img src="/images/social/twitter.png" alt="twitter"/>
                     </a>
                     </li>
                     <li>
@@ -52,7 +52,7 @@ export default (props) => {
                         href="https://www.linkedin.com/company/credit-key"
                         rel="noopener noreferrer"
                     >
-                        <img src="/images/social/instagram.png" />
+                        <img src="/images/social/instagram.png" alt="instagram" />
                     </a>
                     </li>
                     <li>
@@ -60,7 +60,7 @@ export default (props) => {
                         href="#"
                         rel="noopener noreferrer"
                     >
-                        <img src="/images/social/pintrest.png" />
+                        <img src="/images/social/pintrest.png" alt="pintrest"/>
                     </a>
                     </li>
                     <li>
@@ -68,7 +68,7 @@ export default (props) => {
                         href="#"
                         rel="noopener noreferrer"
                     >
-                        <img src="/images/social/youtube.png" />
+                        <img src="/images/social/youtube.png" alt="youtube"/>
                     </a>
                     </li>
                     <li>
@@ -76,7 +76,7 @@ export default (props) => {
                         href="#"
                         rel="noopener noreferrer"
                     >
-                        <img src="/images/social/linkedin.png" />
+                        <img src="/images/social/linkedin.png" alt="linkedin"/>
                     </a>
                     </li>
                 </ul>

@@ -19,4 +19,14 @@ footer {
     ul li { 
         font-size: 14px;
     }
+    .footer-share  {
+        li {
+            display: inline;
+            padding-right: 5px;
+            img {
+                height: auto;
+                height: 30px;
+            }
+        }
+    }
 }

@@ -58,7 +58,7 @@ function CheckoutPage() {
     state: "CA",
     zip: "90064",
   });
-  const [step, setStep] = useState("contact");
+  const [step, setStep] = useState("payment");
 
   const isActive = (link) => {
     if (step === link) {
