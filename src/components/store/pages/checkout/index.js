@@ -58,7 +58,7 @@ function CheckoutPage() {
     state: "CA",
     zip: "90064",
   });
-  const [step, setStep] = useState("payment");
+  const [step, setStep] = useState("contact");
 
   const isActive = (link) => {
     if (step === link) {
@@ -70,34 +70,11 @@ function CheckoutPage() {
     <div>
       <div className="wrap">
         <div className="main">
-          <header className="main__header">
-            <a className="" href="https://www.creditkey.com">
-              <span className="logo__text heading-1">Atlas Supply</span>
-            </a>
-            <div style={{ paddingTop: "10px" }}>
-              <span
-                style={isActive("contact")}
-                onClick={() => setStep("contact")}
-              >
-                Contact
-              </span>
-              <span style={{ padding: "0 10px 0 10px" }}>></span>
-              <span
-                style={isActive("shipping")}
-                onClick={() => setStep("shipping")}
-              >
-                Shipping
-              </span>
-              <span style={{ padding: "0 10px 0 10px" }}>></span>
-              <span
-                style={isActive("payment")}
-                onClick={() => setStep("payment")}
-              >
-                Payment
-              </span>
-            </div>
-          </header>
-          <main className="main__content">
+
+          <div className="columns">
+            <div className="column is-three-quarters">
+
+            <main className="main__content">
             <div className="step">
               <form className="edit_checkout animate-floating-labels">
                 <div className="step__sections">
@@ -139,11 +116,11 @@ function CheckoutPage() {
               </form>
             </div>
           </main>
-          <footer className="main__footer" role="contentinfo">
-            <p className="copyright-text ">All rights reserved Atlas Supply</p>
-          </footer>
-        </div>
-        <aside className="sidebar">
+
+            </div>
+            <div className="column">
+
+            <aside className="sidebar">
           <div className="sidebar__content">
             <div
               id="order-summary"
@@ -272,6 +249,13 @@ function CheckoutPage() {
             </div>
           </div>
         </aside>
+
+
+            </div>
+
+          </div>
+        </div>
+        
       </div>
     </div>
   );

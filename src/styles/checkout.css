@@ -779,23 +779,23 @@ h1,
         -webkit-box-shadow: 1px 0 0 #e1e1e1 inset;
         box-shadow: 1px 0 0 #e1e1e1 inset;
     }
-    .sidebar {
+    /* .sidebar {
         width: 38%;
         padding-left: 4%;
         background-position: left top;
         float: right;
-    }
+    } */
     .wrap {
         padding: 0 5%;
         width: 90%;
         max-width: 78.5714285714em;
     }
-    .main {
+    /* .main {
         width: 52%;
         width: 52%;
         padding-right: 6%;
         float: left;
-    }
+    } */
     .page--logo-main .main .logo {
         display: block;
     }

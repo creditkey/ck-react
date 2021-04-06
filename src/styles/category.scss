@@ -11,6 +11,9 @@
         @include respond-below(md) {
             text-align: center;
         }
+        @include respond-above(md) {
+            padding-left: 30px;
+        }
     }
     img {
         padding: 30px;

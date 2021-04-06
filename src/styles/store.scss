@@ -53,33 +53,6 @@ main {
     border-bottom: 1px solid grey;
 }
 
-
-
-
-
-// Category Page
-.card-image {
-    position: relative;
-    padding-top: 12px;
-}
-
-.grid-amount-saved {
-    position: absolute;
-    bottom: 0px;
-    left: 15px;
-    padding: 5px;
-}
-
-.grid-company {
-    margin-top: -10px;
-}
-
-.grid-original-price {
-    text-decoration: line-through;
-    position: relative;
-    bottom: -15px;
-}
-
 // Cart Page
 .cart-row {
     border-top: 1px solid rgb(221, 220, 220);
@@ -100,73 +73,6 @@ main {
 .checkout {
     cursor: pointer;
 }
-
-
-
-
-
-
-
-// Product page
-
-.pdp-company {
-    margin-top: -20px;
-    margin-bottom: 10px;
-}
-
-.pdp-price {
-    font-size: 1.4em;
-}
-.pdp-add-to-cart {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    button {
-        font-family: Lato;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 14px;
-        line-height: 17px;
-        text-align: center;
-    }
-    
-}
-
-.pdp-description {
-    margin-top: 20px;
-}
-
-.pdp-share {
-    li {
-        display: inline;
-        padding-right: 5px;
-        .tag {
-            color: white;
-        }
-        .facebook {
-            background: #3E5C9A;
-        }
-        .twitter {
-            background: #55ACEE;
-        }
-        .linkedin {
-            background: #2867B2;
-        }
-        .pinterest {
-            background: #bd1c1c;
-        }
-    }
-    
-} 
-
-.pdp-gallery-thumbnails img {
-    width: 70px;
-    margin-left: 10px;
-}
-
-.pdp-ck-display {
-    margin: 20px 0px;
-}
-
 
 // Cart Page
 .cart-row {

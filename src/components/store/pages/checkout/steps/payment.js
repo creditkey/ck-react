@@ -33,7 +33,7 @@ export default function PaymentStep({ address, setStep }) {
   const ckCharges = new ck.Charges(subTotal, 0, taxes, 0, total);
 
   return (
-    <div className="section section--contact-information">
+    <div className="section--contact-information">
       <div className="section__header">
         <div className="layout-flex layout-flex--tight-vertical layout-flex--loose-horizontal layout-flex--wrap">
           <h2 className="section__title layout-flex__item layout-flex__item--stretch">

@@ -16,7 +16,7 @@
         line-height: 23px;
         color: $black;
     }
-    .add-to-cart, .cart-checkout-button {
+    .add-to-cart {
         margin-top: 10px;
         margin-bottom: 10px;
         max-width: 400px;
@@ -93,9 +93,26 @@
 
 
 
+// Product page
 
+.pdp-company {
+    margin-top: -20px;
+    margin-bottom: 10px;
+}
 
-
-
-
-
+.pdp-price {
+    font-size: 1.4em;
+}
+.pdp-add-to-cart {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    button {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+    }
+    
+}
