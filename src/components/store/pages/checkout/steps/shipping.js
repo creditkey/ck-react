@@ -135,7 +135,7 @@ export default function ShippingStep({ address, setAddress, setStep }) {
       </div>
 
       <button
-        className="button is-danger"
+        className="button"
         style={{ marginTop: "20px" }}
         onClick={() => setStep("payment")}
       >

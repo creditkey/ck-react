@@ -13,7 +13,6 @@ export default ({ title, right, children }) => {
           {right}
         </div>
       </div>
-      <br />
       {children}
     </main>
   );

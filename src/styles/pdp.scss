@@ -1,7 +1,5 @@
-@import 'variables.scss';
-
 .pdp {
-    .company {
+    &-company {
         margin-top: -20px;
         margin-bottom: 10px;
         color: $medium-grey;
@@ -9,7 +7,7 @@
         font-size: 16px;
         line-height: 26px;
     }
-    .price {
+    &-price {
         font-size: 1.4em;
         font-weight: bold;
         font-size: 20px;
@@ -88,31 +86,4 @@
     .ck-display {
         margin: 20px 0px;
     }
-}
-
-
-
-
-// Product page
-
-.pdp-company {
-    margin-top: -20px;
-    margin-bottom: 10px;
-}
-
-.pdp-price {
-    font-size: 1.4em;
-}
-.pdp-add-to-cart {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    button {
-        font-family: Lato;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 14px;
-        line-height: 17px;
-        text-align: center;
-    }
-    
 }

@@ -95,7 +95,7 @@ export default function ContactStep({ address, setAddress, setStep }) {
         </div>
       </div>
       <button
-        className="button is-danger"
+        className="button"
         style={{ marginTop: "20px" }}
         onClick={() => setStep("shipping")}
       >

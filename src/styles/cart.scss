@@ -1,8 +1,16 @@
 .cart-row {
+    border-top: 1px solid $border-grey;
+    vertical-align: middle;
     button {
         background-color: transparent;
         color: $black;
         border: none;
+    }
+    .columns > .cart-v-center {
+        padding-top: 86px;
+    }
+    img {
+        max-height: 95px;
     }
 }
 

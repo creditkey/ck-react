@@ -11,22 +11,7 @@ import ShoppingCartIcon from "../icons/ShoppingCartIcon";
 
 const CheckoutRightLevel = ({ subTotal }) => {
   return (
-    <>
-      {/* <div className="level-item">
-        <div>
-          <p>Subtotal</p>
-          <p>{subTotal}</p>
-        </div>
-      </div>
-      <div className="level-item">
-        {subTotal !== "$0.00" && (
-          <Link to="/store/checkout" className="button is-danger">
-            <ShoppingCartIcon />
-            Checkout
-          </Link>
-        )}
-      </div> */}
-    </>
+    <></>
   );
 };
 
@@ -45,21 +30,21 @@ export default () => {
 
           return (
             <div className="column is-full cart-row" key={item.slug}>
-              <div className="columns">
+              <div className="columns is-vcentered">
                 <div className="column is-2">
                   <ProductThumb product={product} />
                 </div>
-                <div className="column is-5 cart-v-center">
+                <div className="column is-5">
                   <p>
                     <Link to={product.url}>{product.name}</Link>
                   </p>
                   <p>{product.formattedPrice()}</p>
                 </div>
-                <div className="column is-2 cart-v-center">Qty: {item.qty}</div>
-                <div className="column is-2 cart-v-center">
+                <div className="column is-2">Qty: {item.qty}</div>
+                <div className="column is-2">
                   <Price product={product} />
                 </div>
-                <div className="column is-1 cart-v-center">
+                <div className="column is-1">
                   <button
                     className="button"
                     onClick={() => product.removeFromCart()}
@@ -73,20 +58,20 @@ export default () => {
         })}
       </div>
 
-      <div className="divider">&nbsp;</div>
+      <div className="divider"></div>
 
       <div className="level">
         <div className="level-left">
           <div className="level-item">
             <div>
-              <p className="is-size-3">Subtotal</p>
+              <p className="is-size-4">Subtotal</p>
               <p>Shipping & taxes calculated at checkout</p>
             </div>
           </div>
         </div>
         <div className="level-right">
           <div className="level-item">
-            <p className="is-size-3">{formattedSubTotal}</p>
+            <p className="is-size-4">{formattedSubTotal}</p>
           </div>
         </div>
       </div>

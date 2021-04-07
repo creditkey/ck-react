@@ -58,7 +58,7 @@ function CheckoutPage() {
     state: "CA",
     zip: "90064",
   });
-  const [step, setStep] = useState("contact");
+  const [step, setStep] = useState("payment");
 
   const isActive = (link) => {
     if (step === link) {
@@ -68,13 +68,28 @@ function CheckoutPage() {
 
   return (
     <div>
-      <div className="wrap">
-        <div className="main">
-
-          <div className="columns">
-            <div className="column is-three-quarters">
-
-            <main className="main__content">
+      <div className="columns">
+        <div className="column is-two-thirds">
+          <main className="main__content">
+            <nav aria-label="Breadcrumb">
+              <ol class="breadcrumb " role="list">
+                <li class="breadcrumb__item breadcrumb__item--completed">
+                  <a class="breadcrumb__link" href="https://pittsburghsprayequip.com/cart">Cart</a>
+                  <span>></span>
+                </li>
+                <li class="breadcrumb__item breadcrumb__item--completed">
+                  <a class="breadcrumb__link" href="/1908801571/checkouts/72dced882c2fef476549af3433650221?step=contact_information">Information</a>
+                  <span>></span>
+                </li>
+                <li class="breadcrumb__item breadcrumb__item--completed">
+                  <a class="breadcrumb__link" href="/1908801571/checkouts/72dced882c2fef476549af3433650221?step=shipping_method">Shipping</a>
+                  <span>></span>
+                </li>
+                <li class="breadcrumb__item breadcrumb__item--current">
+                  &nbsp;&nbsp;<span class="breadcrumb__text">Payment</span>
+                </li>
+              </ol>
+            </nav>
             <div className="step">
               <form className="edit_checkout animate-floating-labels">
                 <div className="step__sections">
@@ -110,17 +125,14 @@ function CheckoutPage() {
                     </svg>
                     <span className="step__footer__previous-link-content">
                       Return to cart
-                    </span>
+                          </span>
                   </Link>
                 </div>
               </form>
             </div>
           </main>
-
-            </div>
-            <div className="column">
-
-            <aside className="sidebar">
+        </div>
+        <div className="column sidebar">
           <div className="sidebar__content">
             <div
               id="order-summary"
@@ -139,12 +151,12 @@ function CheckoutPage() {
                 </div>
 
                 <div className="order-summary__section order-summary__section--total-lines">
-                  <table className="total-line-table">                    
+                  <table className="total-line-table">
                     <tbody className="total-line-table__tbody">
                       <tr className="total-line total-line--subtotal">
                         <th className="total-line__name" scope="row">
                           Subtotal
-                        </th>
+                              </th>
                         <td className="total-line__price">
                           <span
                             className="order-summary__emphasis skeleton-while-loading"
@@ -162,17 +174,12 @@ function CheckoutPage() {
                         <td className="total-line__price">
                           <span
                             className="skeleton-while-loading order-summary__small-text"
-                            data-checkout-total-shipping-target="0"
-                          >
-                            Free
-                          </span>
+                            data-checkout-total-shipping-target="0">Free</span>
                         </td>
                       </tr>
 
                       <tr className="total-line total-line--taxes">
-                        <th className="total-line__name" scope="row">
-                          Taxes
-                        </th>
+                        <th className="total-line__name" scope="row">Taxes</th>
                         <td className="total-line__price">
                           <span className="order-summary__emphasis skeleton-while-loading">
                             {currency(taxes).format()}
@@ -186,14 +193,10 @@ function CheckoutPage() {
                           className="total-line__name payment-due-label"
                           scope="row"
                         >
-                          <span className="payment-due-label__total">
-                            Total
-                          </span>
+                          <span className="payment-due-label__total">Total</span>
                         </th>
                         <td className="total-line__price payment-due">
-                          <span className="payment-due__currency remove-while-loading">
-                            USD
-                          </span>
+                          <span className="payment-due__currency remove-while-loading">USD</span>
                           <span className="payment-due__price skeleton-while-loading--lg">
                             {currency(total).format()}
                           </span>
@@ -248,14 +251,7 @@ function CheckoutPage() {
               </svg>
             </div>
           </div>
-        </aside>
-
-
-            </div>
-
-          </div>
         </div>
-        
       </div>
     </div>
   );
