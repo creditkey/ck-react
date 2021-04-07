@@ -97,9 +97,9 @@ export default function PaymentStep({ address, setStep }) {
                   className="radio-right"
                   type="radio"
                   name="paymentMethod"
-                  defaultChecked={method === "ach"}
-                  onClick={() => setMethod("ach")}
-                /><label>Credit card</label><div class="radio__label__accessory">
+                  defaultChecked={method === "credit"}
+                  onClick={() => setMethod("credit")}
+                /><label>Credit Card</label><div class="radio__label__accessory">
       
                 <ul className="payment-icons" >
                     <li class="payment-icon payment-icon--visa"></li>
@@ -151,9 +151,20 @@ export default function PaymentStep({ address, setStep }) {
         </div>
 
         <div class="section">
+        {method === "credit" && (
+            <button
+              className="checkout-button"
+              style={{ marginTop: "20px" }}
+              onClick={() => {
+                alert("This is not the option you came here for.");
+              }}
+            >
+              Continue with Credit Card
+            </button>
+          )}
           {method === "ach" && (
             <button
-              className="button"
+              className="checkout-button"
               style={{ marginTop: "20px" }}
               onClick={() => {
                 alert("This is not the option you came here for.");

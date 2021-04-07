@@ -18,7 +18,7 @@ export default function CheckoutWithCreditKey({ address, cartItems, charges }) {
 
   return (
     <button
-      className="button"
+      className="checkout-button"
       style={{ marginTop: "20px" }}
       onClick={(e) => {
         e.preventDefault();

@@ -74,15 +74,15 @@ function CheckoutPage() {
             <nav aria-label="Breadcrumb">
               <ol class="breadcrumb " role="list">
                 <li class="breadcrumb__item breadcrumb__item--completed">
-                  <a class="breadcrumb__link" href="https://pittsburghsprayequip.com/cart">Cart</a>
+                  <Link class="breadcrumb__link" to="/store/cart">Cart</Link>
                   <span>></span>
                 </li>
                 <li class="breadcrumb__item breadcrumb__item--completed">
-                  <a class="breadcrumb__link" href="/1908801571/checkouts/72dced882c2fef476549af3433650221?step=contact_information">Information</a>
+                  <Link class="breadcrumb__link" href="#">Information</Link>
                   <span>></span>
                 </li>
                 <li class="breadcrumb__item breadcrumb__item--completed">
-                  <a class="breadcrumb__link" href="/1908801571/checkouts/72dced882c2fef476549af3433650221?step=shipping_method">Shipping</a>
+                  <Link class="breadcrumb__link" href="#">Shipping</Link>
                   <span>></span>
                 </li>
                 <li class="breadcrumb__item breadcrumb__item--current">

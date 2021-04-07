@@ -2,6 +2,35 @@
     cursor: pointer;
 }
 
+.checkout-button {
+    border: 1px solid $black;
+    background: $white;
+    text-transform: uppercase;
+    border-radius: 1px;
+    padding: 10px 40px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: Lato;
+    height: 45px;
+    width: 320px;
+    &:hover {
+        background-color: $black;
+        color: $white;
+        transition: all 0.5s ease;
+    }
+    strong {
+        text-transform: uppercase;
+        font-family: Lato;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 17px;
+        letter-spacing: 0em;
+        text-align: center;
+    }
+}
+
+
 .review-block {
     display: -webkit-box;
     display: -webkit-flex;
