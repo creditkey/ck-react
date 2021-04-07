@@ -35,13 +35,13 @@ export default () => {
                   <div className="column is-2">
                     <ProductThumb product={product} />
                   </div>
-                  <div className="column is-5">
+                  <div className="column is-5-desktop is-4-mobile">
                     <p>
                       <Link to={product.url}>{product.name}</Link>
                     </p>
-                    <p>{product.formattedPrice()}</p>
+                    
                   </div>
-                  <div className="column is-2">Qty: {item.qty}</div>
+                  <div className="column is-2 is-1-mobile">Qty: {item.qty}</div>
                   <div className="column is-2">
                     <Price product={product} />
                   </div>
@@ -72,7 +72,7 @@ export default () => {
           </div>
           <div className="level-right">
             <div className="level-item">
-              <p className="is-size-4">{formattedSubTotal}</p>
+              <p className="is-size-5">{formattedSubTotal}</p>
             </div>
           </div>
         </div>
@@ -91,6 +91,19 @@ export default () => {
             </div>
           </div>
         </div>
+        <div className="level">
+          <div className="level-left"></div>
+          <div className="level-right">
+            <div className="level-item">
+            {/* <div class="creditkey">
+              <Link class="ck-link">
+                  As low as $<span id="money"></span>/month<br />Select&nbsp;<img src="https://s3-us-west-2.amazonaws.com/creditkey-assets/sdk/ck-btn-special.svg" />&nbsp;at checkout</Link>
+              </div>   */}
+            <div id="modal-pdp"></div>
+            </div>
+          </div>
+        </div>
+        
       </div>
     </Page>
   );

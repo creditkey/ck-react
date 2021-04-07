@@ -17,6 +17,7 @@
         background-color: $black;
         color: $white;
         transition: all 0.5s ease;
+        cursor: pointer;
     }
     strong {
         text-transform: uppercase;
@@ -27,6 +28,14 @@
         line-height: 17px;
         letter-spacing: 0em;
         text-align: center;
+    }
+    .icon {
+        vertical-align: middle;
+    }
+    @include respond-below(xs) {
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 100%;
     }
 }
 
@@ -212,6 +221,31 @@
         transition: opacity 0.5s cubic-bezier(0.3, 0, 0, 1);
         -webkit-backface-visibility: hidden;
     }
+}
+
+.checkout-wrap {
+    max-width: 1200px;
+    .columns {
+        margin-top: 0;
+    }
+    main {
+        min-height: inherit;
+        margin-bottom: inherit;
+    }
+}
+
+.sidebar__content::after {
+    content: "";
+    display: block;
+    width: 300%;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    bottom: 0;
+    background: #fafafa;
+    z-index: -1;
+    -webkit-box-shadow: 0 -1px 0 #e1e1e1 inset;
+    box-shadow: 0 -1px 0 #e1e1e1 inset;
 }
 
 .blank-slate .payment-icon {

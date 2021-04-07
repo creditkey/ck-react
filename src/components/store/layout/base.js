@@ -49,7 +49,7 @@ export default (props) => {
             component={CreditKeyCancelledPage}
           />
         </Switch>
-      </div>
+        </div>
       <Footer />
     </>
   );

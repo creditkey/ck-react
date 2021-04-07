@@ -29,7 +29,7 @@ export default () => {
               </figure>
               <div>
                 <div>
-                <h3>Supplies</h3>
+                <h3><a href="/store/tabletop">Supplies</a></h3>
                   <ul>
                     <li>Ice Trays </li>
                     <li>Freon Tanks</li>
@@ -49,7 +49,7 @@ export default () => {
               </figure>
               <div>
                 <div>
-                <h3>Equipment</h3>
+                <h3><a href="/store/ice-machines">Equipment</a></h3>
                   <ul>
                     <li>Automatic Equipment</li>
                     <li>Ice Machines</li>
@@ -59,6 +59,7 @@ export default () => {
                 </div>
               </div>
           </div>  
+        
         </div>
         <div className="column is-one-third card">
           <div class="media">
@@ -69,7 +70,7 @@ export default () => {
               </figure>
               <div>
                 <div>
-                <h3>Packages</h3>
+                <h3><a href="/store/disposables">Packages</a></h3>
                   <ul>
                     <li>Starter &amp; DIY Kits</li>
                     <li>Mega Shop</li>

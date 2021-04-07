@@ -111,28 +111,28 @@ export default () => {
               </Link>
               <Link
                 className="navbar-item"
-                to="/store/ice-machines"
+                to="/store/refrigerators"
                 onClick={closeMenu}
               >
                 Commercial Refrigeration
               </Link>
               <Link
                 className="navbar-item"
-                to="/store/ice-machines"
+                to="/store/storage"
                 onClick={closeMenu}
               >
                 Storage & Transport
               </Link>
               <Link
                 className="navbar-item"
-                to="/store/ice-machines"
+                to="/store/tabletop"
                 onClick={closeMenu}
               >
                 Tabletop
               </Link>
               <Link
                 className="navbar-item"
-                to="/store/ice-machines"
+                to="/store/disposables"
                 onClick={closeMenu}
               >
                 Disposables

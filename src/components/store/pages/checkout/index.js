@@ -67,7 +67,7 @@ function CheckoutPage() {
   };
 
   return (
-    <div>
+    <div className="checkout-wrap">
       <div className="columns">
         <div className="column is-two-thirds">
           <main className="main__content">
@@ -75,14 +75,6 @@ function CheckoutPage() {
               <ol class="breadcrumb " role="list">
                 <li class="breadcrumb__item breadcrumb__item--completed">
                   <Link class="breadcrumb__link" to="/store/cart">Cart</Link>
-                  <span>></span>
-                </li>
-                <li class="breadcrumb__item breadcrumb__item--completed">
-                  <Link class="breadcrumb__link" href="#">Information</Link>
-                  <span>></span>
-                </li>
-                <li class="breadcrumb__item breadcrumb__item--completed">
-                  <Link class="breadcrumb__link" href="#">Shipping</Link>
                   <span>></span>
                 </li>
                 <li class="breadcrumb__item breadcrumb__item--current">
@@ -113,20 +105,6 @@ function CheckoutPage() {
                       setStep={setStep}
                     />
                   )}
-                </div>
-
-                <div className="step__footer">
-                  <Link className="step__footer__previous-link" to="/store/cart">
-                    <svg
-                      className="icon-svg icon-svg--color-accent icon-svg--size-10 previous-link__icon"
-                      viewBox="0 0 10 10"
-                    >
-                      <path d="M8 1L7 0 3 4 2 5l1 1 4 4 1-1-4-4"></path>
-                    </svg>
-                    <span className="step__footer__previous-link-content">
-                      Return to cart
-                          </span>
-                  </Link>
                 </div>
               </form>
             </div>

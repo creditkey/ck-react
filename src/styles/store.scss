@@ -1,3 +1,6 @@
+h1, h2, h3, h4, h5, h6, p, a {
+    font-family: Open Sans;
+}
 h1 {
     font-size: 27px;
     text-transform: uppercase;
@@ -12,7 +15,7 @@ p {
 }
 
 a {
-    color: #000000;
+    color: $black;
 }
 
 main {
@@ -59,6 +62,9 @@ input[type="radio"] {
 
 .section {
     padding: 20px 30px;
+    @include respond-below(sm) {
+        padding: 20px;
+    }
     .section__text {
         font-size: 13px;
     }
