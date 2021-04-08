@@ -15,7 +15,7 @@ function setupCkClient(env = d) {
   return new ck.Client(platform[env].key, env.description);
 }
 
-export const client  = setupCkClient(s);
+export const client  = setupCkClient();
 
 export const makePhoneNumber = () => {
   let segment = (min, max) => (min + Math.random() * (max - min)).toFixed();
