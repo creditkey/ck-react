@@ -1,0 +1,40 @@
+@import 'variables.scss';
+
+.grid-product {
+    box-shadow: 0px 1px 4px 0px #808080 11%;
+    @include respond-below(md) {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .card-content {
+        padding: 10px;
+        @include respond-below(md) {
+            text-align: center;
+        }
+        @include respond-above(md) {
+            padding-left: 30px;
+        }
+    }
+    img {
+        padding: 30px;
+        // max-width: 200px;
+        @include respond-below(md) {
+            max-width: inherit;
+        }
+    }
+    h4 {
+        font-size: 15px;
+        color: $dard-grey;
+        font-weight: 400;
+        text-transform: capitalize;
+    }
+    p {
+        font-size: 13px;
+        color: $medium-grey;
+        margin-bottom: 5px !important;
+    }
+    strong {
+        $medium-grey: $black;
+        font-weight: 500;
+    }
+}

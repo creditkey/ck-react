@@ -1,0 +1,158 @@
+@import 'variables.scss';
+
+.top-banner {
+    background: #172C37;
+    height: 50px;
+    a {
+        font-size: 13px;
+        line-height: 50px;
+        color: white;
+        opacity: .67;
+        span {
+            text-decoration: underline;
+        }
+        @include respond-below(sm) {
+            font-size: 10px;
+        }
+    }
+}
+  
+header {
+    padding-top: 10px;
+    -webkit-box-shadow: 0px -20px 18px 10px rgba(0,0,0,0.50); 
+    box-shadow: 0px -20px 18px 10px rgba(0,0,0,0.50);
+    .atlas-logo {
+        height: 40px;
+        width: auto;
+        margin-top: 10px;
+    }
+    .search {
+        width: 100%;
+        padding: 0px 10px 0px 10px;
+    }
+    .container {
+        .level {
+            padding-top: 24px;
+            .level-left {
+                @include respond-below(sm) {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                }
+            }
+            .header-search {
+                padding-left: 30px;
+                padding-right: 30px;
+                @include respond-below(md) {
+                    display: none;
+                }
+                .control {
+                    margin-top: 10px;
+                    input, .button{
+                        border-radius: 1;
+                    }
+                    .button {
+                        background-color: #000000;
+                    }
+                }
+                &.login {
+                    font-size: 13px;
+                    color: #000000;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    &:visited {
+                        color: #000000;
+                    }
+                }
+                &.create-account {
+                    @include respond-below(sm) {
+                        position: absolute;
+                        top: 0;
+                        right: 60px;
+                    }
+                }
+            }
+            
+            .cart {    
+                .shopping-count {
+                    position: relative;
+                    top: -10px;
+                    left: -5px;
+                }
+                @include respond-below(sm) {
+                    width: 50px;
+                    position: absolute;
+                    top: 10px;
+                    right: 60px;
+                }
+            }
+            .level-right {
+                .button {
+                    height: 46px;
+                    font-size: 13px;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    background-color: #3D9CE5;
+                }
+            }
+            .tag:not(body) {
+                border-radius: 20px;
+
+            }
+        }
+    }
+    nav {
+        .navbar {
+            text-align: center;
+            &-menu.is-active {
+                border-top: 1px solid $grey;
+            }
+        }
+        .navbar-burger {
+            margin-left: 0;
+            &:hover {
+                background-color: transparent;
+            }
+        }
+        .navbar-item {
+            font-family: Open Sans;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 22px;
+            letter-spacing: 0em;
+            text-align: center;
+            color: #000000;
+            &:hover {
+                color: #3D9CE5;
+                background-color: transparent;
+            }
+            &:focus {
+                background-color: transparent;
+            }
+            &.blue {
+                color: $blue;
+            }
+        }
+        .mobile-cart {   
+            position: absolute;
+            right: 10px;
+            margin-top: 10px;
+            .tag:not(body) {
+                border-radius: 20px;
+
+            }
+            .shopping-count {
+                position: relative;
+                top: -10px;
+                margin-right: -5px;
+            }
+            // @include respond-below(sm) {
+            //     width: 50px;
+            //     position: absolute;
+            //     top: 10px;
+            //     right: 60px;
+            // }
+        }
+    }
+}

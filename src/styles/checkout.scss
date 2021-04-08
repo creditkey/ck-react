@@ -1,0 +1,265 @@
+.checkout {
+    cursor: pointer;
+}
+
+.checkout-button {
+    border: 1px solid $black;
+    background: $white;
+    text-transform: uppercase;
+    border-radius: 1px;
+    padding: 10px 40px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: Lato;
+    height: 45px;
+    width: 320px;
+    &:hover {
+        background-color: $black;
+        color: $white;
+        transition: all 0.5s ease;
+        cursor: pointer;
+    }
+    strong {
+        text-transform: uppercase;
+        font-family: Lato;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 17px;
+        letter-spacing: 0em;
+        text-align: center;
+    }
+    .icon {
+        vertical-align: middle;
+    }
+    @include respond-below(xs) {
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 100%;
+    }
+}
+
+
+.review-block {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+.review-block ~ .review-block {
+    margin-top: 0.8571428571em;
+    padding-top: 0.8571428571em;
+    border-top: 1px solid #e6e6e6;
+}
+.review-block__inner {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+@media (max-width: 749px) {
+    .review-block__inner {
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+}
+.review-block__label {
+    color: #737373;
+    padding-right: 1.1428571429em;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 1 5em;
+    -ms-flex: 0 1 5em;
+    flex: 0 1 5em;
+    font-size: 14px;
+}
+@media (max-width: 749px) {
+    .review-block__label {
+        padding-bottom: 0.2857142857em;
+    }
+}
+.review-block__content {
+    -webkit-box-flex: 5;
+    -webkit-flex: 5;
+    -ms-flex: 5;
+    flex: 5;
+    color: #333333;
+    padding-right: 1.1428571429em;
+    font-size: 14px;
+}
+@media (max-width: 749px) {
+    .review-block__content {
+        width: 100%;
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 1 auto;
+        -ms-flex: 0 1 auto;
+        flex: 0 1 auto;
+    }
+}
+.review-block__link span {
+    max-width: 10em;
+    font-size: 11px;
+    color: $blue;
+}
+
+.content-box__row {
+    padding: 1.1428571429em;
+    position: relative;
+    zoom: 1;
+}
+
+
+.content-box__row--tight-spacing-vertical {
+    padding-top: 0.8571428571em;
+    padding-bottom: 0.8571428571em;
+}
+
+
+.content-box {
+    background: $white;
+    background-clip: padding-box;
+    border: 1px solid;
+    border-radius: 5px;
+    color: #545454;
+    font-size: 14px;
+}
+.content-box {
+    border-color: $light-grey;
+}
+
+.sidebar {
+    background-color: #fafafa;
+    border-left: 1px solid $light-grey;
+    z-index: -1;
+    padding-top: 30px;
+}
+
+.breadcrumb {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding-left: 30px;
+}
+.breadcrumb__item {
+    display: inline;
+    font-size: 0.8571428571em;
+    color: #737373;
+}
+.anyflexbox .breadcrumb__item {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.breadcrumb__item--current {
+    font-weight: 500;
+    color: #333333;
+}
+.breadcrumb__chevron-icon {
+    margin: 0 0.6428571429em;
+}
+.breadcrumb--center {
+    text-align: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.breadcrumb li + li::before {
+    content: "";
+}
+
+.radio__label__accessory {
+    position: absolute;
+    right: 20px;
+    @include respond-below(xs) {
+        display: none;;
+    }
+    .payment-icon {
+        cursor: default;
+        margin: -0.1428571429em 0 -0.4285714286em;
+    }
+}
+.payment-icon--known {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    -webkit-box-shadow: 0 6px 19px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 6px 19px 0 rgba(0, 0, 0, 0.05);
+}
+.payment-icon--unknown {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    opacity: 0.5;
+}
+
+.payment-icon-list__more {
+    vertical-align: middle;
+    margin-top: -2px;
+    margin-left: 0.25em;
+    display: inline-block;
+    cursor: default;
+}
+.review-block__inner {
+    .payment-icon {
+        display: inline-block;
+        width: 38px;
+        height: 24px;
+        -webkit-transition: opacity 0.5s cubic-bezier(0.3, 0, 0, 1);
+        transition: opacity 0.5s cubic-bezier(0.3, 0, 0, 1);
+        -webkit-backface-visibility: hidden;
+    }
+}
+
+.checkout-wrap {
+    max-width: 1200px;
+    .columns {
+        margin-top: 0;
+    }
+    main {
+        min-height: inherit;
+        margin-bottom: inherit;
+    }
+}
+
+.sidebar__content::after {
+    content: "";
+    display: block;
+    width: 300%;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    bottom: 0;
+    background: #fafafa;
+    z-index: -1;
+    -webkit-box-shadow: 0 -1px 0 #e1e1e1 inset;
+    box-shadow: 0 -1px 0 #e1e1e1 inset;
+}
+
+.blank-slate .payment-icon {
+    vertical-align: middle;
+}
+.payment-icon--visa {
+    background-image: url(//cdn.shopify.com/shopifycloud/shopify/assets/payment_icons/visa-319d545c6fd255c9aad5eeaad21fd6f7f7b4fdbdb1a35ce83b89cca12a187f00.svg), none;
+}
+.payment-icon--master {
+    background-image: url(//cdn.shopify.com/shopifycloud/shopify/assets/payment_icons/master-173035bc8124581983d4efa50cf8626e8553c2b311353fbf67485f9c1a2b88d1.svg), none;
+}
+.payment-icon--american-express {
+    background-image: url(//cdn.shopify.com/shopifycloud/shopify/assets/payment_icons/american_express-2264c9b8b57b23b0b0831827e90cd7bcda2836adc42a912ebedf545dead35b20.svg), none;
+}
+.payment-icon--discover {
+    background-image: url(//cdn.shopify.com/shopifycloud/shopify/assets/payment_icons/discover-8265cfcac046637b87df7718c1436f6a1e054de3fbbb73c2ae82db1332879ba5.svg), none;
+}

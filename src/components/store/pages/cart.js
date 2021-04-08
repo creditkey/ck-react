@@ -11,22 +11,7 @@ import ShoppingCartIcon from "../icons/ShoppingCartIcon";
 
 const CheckoutRightLevel = ({ subTotal }) => {
   return (
-    <>
-      <div className="level-item">
-        <div>
-          <p>Subtotal</p>
-          <p>{subTotal}</p>
-        </div>
-      </div>
-      <div className="level-item">
-        {subTotal !== "$0.00" && (
-          <Link to="/store/checkout" className="button is-danger">
-            <ShoppingCartIcon />
-            Checkout
-          </Link>
-        )}
-      </div>
-    </>
+    <></>
   );
 };
 
@@ -39,70 +24,86 @@ export default () => {
       title="Cart"
       right={<CheckoutRightLevel subTotal={formattedSubTotal} />}
     >
-      <div className="columns is-multiline">
-        {cart.map((item) => {
-          const product = Product.find(item.category, item.slug);
+      <div className="cart-page">
+        <div className="columns is-multiline">
+          {cart.map((item) => {
+            const product = Product.find(item.category, item.slug);
 
-          return (
-            <div className="column is-full cart-row" key={item.slug}>
-              <div className="columns">
-                <div className="column is-2">
-                  <ProductThumb product={product} />
-                </div>
-                <div className="column is-5 cart-v-center">
-                  <p>
-                    <Link to={product.url}>{product.name}</Link>
-                  </p>
-                  <p>{product.formattedPrice()}</p>
-                </div>
-                <div className="column is-2 cart-v-center">Qty: {item.qty}</div>
-                <div className="column is-2 cart-v-center">
-                  <Price product={product} />
-                </div>
-                <div className="column is-1 cart-v-center">
-                  <button
-                    className="button is-info"
-                    onClick={() => product.removeFromCart()}
-                  >
-                    X
-                  </button>
+            return (
+              <div className="column is-full cart-row" key={item.slug}>
+                <div className="columns is-vcentered is-mobile">
+                  <div className="column is-2">
+                    <ProductThumb product={product} />
+                  </div>
+                  <div className="column is-5-desktop is-4-mobile">
+                    <p>
+                      <Link to={product.url}>{product.name}</Link>
+                    </p>
+                    
+                  </div>
+                  <div className="column is-2 is-1-mobile">Qty: {item.qty}</div>
+                  <div className="column is-2">
+                    <Price product={product} />
+                  </div>
+                  <div className="column is-1">
+                    <button
+                      className="button button-remove"
+                      onClick={() => product.removeFromCart()}
+                    >
+                      X
+                    </button>
+                  </div>
                 </div>
               </div>
+            );
+          })}
+        </div>
+
+        <div className="divider"></div>
+
+        <div className="level">
+          <div className="level-left">
+            <div className="level-item">
+              <div className="subtotal">
+                <h3 className="is-size-5">Subtotal</h3>
+                <p>Shipping & taxes calculated at checkout</p>
+              </div>
             </div>
-          );
-        })}
-      </div>
-
-      <div className="divider">&nbsp;</div>
-
-      <div className="level">
-        <div className="level-left">
-          <div className="level-item">
-            <div>
-              <p className="is-size-3">Subtotal</p>
-              <p>Shipping & taxes calculated at checkout</p>
+          </div>
+          <div className="level-right">
+            <div className="level-item">
+              <p className="is-size-5">{formattedSubTotal}</p>
             </div>
           </div>
         </div>
-        <div className="level-right">
-          <div className="level-item">
-            <p className="is-size-3">{formattedSubTotal}</p>
+        <div className="level">
+          <div className="level-left"></div>
+          <div className="level-right">
+            <div className="level-item">
+              {formattedSubTotal !== "$0.00" && (
+                <Link
+                  to="/store/checkout"
+                  className="cart-button"
+                >
+                  Checkout
+                </Link>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-
-      <div className="level">
-        <div className="level-item">
-          {formattedSubTotal !== "$0.00" && (
-            <Link
-              to="/store/checkout"
-              className="button is-danger cart-checkout-button is-medium"
-            >
-              <ShoppingCartIcon />
-              Checkout
-            </Link>
-          )}
+        <div className="level">
+          <div className="level-left"></div>
+          <div className="level-right">
+            <div className="level-item">
+            {/* <div class="creditkey">
+              <Link class="ck-link">
+                  As low as $<span id="money"></span>/month<br />Select&nbsp;<img src="https://s3-us-west-2.amazonaws.com/creditkey-assets/sdk/ck-btn-special.svg" />&nbsp;at checkout</Link>
+              </div>   */}
+            <div id="modal-pdp"></div>
+            </div>
+          </div>
         </div>
+        
       </div>
     </Page>
   );

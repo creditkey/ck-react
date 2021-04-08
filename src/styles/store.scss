@@ -1,0 +1,72 @@
+h1, h2, h3, h4, h5, h6, p, a {
+    font-family: Open Sans;
+}
+h1 {
+    font-size: 27px;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 18px;
+}
+
+p {
+    color: #444444;
+}
+
+a {
+    color: $black;
+}
+
+main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+    margin-bottom: 120px;
+}
+
+.container {
+    @include respond-below(md) {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+.title {
+    text-transform: capitalize;
+    color: $black;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 34px;
+}
+
+.divider {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #dddddd;
+}
+
+.container > .level > .level-right > .level-item {
+    padding-top: 10px;
+}
+.container > .level > .level-right > .level-item {
+    padding-top: 10px;
+}
+
+input[type="radio"] {
+    margin-top: 5px;
+    vertical-align: middle;
+}
+
+.section {
+    padding: 20px 30px;
+    @include respond-below(sm) {
+        padding: 20px;
+    }
+    .section__text {
+        font-size: 13px;
+    }
+}
+
