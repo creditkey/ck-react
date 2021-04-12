@@ -134,7 +134,8 @@ function DevPage() {
           <h1 className="subtitle">Standard Checkout &amp; Apply Now</h1>
           <div className="columns">
             <div className="column" style={{ borderRight: "1px solid #eeeeee" }}>
-              <div className="tabs">
+              <div className="tabs"
+              style={{ marginRight: "35px" }}>
                 <ul>
                   <li className={!fico ? "is-active" : undefined}>
                     <a onClick={() => setFico(null)}>Tier 1</a>
@@ -166,7 +167,9 @@ function DevPage() {
                 redirect={redirect}
               />
             </div>
-            <div className="column">
+            <div 
+            className="column"
+            style={{ marginLeft: "25px" }}>
               {renderDisplay()}
             </div>
           </div>
@@ -175,87 +178,89 @@ function DevPage() {
 
       <hr />
 
-      <h1 className="subtitle">Pending and Decline Checkouts</h1>
-      <div className="columns">
-        <div className="column is-one-third">
-          <BadButton
-            {...state}
-            redirect={redirect}
-            config={{ fico: 500 }}
-            icon={faSkullCrossbones}
-            label="Checkout with low FICO"
-          />
+      <div className="container">
+        <h1 className="subtitle">Pending and Decline Checkouts</h1>
+        <div className="columns">
+          <div className="column is-one-third">
+            <BadButton
+              {...state}
+              redirect={redirect}
+              config={{ fico: 500 }}
+              icon={faSkullCrossbones}
+              label="Checkout with low FICO"
+            />
+          </div>
+          <div className="column is-one-third">
+            <BadButton
+              {...state}
+              redirect={redirect}
+              config={{ lexis: "bvi" }}
+              icon={faPencilAlt}
+              label="Checkout as Pending"
+            />
+          </div>
+          <div className="column">
+            <BadButton
+              {...state}
+              redirect={redirect}
+              config={{ equifax: "frozen" }}
+              icon={faIcicles}
+              label="Checkout with Frozen Credit Report"
+            />
+          </div>
         </div>
-        <div className="column is-one-third">
-          <BadButton
-            {...state}
-            redirect={redirect}
-            config={{ lexis: "bvi" }}
-            icon={faPencilAlt}
-            label="Checkout as Pending"
-          />
+        <div className="columns">
+          <div className="column is-one-third">
+            <BadButton
+              {...state}
+              redirect={redirect}
+              config={{ equifax: "collections" }}
+              icon={faSkullCrossbones}
+              label="Checkout with Active Collections"
+            />
+          </div>
+          <div className="column is-one-third">
+            <BadButton
+              {...state}
+              redirect={redirect}
+              config={{ equifax: "revolving" }}
+              icon={faSkullCrossbones}
+              label="Checkout with Low Revolving Credit"
+            />
+          </div>
+          <div className="column">
+            <BadButton
+              {...state}
+              redirect={redirect}
+              config={{ equifax: "fraud" }}
+              icon={faSadTear}
+              label="Checkout with Fraud Alert"
+            />
+          </div>
         </div>
-        <div className="column">
-          <BadButton
-            {...state}
-            redirect={redirect}
-            config={{ equifax: "frozen" }}
-            icon={faIcicles}
-            label="Checkout with Frozen Credit Report"
-          />
+        <div className="columns">
+          <div className="column is-half">
+            <BadButton
+              {...state}
+              redirect={redirect}
+              config={{ equifax: "trades_and_collections" }}
+              icon={faSkullCrossbones}
+              label="Checkout with Collections and too few trades"
+            />
+          </div>
+          <div className="column is-half">
+            <BadButton
+              {...state}
+              redirect={redirect}
+              config={{ fico: 500, equifax: "trades_and_collections" }}
+              icon={faSkullCrossbones}
+              label="Checkout with Collections and too few trades and Low FICO"
+            />
+          </div>
         </div>
       </div>
-      <div className="columns">
-        <div className="column is-one-third">
-          <BadButton
-            {...state}
-            redirect={redirect}
-            config={{ equifax: "collections" }}
-            icon={faSkullCrossbones}
-            label="Checkout with Active Collections"
-          />
-        </div>
-        <div className="column is-one-third">
-          <BadButton
-            {...state}
-            redirect={redirect}
-            config={{ equifax: "revolving" }}
-            icon={faSkullCrossbones}
-            label="Checkout with Low Revolving Credit"
-          />
-        </div>
-        <div className="column">
-          <BadButton
-            {...state}
-            redirect={redirect}
-            config={{ equifax: "fraud" }}
-            icon={faSadTear}
-            label="Checkout with Fraud Alert"
-          />
-        </div>
-      </div>
-      <div className="columns">
-        <div className="column is-half">
-          <BadButton
-            {...state}
-            redirect={redirect}
-            config={{ equifax: "trades_and_collections" }}
-            icon={faSkullCrossbones}
-            label="Checkout with Collections and too few trades"
-          />
-        </div>
-        <div className="column is-half">
-          <BadButton
-            {...state}
-            redirect={redirect}
-            config={{ fico: 500, equifax: "trades_and_collections" }}
-            icon={faSkullCrossbones}
-            label="Checkout with Collections and too few trades and Low FICO"
-          />
-        </div>
-      </div>
-      </>
-);
+    </>
+  );
 }
 
 export default DevPage;
