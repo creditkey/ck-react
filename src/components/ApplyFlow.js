@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
-export default function ApplyFlow(props) {
+export default function ApplyFlow({ applyFlow, handleFlow }) {
   return (
     <div className="field">
       <p className="control has-icons-left">
@@ -11,8 +11,8 @@ export default function ApplyFlow(props) {
           className="select"
           name="apply_flow"
           id="apply_flow"
-          value={props.applyFlow}
-          onChange={e => props.handleFlow(e.target.value)}
+          value={applyFlow}
+          onChange={e => handleFlow(e.target.value)}
         >
           <option>Apply Now</option>
           <option>Text Apply Now</option>
