@@ -1,6 +1,5 @@
 import React, { useReducer, useState } from "react";
 import ck from "creditkey-js";
-import { client } from '../lib/utils';
 import {
   faSadTear,
   faSkullCrossbones,
