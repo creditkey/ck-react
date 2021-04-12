@@ -58,7 +58,7 @@ function CheckoutPage() {
     state: "CA",
     zip: "90064",
   });
-  const [step, setStep] = useState("contact");
+  const [step, setStep] = useState("payment");
 
   const isActive = (link) => {
     if (step === link) {
@@ -67,37 +67,21 @@ function CheckoutPage() {
   };
 
   return (
-    <div>
-      <div className="wrap">
-        <div className="main">
-          <header className="main__header">
-            <a className="" href="https://www.creditkey.com">
-              <span className="logo__text heading-1">Atlas Supply</span>
-            </a>
-            <div style={{ paddingTop: "10px" }}>
-              <span
-                style={isActive("contact")}
-                onClick={() => setStep("contact")}
-              >
-                Contact
-              </span>
-              <span style={{ padding: "0 10px 0 10px" }}>></span>
-              <span
-                style={isActive("shipping")}
-                onClick={() => setStep("shipping")}
-              >
-                Shipping
-              </span>
-              <span style={{ padding: "0 10px 0 10px" }}>></span>
-              <span
-                style={isActive("payment")}
-                onClick={() => setStep("payment")}
-              >
-                Payment
-              </span>
-            </div>
-          </header>
+    <div className="checkout-wrap">
+      <div className="columns">
+        <div className="column is-two-thirds">
           <main className="main__content">
+            <nav aria-label="Breadcrumb">
+              <ol class="breadcrumb " role="list">
+                <li class="breadcrumb__item breadcrumb__item--completed">
+                  <Link class="breadcrumb__link" to="/store/cart">Cart</Link>
+                  <span>></span>
+                </li>
+                <li class="breadcrumb__item breadcrumb__item--current">
+                  &nbsp;&nbsp;<span class="breadcrumb__text">Payment</span>
+                </li>
+              </ol>
+            </nav>
             <div className="step">
               <form className="edit_checkout animate-floating-labels">
                 <div className="step__sections">
@@ -122,28 +106,11 @@ function CheckoutPage() {
                     />
                   )}
                 </div>
-
-                <div className="step__footer">
-                  <Link className="step__footer__previous-link" to="/store/cart">
-                    <svg
-                      className="icon-svg icon-svg--color-accent icon-svg--size-10 previous-link__icon"
-                      viewBox="0 0 10 10"
-                    >
-                      <path d="M8 1L7 0 3 4 2 5l1 1 4 4 1-1-4-4"></path>
-                    </svg>
-                    <span className="step__footer__previous-link-content">
-                      Return to cart
-                    </span>
-                  </Link>
-                </div>
               </form>
             </div>
           </main>
-          <footer className="main__footer" role="contentinfo">
-            <p className="copyright-text ">All rights reserved Atlas Supply</p>
-          </footer>
         </div>
-        <aside className="sidebar">
+        <div className="column sidebar">
           <div className="sidebar__content">
             <div
               id="order-summary"
@@ -162,12 +129,12 @@ function CheckoutPage() {
                 </div>
 
                 <div className="order-summary__section order-summary__section--total-lines">
-                  <table className="total-line-table">                    
+                  <table className="total-line-table">
                     <tbody className="total-line-table__tbody">
                       <tr className="total-line total-line--subtotal">
                         <th className="total-line__name" scope="row">
                           Subtotal
-                        </th>
+                              </th>
                         <td className="total-line__price">
                           <span
                             className="order-summary__emphasis skeleton-while-loading"
@@ -185,17 +152,12 @@ function CheckoutPage() {
                         <td className="total-line__price">
                           <span
                             className="skeleton-while-loading order-summary__small-text"
-                            data-checkout-total-shipping-target="0"
-                          >
-                            Free
-                          </span>
+                            data-checkout-total-shipping-target="0">Free</span>
                         </td>
                       </tr>
 
                       <tr className="total-line total-line--taxes">
-                        <th className="total-line__name" scope="row">
-                          Taxes
-                        </th>
+                        <th className="total-line__name" scope="row">Taxes</th>
                         <td className="total-line__price">
                           <span className="order-summary__emphasis skeleton-while-loading">
                             {currency(taxes).format()}
@@ -209,14 +171,10 @@ function CheckoutPage() {
                           className="total-line__name payment-due-label"
                           scope="row"
                         >
-                          <span className="payment-due-label__total">
-                            Total
-                          </span>
+                          <span className="payment-due-label__total">Total</span>
                         </th>
                         <td className="total-line__price payment-due">
-                          <span className="payment-due__currency remove-while-loading">
-                            USD
-                          </span>
+                          <span className="payment-due__currency remove-while-loading">USD</span>
                           <span className="payment-due__price skeleton-while-loading--lg">
                             {currency(total).format()}
                           </span>
@@ -271,7 +229,7 @@ function CheckoutPage() {
               </svg>
             </div>
           </div>
-        </aside>
+        </div>
       </div>
     </div>
   );

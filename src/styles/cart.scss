@@ -1,0 +1,52 @@
+.cart-page {
+    .columns.is-multiline {
+        margin-bottom: 0;
+    }
+    .cart-row {
+        border-top: 1px solid $border-grey;
+        vertical-align: middle;
+        .columns > .cart-v-center {
+            padding-top: 86px;
+        }
+        img {
+            max-height: 95px;
+        }
+    }
+    .cart-button {
+        border: 1px solid $black;
+        text-transform: uppercase;
+        font-family: Lato;
+        color: #363636;
+        padding: 10px 40px;
+        width: 200px;
+        height: 45px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 600;
+        &:hover {
+            background-color: $black;
+            color: $white;
+            transition: all 0.5s ease;
+        }
+    }
+    .button-remove {
+        border: none;
+    }
+    .creditkey {
+        text-align: right;
+        .ck-link {
+            font-size: 14px;
+            img {
+                height: 16px;
+                vertical-align: middle;
+                margin-bottom: 2px;
+            }
+
+        }
+    }
+    .pdp-price {
+        font-weight: 400;
+        font-size: 16px;
+    }
+}
+

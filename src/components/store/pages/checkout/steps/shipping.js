@@ -4,7 +4,7 @@ import StateSelector from "../../../inputs/StateSelector";
 
 export default function ShippingStep({ address, setAddress, setStep }) {
   return (
-    <div className="section section--shipping-address">
+    <div className="section--shipping-address">
       <div className="section__header">
         <h2 className="section__title">Shipping address</h2>
       </div>
@@ -135,7 +135,7 @@ export default function ShippingStep({ address, setAddress, setStep }) {
       </div>
 
       <button
-        className="button is-danger"
+        className="button"
         style={{ marginTop: "20px" }}
         onClick={() => setStep("payment")}
       >

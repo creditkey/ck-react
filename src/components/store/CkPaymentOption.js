@@ -11,7 +11,7 @@ export default function CkPaymentOption() {
 
   useEffect(() => {
     client
-      .get_marketing_display(charges, "checkout", "text", "small")
+      .get_marketing_display(charges, "checkout", "text", "special", "static")
       .then((res) => setDisplay(res));
   }, [charges]);
 

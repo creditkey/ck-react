@@ -1,0 +1,32 @@
+footer {
+    padding-top: 55px;
+    padding-bottom: 55px;
+    background-color: $black;
+    @include respond-below(sm) {
+        text-align: center;
+    }
+    h3, p, ul li {
+        color: $white;
+        opacity: 80%;
+    }
+    h3 {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    p {
+        font-size: 14px;
+    }
+    ul li { 
+        font-size: 14px;
+    }
+    .footer-share  {
+        li {
+            display: inline;
+            padding-right: 5px;
+            img {
+                height: auto;
+                height: 28px;
+            }
+        }
+    }
+}

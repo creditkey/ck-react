@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ContactStep({ address, setAddress, setStep }) {
   return (
-    <div className="section section--contact-information">
+    <div className="section--contact-information">
       <div className="section__header">
         <div className="layout-flex layout-flex--tight-vertical layout-flex--loose-horizontal layout-flex--wrap">
           <h2
@@ -95,7 +95,7 @@ export default function ContactStep({ address, setAddress, setStep }) {
         </div>
       </div>
       <button
-        className="button is-danger"
+        className="button"
         style={{ marginTop: "20px" }}
         onClick={() => setStep("shipping")}
       >

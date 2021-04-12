@@ -1,8 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-import "../../../styles/store.css";
-
 // Pages
 import HomePage from "../pages/home";
 import CategoriesIndexPage from "../pages/categories";
@@ -26,6 +24,7 @@ export default (props) => {
           src="/images/banners/home-page-top-banner.png"
           alt="Home Page Top Banner"
         />
+        <a href="#">BUY NOW, PAY LATER WITH CREDIT KEY  <span>PREQUALIFY NOW</span></a>
       </section>
       <Header />
       <div className="container">
@@ -55,7 +54,7 @@ export default (props) => {
             component={CreditKeyCancelledPage}
           />
         </Switch>
-      </div>
+        </div>
       <Footer />
     </>
   );
