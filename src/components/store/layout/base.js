@@ -19,6 +19,11 @@ export default (props) => {
   return (
     <>
       <section className="top-banner has-text-centered">
+        <img
+          className="is-centered"
+          src="/images/banners/home-page-top-banner.png"
+          alt="Home Page Top Banner"
+        />
         <a href="#">BUY NOW, PAY LATER WITH CREDIT KEY  <span>PREQUALIFY NOW</span></a>
       </section>
       <Header />

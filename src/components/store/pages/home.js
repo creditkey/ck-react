@@ -7,13 +7,13 @@ export default () => {
       <main>
       <div className="columns is-multiline">
         <div className="column is-full">
-          <img src="/images/banners/home-page-banner1.jpg" />
+          <img alt="banner1" src="/images/banners/home-page-banner1.jpg" />
         </div>
-        <div className="column is-one-third-desktop banner2">
-          <img src="/images/banners/home-page-banner2.jpg" />
+        <div className="column is-one-third">
+          <img alt="banner2" src="/images/banners/home-page-banner2.jpg" />
         </div>
         <div className="column is-two-thirds">
-          <img src="/images/banners/home-page-banner3.jpg" />
+          <img alt="banner3" src="/images/banners/home-page-banner3.jpg" />
         </div>
       </div>
         <div className="has-text-centered mt-6">
