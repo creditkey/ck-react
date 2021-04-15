@@ -24,7 +24,6 @@ export default function Display(props) {
 
   useEffect(() => {
     if (config.extra === 'new') {
-      console.log(charges)
       setDisplay(client.get_pdp_display(charges));
     } else{
       client
