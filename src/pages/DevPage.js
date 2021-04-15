@@ -89,6 +89,16 @@ function DevPage() {
         cart: true
       }}
     />
+  }, {
+    label: 'New PDP',
+    dom: <Display
+      {...state}
+      conditions={{ apply: true }}
+      config={{
+        type: "pdp",
+        extra: "new"
+      }}
+    />
   }
   ];
 

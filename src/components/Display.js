@@ -23,9 +23,13 @@ export default function Display(props) {
   }
 
   useEffect(() => {
-    client
-      .get_marketing_display(charges, config.type, config.display, config.size, config.extra)
-      .then((res) => setDisplay(res));
+    if (config.extra === 'new') {
+      setDisplay(client.get_pdp_display(charges));
+    } else{
+      client
+        .get_marketing_display(charges, config.type, config.display, config.size, config.extra)
+        .then((res) => setDisplay(res));
+    }
   }, [charges, props.cart, config]);
 
   return (
