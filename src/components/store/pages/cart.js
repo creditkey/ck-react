@@ -7,7 +7,8 @@ import Page from "../page";
 import ProductThumb from "../product/thumb";
 import Price from "../product/price";
 import useCart from "../../../hooks/cart";
-import ShoppingCartIcon from "../icons/ShoppingCartIcon";
+import Display from "../../Display";
+// import ShoppingCartIcon from "../icons/ShoppingCartIcon";
 
 const CheckoutRightLevel = ({ subTotal }) => {
   return (
@@ -39,7 +40,7 @@ export default () => {
                     <p>
                       <Link to={product.url}>{product.name}</Link>
                     </p>
-                    
+
                   </div>
                   <div className="column is-2 is-1-mobile">Qty: {item.qty}</div>
                   <div className="column is-2">
@@ -95,16 +96,25 @@ export default () => {
           <div className="level-left"></div>
           <div className="level-right">
             <div className="level-item">
-            {/* <div class="creditkey">
-              <Link class="ck-link">
-                  As low as $<span id="money"></span>/month<br />Select&nbsp;<img src="https://s3-us-west-2.amazonaws.com/creditkey-assets/sdk/ck-btn-special.svg" />&nbsp;at checkout</Link>
-              </div>   */}
-            <div id="modal-pdp"></div>
+                <div className="cart-pdp-display">
+                  <Display
+                    cart={[
+                      {
+                        data: {
+                          price: subTotal
+                        }
+                      }
+                    ]}
+                    config={{ type: "pdp-cart", extra: "cart", display: "text" }}
+                    conditions={{ apply: false }}
+                    redirect={true}
+                  />
+                </div>
+              </div>
+              {/* <div id="modal-pdp"></div> */}
             </div>
           </div>
         </div>
-        
-      </div>
     </Page>
   );
 };

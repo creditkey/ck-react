@@ -25,7 +25,9 @@ export default function Display(props) {
   useEffect(() => {
     if (config.extra === 'new') {
       setDisplay(client.get_pdp_display(charges));
-    } else{
+    } else if (config.extra === 'cart') {
+      setDisplay(client.get_cart_display(charges));
+    } else {
       client
         .get_marketing_display(charges, config.type, config.display, config.size, config.extra)
         .then((res) => setDisplay(res));
@@ -33,9 +35,9 @@ export default function Display(props) {
   }, [charges, props.cart, config]);
 
   return (
-    <div 
-      className="is-size-6 checkout" 
-      onClick={onClick} 
-      dangerouslySetInnerHTML={ { __html: display } } />
+    <div
+      className="is-size-6 checkout"
+      onClick={onClick}
+      dangerouslySetInnerHTML={{ __html: display }} />
   );
 }

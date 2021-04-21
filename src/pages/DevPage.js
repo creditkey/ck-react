@@ -99,6 +99,16 @@ function DevPage() {
         extra: "new"
       }}
     />
+  }, {
+    label: 'Cart Page PDP',
+    dom: <Display
+      {...state}
+      conditions={{ apply: true }}
+      config={{
+        type: "pdp",
+        extra: "cart"
+      }}
+    />
   }
   ];
 

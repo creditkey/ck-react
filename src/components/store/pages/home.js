@@ -1,5 +1,5 @@
 import React from "react";
-import Page from "../page";
+// import Page from "../page";
 
 export default () => {
   return (
@@ -24,7 +24,7 @@ export default () => {
           <div class="media">
             <figure class="media-left">
               <p class="image">
-                <img src="/images/supplies.png" />
+                <img alt="supplies" src="/images/supplies.png" />
                 </p>
               </figure>
               <div>
@@ -44,7 +44,7 @@ export default () => {
           <div class="media">
             <figure class="media-left">
               <p class="image">
-                <img src="/images/equipment.png" />
+                <img alt="equipment" src="/images/equipment.png" />
                 </p>
               </figure>
               <div>
@@ -65,7 +65,7 @@ export default () => {
           <div class="media">
             <figure class="media-left">
               <p class="image">
-                <img src="/images/packages.png" />
+                <img alt="packages" src="/images/packages.png" />
                 </p>
               </figure>
               <div>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Redirect, useParams } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 import ck from "creditkey-js";
 
 import Product from "../../../models/product";

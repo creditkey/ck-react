@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import ck from "creditkey-js";
-import CkPaymentOption from "../../../CkPaymentOption";
+// import CkPaymentOption from "../../../CkPaymentOption";
 import CheckoutWithCreditKey from "../../../CheckoutWithCreditKey";
 import { makePhoneNumber } from "../../../../../lib/utils";
 import useCart from "../../../../../hooks/cart";
-import CountrySelector from "../../../inputs/CountrySelector";
-import StateSelector from "../../../inputs/StateSelector";
+// import CountrySelector from "../../../inputs/CountrySelector";
+// import StateSelector from "../../../inputs/StateSelector";
 
 export default function PaymentStep({ address, setStep }) {
   const { cartProducts, subTotal, total, taxes } = useCart();
