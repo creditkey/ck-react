@@ -73,48 +73,47 @@ export default () => {
           </div>
           <div className="level-right">
             <div className="level-item">
-              <p className="is-size-5">{formattedSubTotal}</p>
+              <p className="subtotal-text is-size-5">{formattedSubTotal}</p>
             </div>
           </div>
         </div>
         <div className="level">
           <div className="level-left"></div>
           <div className="level-right">
-            <div className="level-item">
-              {formattedSubTotal !== "$0.00" && (
-                <Link
-                  to="/store/checkout"
-                  className="cart-button"
-                >
-                  Checkout
-                </Link>
-              )}
-            </div>
-          </div>
-        </div>
-        <div className="level">
-          <div className="level-left"></div>
-          <div className="level-right">
-            <div className="level-item">
-                <div className="cart-pdp-display">
-                  <Display
-                    cart={[
-                      {
-                        data: {
-                          price: subTotal
-                        }
-                      }
-                    ]}
-                    config={{ type: "pdp-cart", extra: "cart", display: "text" }}
-                    conditions={{ apply: false }}
-                    redirect={true}
-                  />
-                </div>
+            <div className="btn-container">
+              <div className="level-item">
+                {formattedSubTotal !== "$0.00" && (
+                  <Link
+                    to="/store/checkout"
+                    className="cart-button"
+                  >
+                    Checkout
+                  </Link>
+                )}
               </div>
-              {/* <div id="modal-pdp"></div> */}
             </div>
           </div>
         </div>
+        <div className="level">
+          <div className="level-left"></div>
+          <div className="level-right">
+            <div className="cart-display-container">
+                <Display
+                  cart={[
+                    {
+                      data: {
+                        price: subTotal
+                      }
+                    }
+                  ]}
+                  config={{ type: "cart-promo", extra: "cart" }}
+                  conditions={{ apply: false }}
+                  redirect={true}
+                />
+            </div>
+          </div>
+        </div>
+      </div>
     </Page>
   );
 };

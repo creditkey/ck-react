@@ -105,7 +105,7 @@ function DevPage() {
       {...state}
       conditions={{ apply: true }}
       config={{
-        type: "pdp",
+        type: "cart-promo",
         extra: "cart"
       }}
     />
