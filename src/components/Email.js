@@ -1,22 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 export default function Email(props) {
-  
-  const [email, setEmail] = useState("")
   const updateEmail = value => {
-    setEmail(value)
-    props.dispatch({
+    return props.dispatch({
         type: 'UPDATE_EMAIL',
-        email: email
+        email: value
       });
   };
 
   return (
     <div className="field">
       <p className="control has-icons-left">
-
         <input
           className="input"
           type="text"
@@ -24,7 +20,8 @@ export default function Email(props) {
           id="email_override"
           placeholder="Email Override"
           onChange={e => updateEmail(e.target.value)}
-          value={email} />
+          value={props.email} />
+
         <span className="icon is-small is-left">
           <FontAwesomeIcon icon={faEnvelope} />
         </span>
