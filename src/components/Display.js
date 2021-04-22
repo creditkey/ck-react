@@ -23,12 +23,13 @@ export default function Display(props) {
   }
 
   useEffect(() => {
-    if (config.extra === 'new') {
-      setDisplay(client.get_pdp_display(charges));
-    } else if (config.extra === 'cart') {
-      setDisplay(client.get_cart_display(charges));
-    } else {
-      client
+    switch(config.extra) {
+      case "new":
+        return setDisplay(client.get_pdp_display(charges));
+      case "cart":
+        return setDisplay(client.get_cart_display_right(charges));
+      default:
+        return client
         .get_marketing_display(charges, config.type, config.display, config.size, config.extra)
         .then((res) => setDisplay(res));
     }
