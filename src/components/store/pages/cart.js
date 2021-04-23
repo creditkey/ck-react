@@ -94,10 +94,9 @@ export default () => {
             </div>
           </div>
         </div>
-        <div className="level">
+        <div className="level sub-checkout">
           <div className="level-left"></div>
           <div className="level-right">
-            <div className="cart-display-container">
                 <Display
                   cart={[
                     {
@@ -110,7 +109,6 @@ export default () => {
                   conditions={{ apply: false }}
                   redirect={true}
                 />
-            </div>
           </div>
         </div>
       </div>
