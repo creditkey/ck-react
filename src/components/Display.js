@@ -13,6 +13,7 @@ export default function Display(props) {
   };
 
   const charges = calcCharges(props.cart)
+  
 
   const onClick = () => {
     if (props.conditions.apply && config.extra === 'none') return false;
@@ -27,7 +28,7 @@ export default function Display(props) {
       case "new":
         return setDisplay(client.get_pdp_display(charges));
       case "cart":
-        return setDisplay(client.get_cart_display_right(charges));
+        return setDisplay(client.get_cart_display(charges, props.desktop, props.mobile));
       default:
         return client
         .get_marketing_display(charges, config.type, config.display, config.size, config.extra)
