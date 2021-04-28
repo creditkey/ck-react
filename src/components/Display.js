@@ -30,11 +30,10 @@ export default function Display(props) {
       case "cart":
         return setDisplay(client.get_cart_display(charges, props.desktop, props.mobile));
       default:
-        return client
-        .get_marketing_display(charges, config.type, config.display, config.size, config.extra)
+        client.get_marketing_display(charges, config.type, config.display, config.size, config.extra)
         .then((res) => setDisplay(res));
     }
-  }, [charges, props.cart, config]);
+  }, [charges, props.cart, config, props.desktop, props.mobile]);
 
   return (
     <div
