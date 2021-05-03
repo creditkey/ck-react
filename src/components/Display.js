@@ -13,6 +13,7 @@ export default function Display(props) {
   };
 
   const charges = calcCharges(props.cart)
+  
 
   const onClick = () => {
     if (props.conditions.apply && config.extra === 'none') return false;
@@ -23,15 +24,21 @@ export default function Display(props) {
   }
 
   useEffect(() => {
-    client
-      .get_marketing_display(charges, config.type, config.display, config.size, config.extra)
-      .then((res) => setDisplay(res));
-  }, [charges, props.cart, config]);
+    switch(config.extra) {
+      case "new":
+        return setDisplay(client.get_pdp_display(charges));
+      case "cart":
+        return setDisplay(client.get_cart_display(charges, props.desktop, props.mobile));
+      default:
+        client.get_marketing_display(charges, config.type, config.display, config.size, config.extra)
+        .then((res) => setDisplay(res));
+    }
+  }, [charges, props.cart, config, props.desktop, props.mobile]);
 
   return (
-    <div 
-      className="is-size-6 checkout" 
-      onClick={onClick} 
-      dangerouslySetInnerHTML={ { __html: display } } />
+    <div
+      className="is-size-6 checkout"
+      onClick={onClick}
+      dangerouslySetInnerHTML={{ __html: display }} />
   );
 }

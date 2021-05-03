@@ -19,6 +19,8 @@ export default function ApplyFlow({ applyFlow, handleFlow }) {
           <option>Alternative Apply Now</option>
           <option>Modal Apply Now</option>
           <option>Modal Apply Now for Cart Page</option>
+          <option>New PDP</option>
+          <option>Cart Page PDP</option>
         </select>
 
         <span className="icon is-small is-left">

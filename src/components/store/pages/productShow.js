@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Redirect, useParams } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 import ck from "creditkey-js";
 
 import Product from "../../../models/product";
@@ -41,23 +41,6 @@ export default () => {
             <p className="has-text-grey pdp-company">By {product.company}</p>
             <Price product={product} />
 
-            <div className="ck-display has-text-centered">
-              <Display
-                cart={[
-                  new ck.CartItem(
-                    product.id,
-                    product.name,
-                    product.price,
-                    1,
-                    product.sku
-                  ),
-                ]}
-                config={{ type: "pdp", display: 'text', size: 'special' }}
-                conditions={{ apply: false }}
-                redirect={true}
-              />
-            </div>
-
             <div className="add-to-cart">
               <button
                 className="button is-medium is-fullwidth"
@@ -74,6 +57,23 @@ export default () => {
               >
                 <strong>Buy It Now</strong>
               </button>
+            </div>
+
+            <div className="ck-display has-text-centered">
+              <Display
+                cart={[
+                  new ck.CartItem(
+                    product.id,
+                    product.name,
+                    product.price,
+                    1,
+                    product.sku
+                  ),
+                ]}
+                config={{ type: "pdp", extra: 'new', size: 'special' }}
+                conditions={{ apply: false }}
+                redirect={true}
+              />
             </div>
 
             <p className="description">{product.description}</p>

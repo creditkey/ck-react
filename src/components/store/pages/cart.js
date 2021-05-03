@@ -7,7 +7,8 @@ import Page from "../page";
 import ProductThumb from "../product/thumb";
 import Price from "../product/price";
 import useCart from "../../../hooks/cart";
-import ShoppingCartIcon from "../icons/ShoppingCartIcon";
+import Display from "../../Display";
+// import ShoppingCartIcon from "../icons/ShoppingCartIcon";
 
 const CheckoutRightLevel = ({ subTotal }) => {
   return (
@@ -39,7 +40,7 @@ export default () => {
                     <p>
                       <Link to={product.url}>{product.name}</Link>
                     </p>
-                    
+
                   </div>
                   <div className="column is-2 is-1-mobile">Qty: {item.qty}</div>
                   <div className="column is-2">
@@ -72,38 +73,44 @@ export default () => {
           </div>
           <div className="level-right">
             <div className="level-item">
-              <p className="is-size-5">{formattedSubTotal}</p>
+              <p className="subtotal-text is-size-5">{formattedSubTotal}</p>
             </div>
           </div>
         </div>
         <div className="level">
           <div className="level-left"></div>
           <div className="level-right">
-            <div className="level-item">
-              {formattedSubTotal !== "$0.00" && (
-                <Link
-                  to="/store/checkout"
-                  className="cart-button"
-                >
-                  Checkout
-                </Link>
-              )}
+            <div className="btn-container">
+              <div className="level-item">
+                {formattedSubTotal !== "$0.00" && (
+                  <Link
+                    to="/store/checkout"
+                    className="cart-button"
+                  >
+                    Checkout
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
         </div>
-        <div className="level">
+        <div className="level sub-checkout">
           <div className="level-left"></div>
           <div className="level-right">
-            <div className="level-item">
-            {/* <div class="creditkey">
-              <Link class="ck-link">
-                  As low as $<span id="money"></span>/month<br />Select&nbsp;<img src="https://s3-us-west-2.amazonaws.com/creditkey-assets/sdk/ck-btn-special.svg" />&nbsp;at checkout</Link>
-              </div>   */}
-            <div id="modal-pdp"></div>
-            </div>
+                <Display
+                  cart={[
+                    {
+                      data: {
+                        price: subTotal
+                      }
+                    }
+                  ]}
+                  config={{ type: "cart-promo", extra: "cart" }}
+                  conditions={{ apply: false }}
+                  redirect={true}
+                />
           </div>
         </div>
-        
       </div>
     </Page>
   );
