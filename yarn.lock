@@ -4073,7 +4073,7 @@ create-hmac@^1.1.0, create-hmac@^1.1.4, create-hmac@^1.1.7:
     sha.js "^2.4.8"
 
 "creditkey-js@file:../creditkey-js":
-  version "1.0.82"
+  version "1.0.83"
   dependencies:
     bulma "^0.9.1"
     lodash "^4.17.20"
