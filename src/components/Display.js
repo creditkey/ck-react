@@ -14,7 +14,6 @@ export default function Display(props) {
 
   const charges = calcCharges(props.cart)
   
-
   const onClick = () => {
     if (props.conditions.apply && config.extra === 'none') return false;
     if (props.conditions.apply && config.extra === 'static' && config.cart) return client.enhanced_pdp_modal(charges, 'cart');

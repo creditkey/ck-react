@@ -71,7 +71,7 @@ export default () => {
                   ),
                 ]}
                 config={{ type: "pdp", extra: 'new', size: 'special' }}
-                conditions={{ apply: false }}
+                conditions={{ apply: true }}
                 redirect={true}
               />
             </div>
