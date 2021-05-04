@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import currency from "currency.js";
-
-import "../../../../styles/checkout.css";
 import ContactStep from "./steps/contact";
 import ShippingStep from "./steps/shipping";
 import PaymentStep from "./steps/payment";
@@ -72,13 +70,13 @@ function CheckoutPage() {
         <div className="column is-two-thirds">
           <main className="main__content">
             <nav aria-label="Breadcrumb">
-              <ol class="breadcrumb " role="list">
-                <li class="breadcrumb__item breadcrumb__item--completed">
-                  <Link class="breadcrumb__link" to="/store/cart">Cart</Link>
+              <ol className="breadcrumb " role="list">
+                <li className="breadcrumb__item breadcrumb__item--completed">
+                  <Link className="breadcrumb__link" to="/store/cart">Cart</Link>
                   <span>></span>
                 </li>
-                <li class="breadcrumb__item breadcrumb__item--current">
-                  &nbsp;&nbsp;<span class="breadcrumb__text">Payment</span>
+                <li className="breadcrumb__item breadcrumb__item--current">
+                  &nbsp;&nbsp;<span className="breadcrumb__text">Payment</span>
                 </li>
               </ol>
             </nav>

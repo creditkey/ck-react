@@ -59,32 +59,4 @@
         font-weight: 400;
         font-size: 16px;
     }
-
-    .sub-checkout {
-        .checkout{
-            width:100%;
-        }
-        .level-right {
-            width: 100%;
-        }
-
-    }
-
-    @media only screen and (max-width: 768px) {
-        .subtotal {
-            text-align: left;
-            width: 100%;
-        }
-
-        .btn-container {
-            width: 100%;
-
-            .level-item {
-                justify-content: left;
-            }
-        }
-        .subtotal-text {
-            width: 100%;
-        }
-    }
 }

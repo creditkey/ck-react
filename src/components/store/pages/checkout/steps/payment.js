@@ -36,43 +36,43 @@ export default function PaymentStep({ address, setStep }) {
 
   return (
     <div className="section--contact-information">
-      <div class="section">
-        <div class="content-box">
-          <div role="table" class="content-box__row content-box__row--tight-spacing-vertical">
-            <div role="row" class="review-block">
-              <div class="review-block__inner">
-                <div role="rowheader" class="review-block__label">
+      <div className="section">
+        <div className="content-box">
+          <div role="table" className="content-box__row content-box__row--tight-spacing-vertical">
+            <div role="row" className="review-block">
+              <div className="review-block__inner">
+                <div role="rowheader" className="review-block__label">
                   Contact
                 </div>
-                <div role="cell" class="review-block__content">
+                <div role="cell" className="review-block__content">
                   <bdo dir="ltr">customer@company.com</bdo>
                 </div>
               </div>
-              <div role="cell" class="review-block__link">
-                <a class="link--small" href="#">
+              <div role="cell" className="review-block__link">
+                <a className="link--small" href="#">
                   <span aria-hidden="true">Change</span></a>
               </div>
             </div>
-            <div role="row" class="review-block">
-              <div class="review-block__inner">
-                <div role="rowheader" class="review-block__label">
+            <div role="row" className="review-block">
+              <div className="review-block__inner">
+                <div role="rowheader" className="review-block__label">
                   Ship to
                 </div>
-                <div role="cell" class="review-block__content">
+                <div role="cell" className="review-block__content">
                   <bdo dir="ltr">33 East 14th Street, New York NY 10001</bdo>
                 </div>
               </div>
-              <div role="cell" class="review-block__link">
-                <a class="link--small" href="#">
+              <div role="cell" className="review-block__link">
+                <a className="link--small" href="#">
                   <span aria-hidden="true">Change</span></a>
               </div>
             </div>
-            <div role="row" class="review-block">
-              <div class="review-block__inner">
-                <div role="rowheader" class="review-block__label">
+            <div role="row" className="review-block">
+              <div className="review-block__inner">
+                <div role="rowheader" className="review-block__label">
                   Method
                 </div>
-                <div role="cell" class="review-block__content">
+                <div role="cell" className="review-block__content">
                   <bdo dir="ltr">Standard Shipping · Free </bdo>
                 </div>
               </div>
@@ -81,33 +81,32 @@ export default function PaymentStep({ address, setStep }) {
         </div>
       </div>
 
-      <div class="section">
-        <div class="section__header">
-          <h2 class="section__title" id="main-header">Payment</h2>
-          <p class="section__text">All transactions are secure and encrypted.</p>
+      <div className="section">
+        <div className="section__header">
+          <p className="section__text">All transactions are secure and encrypted.</p>
         </div>
 
 
 
-        <div class="content-box">
-          <div role="table" class="content-box__row content-box__row--tight-spacing-vertical">
-          <div role="row" class="review-block">
-                <div class="review-block__inner">
+        <div className="content-box">
+          <div role="table" className="content-box__row content-box__row--tight-spacing-vertical">
+          <div role="row" className="review-block">
+                <div className="review-block__inner">
                 <input
                   className="radio-right"
                   type="radio"
                   name="paymentMethod"
                   defaultChecked={method === "credit"}
                   onClick={() => setMethod("credit")}
-                /><label>Credit Card</label><div class="radio__label__accessory">
+                /><label>Credit Card</label><div className="radio__label__accessory">
       
                 <ul className="payment-icons" >
-                    <li class="payment-icon payment-icon--visa"></li>
-                    <li class="payment-icon payment-icon--master"></li>
-                    <li class="payment-icon payment-icon--american-express"></li>
-                    <li class="payment-icon payment-icon--discover"></li>
-                    <li class="payment-icon-list__more">
-                      <small class="content-box__small-text">
+                    <li className="payment-icon payment-icon--visa"></li>
+                    <li className="payment-icon payment-icon--master"></li>
+                    <li className="payment-icon payment-icon--american-express"></li>
+                    <li className="payment-icon payment-icon--discover"></li>
+                    <li className="payment-icon-list__more">
+                      <small className="content-box__small-text">
                         and more…
                       </small>
                     </li>
@@ -117,8 +116,8 @@ export default function PaymentStep({ address, setStep }) {
                 </div>
               </div>
 
-            <div role="row" class="review-block">
-              <div class="review-block__inner">
+            <div role="row" className="review-block">
+              <div className="review-block__inner">
                 <input
                   className="radio-right"
                   type="radio"
@@ -131,8 +130,8 @@ export default function PaymentStep({ address, setStep }) {
               </div>
             </div>
 
-            <div role="row" class="review-block">
-              <div class="review-block__inner">
+            <div role="row" className="review-block">
+              <div className="review-block__inner">
                 <input
                   className="radio-right credit-key-radio"
                   type="radio"
@@ -150,7 +149,7 @@ export default function PaymentStep({ address, setStep }) {
           </div>
         </div>
 
-        <div class="section">
+        <div className="section">
         {method === "credit" && (
             <button
               className="checkout-button"
