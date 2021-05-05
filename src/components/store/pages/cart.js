@@ -106,7 +106,7 @@ export default () => {
                     }
                   ]}
                   config={{ type: "cart-promo", extra: "cart" }}
-                  conditions={{ apply: false }}
+                  conditions={{ apply: true }}
                   redirect={true}
                 />
           </div>
