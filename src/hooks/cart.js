@@ -9,9 +9,9 @@ function buildProductList(cart) {
 
   cart.forEach((item) => {
     const product = Product.find(item.category, item.slug);
-    product.qty = item.qty;
+    // product.qty = item.qty;
     cartProducts.push(product);
-    subTotal += product.price * item.qty;
+    subTotal += product.price;
   });
 
   return { cartProducts, subTotal };

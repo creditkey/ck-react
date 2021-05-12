@@ -46,15 +46,15 @@ function cartItem(item, cart) {
 function CheckoutPage() {
   const { cart, cartProducts, subTotal, taxes, total } = useCart();
   const [address, setAddress] = useState({
-    first_name: 'Credit',
-    last_name: 'Key',
-    email: `support+${new Date().getTime()}@creditkey.com`,
-    street: "10573 W Pico Blvd",
+    first_name: 'David',
+    last_name: 'Lancaster',
+    email: `salesdemo+${new Date().getTime()}@creditkey.com`,
+    street: "10571 W Pico Blvd",
     suite: "",
     country: "United States",
     city: "Los Angeles",
     state: "CA",
-    zip: "90064",
+    zip: "90062",
   });
   const [step, setStep] = useState("payment");
 

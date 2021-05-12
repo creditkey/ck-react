@@ -13,7 +13,7 @@ export default function PaymentStep({ address, setStep }) {
   const ckAddress = new ck.Address(
     address.first_name,
     address.last_name,
-    "Credit Key",
+    "Lancaster Supplies",
     address.email,
     address.street,
     address.suite,
@@ -45,7 +45,7 @@ export default function PaymentStep({ address, setStep }) {
                   Contact
                 </div>
                 <div role="cell" className="review-block__content">
-                  <bdo dir="ltr">customer@company.com</bdo>
+                  <bdo dir="ltr">david@lancastersupplies.com</bdo>
                 </div>
               </div>
               <div role="cell" className="review-block__link">
@@ -59,7 +59,7 @@ export default function PaymentStep({ address, setStep }) {
                   Ship to
                 </div>
                 <div role="cell" className="review-block__content">
-                  <bdo dir="ltr">33 East 14th Street, New York NY 10001</bdo>
+                  <bdo dir="ltr">571 W Pico Blvd, Los Angeles, CA 90062</bdo>
                 </div>
               </div>
               <div role="cell" className="review-block__link">
