@@ -9,7 +9,7 @@ function buildProductList(cart) {
 
   cart.forEach((item) => {
     const product = Product.find(item.category, item.slug);
-    // product.qty = item.qty;
+    product.qty = 1;
     cartProducts.push(product);
     subTotal += product.price;
   });
