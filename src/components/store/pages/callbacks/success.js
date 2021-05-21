@@ -8,10 +8,8 @@ export default () => {
   const [checkoutStatus, setCheckoutStatus] = useState(undefined);
 
   useEffect(() => {
-    // Call the Credit Key API t
-    fetch(
-      `http://localhost:8080/api/credit-key/complete_checkout?id=${creditKeyId}`
-    )
+    // complete order with backend
+    fetch(`https://c2rxvcaph7.execute-api.us-west-2.amazonaws.com/staging/demo-success?ckkey=${creditKeyId}`)
       .then((res) => res.json())
       .then((json) => {
         setCheckoutStatus(json);

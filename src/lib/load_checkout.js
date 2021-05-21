@@ -5,7 +5,7 @@ export default function LoadCheckout(conditions = {}, state, charges) {
   let date = new Date();
   const remoteId = date.getTime();
   const customerId = date.getTime();
-  const returnUrl = window.location.origin + "/store/credit-key/success?id=%CKKEY%&storeId=2";
+  const returnUrl = window.location.origin + "/store/credit-key/success?id=%CKKEY%";
   const cancelUrl = window.location.origin + "/store/credit-key/cancelled";
 
   let address;
