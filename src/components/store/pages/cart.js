@@ -42,7 +42,7 @@ export default () => {
                     </p>
 
                   </div>
-                  <div className="column is-2 is-1-mobile">Qty: {item.qty}</div>
+                  <div className="column is-2 is-1-mobile">Qty: 1</div>
                   <div className="column is-2">
                     <Price product={product} />
                   </div>

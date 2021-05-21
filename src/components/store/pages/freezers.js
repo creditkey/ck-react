@@ -6,10 +6,10 @@ import Grid from "../grid";
 import GridProduct from "../gridProduct";
 
 export default () => {
-  const items = products['refrigerators'].map((product) => <GridProduct product={product} />);
+  const items = products['freezers'].map((product) => <GridProduct product={product} />);
 
   return (
-    <Page title="refrigerators">
+    <Page title="freezers">
       <Grid items={items} />
     </Page>
   );

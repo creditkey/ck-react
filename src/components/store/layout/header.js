@@ -111,10 +111,10 @@ export default () => {
               </Link>
               <Link
                 className="navbar-item"
-                to="/store/refrigerators"
+                to="/store/freezers"
                 onClick={closeMenu}
               >
-                Commercial Refrigeration
+                Commercial Freezers
               </Link>
               <Link
                 className="navbar-item"
