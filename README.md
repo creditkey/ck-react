@@ -1,5 +1,3 @@
-This project provides a basic example of how to use the Credit Key Javascript SDK in a modern SPA environment
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Getting Started
@@ -17,5 +15,3 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
-
-Live version available at: https://dvmpglnnnf47k.cloudfront.net
