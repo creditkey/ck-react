@@ -19,7 +19,7 @@ export default () => {
   }, [creditKeyId]);
 
   return (
-    <Page title="">
+    <Page>
       <div className="columns">
 
         <div className="column is-7">
@@ -29,7 +29,7 @@ export default () => {
             
             <div className="thank-you-text">
               <p>Order #{creditKeyId}</p>
-              <div className="title">Thanks you!</div>
+              <div className="title">Thank you!</div>
             </div>
           </div>
           
