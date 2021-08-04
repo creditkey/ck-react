@@ -5,8 +5,11 @@ import loadCheckout from '../lib/load_checkout';
 
 export default function BadButton(props) {
   return (
-    <button className="button is-medium is-fullwidth is-danger is-outlined" onClick={() => loadCheckout(props.config, props, calcCharges(props.cart))}>
-      <FontAwesomeIcon icon={props.icon} />&nbsp;<span>{props.label}</span>
-    </button>
+    <a className="panel-block is-active" onClick={() => loadCheckout(props.config, props, calcCharges(props.cart))}>
+      <span className="panel-icon">
+        <FontAwesomeIcon icon={props.icon} />
+      </span>
+      {props.label}
+    </a>
   );
 }

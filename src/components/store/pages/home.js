@@ -21,9 +21,9 @@ export default () => {
         </div>
       <div className="columns shop-by-cat">
         <div className="column is-one-third card">
-          <div class="media">
-            <figure class="media-left">
-              <p class="image">
+          <div className="media">
+            <figure className="media-left">
+              <p className="image">
                 <img alt="supplies" src="/images/supplies.png" />
                 </p>
               </figure>
@@ -41,9 +41,9 @@ export default () => {
           </div>     
         </div>
         <div className="column is-one-third card">
-          <div class="media">
-            <figure class="media-left">
-              <p class="image">
+          <div className="media">
+            <figure className="media-left">
+              <p className="image">
                 <img alt="equipment" src="/images/equipment.png" />
                 </p>
               </figure>
@@ -62,9 +62,9 @@ export default () => {
         
         </div>
         <div className="column is-one-third card">
-          <div class="media">
-            <figure class="media-left">
-              <p class="image">
+          <div className="media">
+            <figure className="media-left">
+              <p className="image">
                 <img alt="packages" src="/images/packages.png" />
                 </p>
               </figure>
