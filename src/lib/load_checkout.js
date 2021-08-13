@@ -7,6 +7,7 @@ export default function LoadCheckout(conditions = {}, state, charges) {
   const customerId = date.getTime();
   const returnUrl = window.location.origin + "/store/credit-key/success?id=%CKKEY%";
   const cancelUrl = window.location.origin + "/store/credit-key/cancelled";
+  const orderCompleteUrl = window.location.origin + "/store/credit-key/success?id=%CKKEY%";
 
   let address;
 
@@ -41,6 +42,7 @@ export default function LoadCheckout(conditions = {}, state, charges) {
       customerId,
       returnUrl,
       cancelUrl,
+      orderCompleteUrl,
       state.redirect ? "redirect" : "modal"
     )
     .then((res) =>

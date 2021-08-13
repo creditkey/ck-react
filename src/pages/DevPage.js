@@ -26,7 +26,7 @@ const initialState = {
 
 function DevPage() {
   const [fico, setFico] = useState();
-  const [redirect, setRedirect] = useState(false);
+  const [redirect, setRedirect] = useState(true);
   const [state, dispatch] = useReducer(reducer, initialState);
   const [applyFlow, setApplyFlow] = useState("Apply Now");
 
@@ -120,6 +120,17 @@ function DevPage() {
     </>
   }
 
+  const hitAPIGateway = () => {
+    fetch(`https://c2rxvcaph7.execute-api.us-west-2.amazonaws.com/staging/demo-success?ckkey=1`, {
+      method: 'GET',
+      mode: 'cors'
+    })
+    .then((res) => res.json())
+    .then((json) => {
+      console.log(json);
+    });
+  }
+
   return (
     <>
       <div className="App">
@@ -135,7 +146,17 @@ function DevPage() {
         <hr />
         <div className="container">
           <h1 className="subtitle">Override Options</h1>
-          <div className="columns">
+          <div className="columns is-vcentered">
+            <div className="column is-narrow">
+              <input
+                type="checkbox"
+                id="use_redirect"
+                onChange={() => setRedirect(!redirect)}
+                checked={redirect}
+                value={redirect}
+              />
+              <label htmlFor="use_redirect">Use Redirect</label>
+            </div>
             <div className="column">
               <Username dispatch={dispatch} username={state.username} />
             </div>
@@ -170,16 +191,7 @@ function DevPage() {
                   </li>
                 </ul>
               </div>
-              <p>
-                <input
-                  type="checkbox"
-                  id="use_redirect"
-                  onChange={() => setRedirect(!redirect)}
-                  checked={redirect}
-                  value={redirect}
-                />
-                <label htmlFor="use_redirect">Use Redirect</label>
-              </p>
+              
               <Display
                 {...state}
                 conditions={{ fico: fico }}
@@ -187,20 +199,19 @@ function DevPage() {
               />
             </div>
             <div 
-            className="column"
-            style={{ marginLeft: "25px" }}>
-              {renderDisplay()}
+              className="column"
+              style={{ marginLeft: "25px" }}>
+                {renderDisplay()}
             </div>
           </div>
         </div>
-      </div>
 
-      <hr />
-
-      <div className="container">
-        <h1 className="subtitle">Pending and Decline Checkouts</h1>
-        <div className="columns">
-          <div className="column is-one-third">
+        <hr />
+        <div className="container">
+          <div className="panel is-danger">
+            <p className="panel-heading">
+              Pending and Decline
+            </p>
             <BadButton
               {...state}
               redirect={redirect}
@@ -208,57 +219,6 @@ function DevPage() {
               icon={faSkullCrossbones}
               label="Checkout with low FICO"
             />
-          </div>
-          <div className="column is-one-third">
-            <BadButton
-              {...state}
-              redirect={redirect}
-              config={{ lexis: "bvi" }}
-              icon={faPencilAlt}
-              label="Checkout as Pending"
-            />
-          </div>
-          <div className="column">
-            <BadButton
-              {...state}
-              redirect={redirect}
-              config={{ equifax: "frozen" }}
-              icon={faIcicles}
-              label="Checkout with Frozen Credit Report"
-            />
-          </div>
-        </div>
-        <div className="columns">
-          <div className="column is-one-third">
-            <BadButton
-              {...state}
-              redirect={redirect}
-              config={{ equifax: "collections" }}
-              icon={faSkullCrossbones}
-              label="Checkout with Active Collections"
-            />
-          </div>
-          <div className="column is-one-third">
-            <BadButton
-              {...state}
-              redirect={redirect}
-              config={{ equifax: "revolving" }}
-              icon={faSkullCrossbones}
-              label="Checkout with Low Revolving Credit"
-            />
-          </div>
-          <div className="column">
-            <BadButton
-              {...state}
-              redirect={redirect}
-              config={{ equifax: "fraud" }}
-              icon={faSadTear}
-              label="Checkout with Fraud Alert"
-            />
-          </div>
-        </div>
-        <div className="columns">
-          <div className="column is-half">
             <BadButton
               {...state}
               redirect={redirect}
@@ -266,8 +226,13 @@ function DevPage() {
               icon={faSkullCrossbones}
               label="Checkout with Collections and too few trades"
             />
-          </div>
-          <div className="column is-half">
+            <BadButton
+              {...state}
+              redirect={redirect}
+              config={{ equifax: "collections" }}
+              icon={faSkullCrossbones}
+              label="Checkout with Active Collections"
+            />
             <BadButton
               {...state}
               redirect={redirect}
@@ -275,7 +240,44 @@ function DevPage() {
               icon={faSkullCrossbones}
               label="Checkout with Collections and too few trades and Low FICO"
             />
+            <BadButton
+              {...state}
+              redirect={redirect}
+              config={{ equifax: "revolving" }}
+              icon={faSkullCrossbones}
+              label="Checkout with Low Revolving Credit"
+            />
+            <BadButton
+              {...state}
+              redirect={redirect}
+              config={{ lexis: "bvi" }}
+              icon={faPencilAlt}
+              label="Checkout as Pending"
+            />
+            <BadButton
+              {...state}
+              redirect={redirect}
+              config={{ equifax: "frozen" }}
+              icon={faIcicles}
+              label="Checkout with Frozen Credit Report"
+            />
+            <BadButton
+              {...state}
+              redirect={redirect}
+              config={{ equifax: "fraud" }}
+              icon={faSadTear}
+              label="Checkout with Fraud Alert"
+            />
+            <BadButton
+              {...state}
+              redirect={redirect}
+              config={{ middesk: 'fail', lexis: 'bvi' }}
+              icon={faSadTear}
+              label="Checkout with Middesk Failure"
+            />
           </div>
+
+          <button className="button is-large" onClick={hitAPIGateway}>Send Test AWS API Gateway Request</button>
         </div>
       </div>
     </>
