@@ -1,18 +1,13 @@
 import ck from 'creditkey-js';
 
-const d = Symbol('development');
-const s = Symbol('staging');
-const p = Symbol('production');
-
-const platform = {
-  [d]: { key: 'creditkeydev_2822baea77774929979f1e5964dd18b6' },
-  [s]: { key: 'creditkeytest_6d8e5758033846b4995993dd74dda57c' },
-  [p]: { key: 'creditkeysamplestore_2d3170af046347cdaf0171e06c08ca77' }
+const publicKeys = {
+  development: 'creditkeydev_2822baea77774929979f1e5964dd18b6',
+  staging: 'creditkeytest_6d8e5758033846b4995993dd74dda57c',
+  production: 'creditkeysamplestore_2d3170af046347cdaf0171e06c08ca77'
 }
 
-function setupCkClient(env = d) {
-  if (window.location.hostname !== 'localhost') env = s;
-  return new ck.Client(platform[env].key, env.description);
+function setupCkClient() {
+  return new ck.Client(publicKeys[process.env.REACT_APP_ENV], process.env.REACT_APP_ENV);
 }
 
 export const client  = setupCkClient();
