@@ -19,6 +19,7 @@ export default function ApplyFlow({ applyFlow, handleFlow }) {
           <option>Modal Preqaul Flow for Cart Page</option>
           <option>New PDP</option>
           <option>Cart Page PDP</option>
+          <option>VIP Apply Now</option>
         </select>
 
         <span className="icon is-small is-left">

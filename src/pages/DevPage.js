@@ -89,6 +89,12 @@ function DevPage() {
         extra: "cart"
       }}
     />
+  }, {
+    label: 'VIP Apply Now',
+    dom: <Display
+      {...state}
+      conditions={{ vip: true }}
+    />
   }
   ];
 
