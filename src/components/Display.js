@@ -15,7 +15,7 @@ export default function Display(props) {
   const charges = calcCharges(props.cart)
   
   const onClick = () => {
-    if (props.conditions.vip) window.location.href = process.env.REACT_APP_VIP;
+    if (props.conditions.vip) window.location.href = process.env.REACT_APP_VIP_UI;
     if (props.conditions.apply && config.extra === 'none') return false;
     if (props.conditions.apply && config.extra === 'static' && config.cart) return client.enhanced_pdp_modal(charges, 'cart');
     if (props.conditions.apply && config.extra === 'static') return client.enhanced_pdp_modal(charges);
