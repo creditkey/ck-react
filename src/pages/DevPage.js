@@ -28,44 +28,24 @@ function DevPage() {
   const [fico, setFico] = useState();
   const [redirect, setRedirect] = useState(true);
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [applyFlow, setApplyFlow] = useState("Apply Now");
+  const [applyFlow, setApplyFlow] = useState("Modal Apply Now");
 
   let handleFlow = (value) => {
     setApplyFlow(value)
   };
 
   const applyFlows = [{
-    label: 'Apply Now',
-    dom: <Display
-      {...state}
-      conditions={{ apply: true }}
-      config={{
-        type: "pdp",
-      }}
-    />
-  }, {
-    label: 'Text Apply Now',
-    dom: <Display
-      {...state}
-      conditions={{ apply: true }}
-      config={{
-        type: "pdp",
-        display: "text",
-      }}
-    />
-  }, {
-    label: 'Alternative Apply Now',
-    dom: <Display
-      {...state}
-      conditions={{ apply: true }}
-      config={{
-        type: "pdp",
-        display: "text",
-        size: "special",
-      }}
-    />
-  }, {
     label: 'Modal Apply Now',
+    dom: <Display
+      {...state}
+      conditions={{ apply: true }}
+      config={{
+        extra: "apply",
+        type: "pdp",
+      }}
+    />
+  }, {
+    label: 'Modal Prequal Flow',
     dom: <Display
       {...state}
       conditions={{ apply: true }}
@@ -77,7 +57,7 @@ function DevPage() {
       }}
     />
   }, {
-    label: 'Modal Apply Now for Cart Page',
+    label: 'Modal Prequal Flow for Cart Page',
     dom: <Display
       {...state}
       conditions={{ apply: true }}

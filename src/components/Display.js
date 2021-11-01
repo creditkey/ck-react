@@ -15,11 +15,11 @@ export default function Display(props) {
   const charges = calcCharges(props.cart)
   
   const onClick = () => {
-    if (props.conditions.apply && config.extra === 'none') return false;
-    if (props.conditions.apply && config.extra === 'static' && config.cart) return client.enhanced_pdp_modal(charges, 'cart');
-    if (props.conditions.apply && config.extra === 'static') return client.enhanced_pdp_modal(charges);
+    /*if (props.conditions.apply && config.extra === 'none') return false;*/
+    //if (props.conditions.apply && config.extra === 'static' && config.cart) return client.enhanced_pdp_modal(charges, 'cart');
+    /*if (props.conditions.apply && config.extra === 'static') return client.enhanced_pdp_modal(charges);*/
 
-    return loadCheckout(props.conditions, props, charges);
+    //return loadCheckout(props.conditions, props, charges);
   }
 
   useEffect(() => {
@@ -28,6 +28,8 @@ export default function Display(props) {
         return setDisplay(client.get_pdp_display(charges));
       case "cart":
         return setDisplay(client.get_cart_display(charges, props.desktop, props.mobile));
+      case "apply":
+        return setDisplay(client.get_apply_now('modal'));
       default:
         client.get_marketing_display(charges, config.type, config.display, config.size, config.extra)
         .then((res) => setDisplay(res));

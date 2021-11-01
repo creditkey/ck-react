@@ -14,11 +14,9 @@ export default function ApplyFlow({ applyFlow, handleFlow }) {
           value={applyFlow}
           onChange={e => handleFlow(e.target.value)}
         >
-          <option>Apply Now</option>
-          <option>Text Apply Now</option>
-          <option>Alternative Apply Now</option>
           <option>Modal Apply Now</option>
-          <option>Modal Apply Now for Cart Page</option>
+          <option>Modal Prequal Flow</option>
+          <option>Modal Preqaul Flow for Cart Page</option>
           <option>New PDP</option>
           <option>Cart Page PDP</option>
         </select>
