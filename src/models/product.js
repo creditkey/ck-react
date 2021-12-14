@@ -18,7 +18,7 @@ class Product {
 
   constructor(product) {
     this.data = product;
-    this.cartDispatch = useContext(cartContext).cartDispatch;
+    //this.cartDispatch = useContext(cartContext).cartDispatch;
     this.thumbnail = `/images/products/${product.slug}/${product.thumb}`;
     this.url = `/store/products/${product.category}/${product.slug}`;
 

@@ -38,7 +38,7 @@ function DevPage() {
     label: 'Modal Apply Now',
     dom: <Display
       {...state}
-      conditions={{ apply: true }}
+      conditions={{ apply: true, pi4: true }}
       config={{
         extra: "apply",
         type: "pdp",
@@ -48,7 +48,7 @@ function DevPage() {
     label: 'Modal Prequal Flow',
     dom: <Display
       {...state}
-      conditions={{ apply: true }}
+      conditions={{ apply: true, pi4: true }}
       config={{
         type: "pdp",
         display: "button",
@@ -60,7 +60,7 @@ function DevPage() {
     label: 'Modal Prequal Flow for Cart Page',
     dom: <Display
       {...state}
-      conditions={{ apply: true }}
+      conditions={{ apply: true, pi4: true }}
       config={{
         type: "pdp",
         display: "button",
@@ -73,7 +73,7 @@ function DevPage() {
     label: 'New PDP',
     dom: <Display
       {...state}
-      conditions={{ apply: true }}
+      conditions={{ apply: true, pi4: true }}
       config={{
         type: "pdp",
         extra: "new"
@@ -83,7 +83,7 @@ function DevPage() {
     label: 'Cart Page PDP',
     dom: <Display
       {...state}
-      conditions={{ apply: true }}
+      conditions={{ apply: true, pi4: true }}
       config={{
         type: "cart-promo",
         extra: "cart"
@@ -180,7 +180,7 @@ function DevPage() {
               
               <Display
                 {...state}
-                conditions={{ fico: fico }}
+                conditions={{ fico: fico, pi4: true }}
                 redirect={redirect}
               />
             </div>
