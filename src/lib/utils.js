@@ -6,11 +6,18 @@ const publicKeys = {
   production: 'creditkeysamplestore_2d3170af046347cdaf0171e06c08ca77'
 }
 
+const pi4PublicKeys = {
+  development: 'creditkeydev_2822baea77774929979f1e5964dd18b6',
+  staging: 'pitestmerchant_b7ce7d6fb3674f54a46817b0b4c82772',
+  production: 'creditkeysamplestore_2d3170af046347cdaf0171e06c08ca77'
+}
+
 function setupCkClient() {
   return new ck.Client(publicKeys[process.env.REACT_APP_ENV], process.env.REACT_APP_ENV);
 }
 
-export const client  = setupCkClient();
+export const client = setupCkClient();
+export const pi4Client = () => new ck.Client(pi4PublicKeys[process.env.REACT_APP_ENV], process.env.REACT_APP_ENV);
 
 export const makePhoneNumber = () => {
   let segment = (min, max) => (min + Math.random() * (max - min)).toFixed();

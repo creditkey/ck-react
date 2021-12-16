@@ -1,5 +1,5 @@
 import ck from "creditkey-js";
-import { client, addEmailTestingConditions } from "./utils";
+import { client, pi4Client, addEmailTestingConditions } from "./utils";
 
 export default function LoadCheckout(conditions = {}, state, charges) {
   let date = new Date();
@@ -9,7 +9,10 @@ export default function LoadCheckout(conditions = {}, state, charges) {
   const cancelUrl = window.location.origin + "/store/credit-key/cancelled";
   const orderCompleteUrl = window.location.origin + "/store/credit-key/success?id=%CKKEY%";
 
+  let sdkClient;
   let address;
+
+  conditions.pi4 ? sdkClient = pi4Client() : sdkClient = client;
 
   const email = addEmailTestingConditions(
     state.username,
@@ -32,7 +35,7 @@ export default function LoadCheckout(conditions = {}, state, charges) {
 
   state.address ? address = state.address : address = defaultAddressData;
 
-  client
+  sdkClient
     .begin_checkout(
       state.cart,
       address,
