@@ -1,16 +1,19 @@
 import ck from 'creditkey-js';
 
-const publicKeys = {
-  development: 'thewebstaurantstoreinc_1a3fc138f571474b997815ab57febbfe',
-  staging: 'creditkeytest_6d8e5758033846b4995993dd74dda57c',
-  production: 'creditkeysamplestore_2d3170af046347cdaf0171e06c08ca77'
-}
-
 function setupCkClient() {
-  return new ck.Client(publicKeys[process.env.REACT_APP_ENV], process.env.REACT_APP_ENV);
+  return new ck.Client(process.env.REACT_APP_PUBLIC_KEY, process.env.REACT_APP_ENV);
 }
 
-export const client  = setupCkClient();
+function setupPi4Client() {
+  return new ck.Client(process.env.REACT_APP_PI4_PUBLIC_KEY, process.env.REACT_APP_ENV);
+}
+
+export const ispayin4 = () => {
+  return window.location && window.location.hostname.indexOf('payin4') >= 0;
+}
+
+export const client = setupCkClient();
+export const pi4Client = setupPi4Client();
 
 export const makePhoneNumber = () => {
   let segment = (min, max) => (min + Math.random() * (max - min)).toFixed();

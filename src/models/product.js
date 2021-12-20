@@ -1,9 +1,6 @@
-import { useContext } from "react";
 import currency from "currency.js";
 
 import products from "../config/data/products.json";
-import { cartContext } from "../Context";
-import { actions } from "../reducers/cart";
 
 class Product {
   static find = (category, slug) => {
@@ -18,7 +15,6 @@ class Product {
 
   constructor(product) {
     this.data = product;
-    //this.cartDispatch = useContext(cartContext).cartDispatch;
     this.thumbnail = `/images/products/${product.slug}/${product.thumb}`;
     this.url = `/store/products/${product.category}/${product.slug}`;
 
@@ -40,22 +36,6 @@ class Product {
 
   formattedAmountSaved = () => {
     return currency(this.originalPrice - this.salePrice).format();
-  };
-
-  addToCart = () => {
-    this.cartDispatch({
-      type: actions.addItem,
-      slug: this.slug,
-      category: this.category,
-    });
-  };
-
-  removeFromCart = () => {
-    this.cartDispatch({
-      type: actions.removeItem,
-      slug: this.slug,
-      category: this.category,
-    });
   };
 
   imagePath = (id) => `/images/products/${this.slug}/${id}`;

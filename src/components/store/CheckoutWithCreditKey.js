@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import loadCheckout from "../../lib/load_checkout";
+import { ispayin4 } from '../../lib/utils';
 
 export default function CheckoutWithCreditKey({ address, cartItems, charges }) {
   const [loading, setLoading] = useState(false);
@@ -10,7 +11,7 @@ export default function CheckoutWithCreditKey({ address, cartItems, charges }) {
     setLoading(true);
 
     return loadCheckout(
-      {},
+      { pi4: ispayin4() },
       { address: address, cart: cartItems, redirect: true },
       charges
     );

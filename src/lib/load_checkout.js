@@ -12,7 +12,7 @@ export default function LoadCheckout(conditions = {}, state, charges) {
   let sdkClient;
   let address;
 
-  conditions.pi4 ? sdkClient = pi4Client() : sdkClient = client;
+  conditions.pi4 ? sdkClient = pi4Client : sdkClient = client;
 
   const email = addEmailTestingConditions(
     state.username,
