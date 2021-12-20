@@ -6,7 +6,7 @@ export default function Email(props) {
   const updateEmail = value => {
     return props.dispatch({
         type: 'UPDATE_EMAIL',
-        email: value
+        email: value.trim()
       });
   };
 
@@ -20,7 +20,7 @@ export default function Email(props) {
           id="email_override"
           placeholder="Email Override"
           onChange={e => updateEmail(e.target.value)}
-          value={props.email} />
+          value={props.email.trim()} />
 
         <span className="icon is-small is-left">
           <FontAwesomeIcon icon={faEnvelope} />
