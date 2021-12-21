@@ -8,16 +8,14 @@ import ProductThumb from "../product/thumb";
 import Price from "../product/price";
 import useCart from "../../../hooks/cart";
 import Display from "../../Display";
-// import ShoppingCartIcon from "../icons/ShoppingCartIcon";
+import { ispayin4 } from '../../../lib/utils';
 
 const CheckoutRightLevel = ({ subTotal }) => {
-  return (
-    <></>
-  );
+  return <></>;
 };
 
 export default () => {
-  const { cart, subTotal } = useCart();
+  const { cart, subTotal, removeProductFromCart } = useCart();
   const formattedSubTotal = currency(subTotal).format();
 
   return (
@@ -40,7 +38,6 @@ export default () => {
                     <p>
                       <Link to={product.url}>{product.name}</Link>
                     </p>
-
                   </div>
                   <div className="column is-2 is-1-mobile">Qty: 1</div>
                   <div className="column is-2">
@@ -49,7 +46,7 @@ export default () => {
                   <div className="column is-1">
                     <button
                       className="button button-remove"
-                      onClick={() => product.removeFromCart()}
+                      onClick={() => removeProductFromCart(product)}
                     >
                       X
                     </button>
@@ -83,10 +80,7 @@ export default () => {
             <div className="btn-container">
               <div className="level-item">
                 {formattedSubTotal !== "$0.00" && (
-                  <Link
-                    to="/store/checkout"
-                    className="cart-button"
-                  >
+                  <Link to="/store/checkout" className="cart-button">
                     Checkout
                   </Link>
                 )}
@@ -97,18 +91,18 @@ export default () => {
         <div className="level sub-checkout">
           <div className="level-left"></div>
           <div className="level-right">
-                <Display
-                  cart={[
-                    {
-                      data: {
-                        price: subTotal
-                      }
-                    }
-                  ]}
-                  config={{ type: "cart-promo", extra: "cart" }}
-                  conditions={{ apply: true }}
-                  redirect={true}
-                />
+            <Display
+              cart={[
+                {
+                  data: {
+                    price: subTotal,
+                  },
+                },
+              ]}
+              config={{ type: "cart-promo", extra: "cart" }}
+              conditions={{ apply: true, pi4: ispayin4() }}
+              redirect={true}
+            />
           </div>
         </div>
       </div>

@@ -15,6 +15,8 @@ import Display from "../components/Display";
 import ApplyFlow from "../components/ApplyFlow";
 import BadButton from "../components/BadButton";
 
+import { ispayin4 } from '../lib/utils';
+
 import "../styles/index.scss";
 
 const initialState = {
@@ -28,13 +30,23 @@ function DevPage() {
   const [fico, setFico] = useState();
   const [redirect, setRedirect] = useState(true);
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [applyFlow, setApplyFlow] = useState("Modal Apply Now");
+  const [applyFlow, setApplyFlow] = useState("Pay in 4 Apply Now");
 
   let handleFlow = (value) => {
     setApplyFlow(value)
   };
 
   const applyFlows = [{
+    label: 'Pay in 4 Apply Now',
+    dom: <Display
+      {...state}
+      conditions={{ apply: true, pi4: true }}
+      config={{
+        extra: "new",
+        type: "pdp",
+      }}
+    />
+  },{
     label: 'Modal Apply Now',
     dom: <Display
       {...state}
@@ -180,7 +192,7 @@ function DevPage() {
               
               <Display
                 {...state}
-                conditions={{ fico: fico, pi4: true }}
+                conditions={{ fico: fico, pi4: ispayin4() }}
                 redirect={redirect}
               />
             </div>

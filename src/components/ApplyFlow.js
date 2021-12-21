@@ -14,6 +14,7 @@ export default function ApplyFlow({ applyFlow, handleFlow }) {
           value={applyFlow}
           onChange={e => handleFlow(e.target.value)}
         >
+          <option>Pay in 4 Apply Now</option>
           <option>Modal Apply Now</option>
           <option>Modal Prequal Flow</option>
           <option>Modal Preqaul Flow for Cart Page</option>

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { cartContext } from "../Context";
 
+import { actions } from "../reducers/cart";
 import Product from "../models/product";
 
 function buildProductList(cart) {
@@ -23,6 +24,22 @@ export default function useCart() {
   const taxes = subTotal * 0.08;
   const total = subTotal + taxes;
 
+  const addProductToCart = (product) => {
+    return cartDispatch({
+      type: actions.addItem,
+      slug: product.slug,
+      category: product.category,
+    });
+  };
+
+  const removeProductFromCart = (product) => {
+    return cartDispatch({
+      type: actions.removeItem,
+      slug: product.slug,
+      category: product.category,
+    });
+  };
+
   return {
     cart,
     cartDispatch,
@@ -30,5 +47,7 @@ export default function useCart() {
     subTotal,
     taxes,
     total,
+    addProductToCart,
+    removeProductFromCart,
   };
 }
