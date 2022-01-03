@@ -3006,7 +3006,7 @@ cosmiconfig@^7.0.0, cosmiconfig@^7.0.1:
     yaml "^1.10.0"
 
 "creditkey-js@file:../creditkey-js":
-  version "1.0.96"
+  version "1.0.97"
   dependencies:
     bulma "^0.9.1"
     lodash.assign "^4.2.0"
