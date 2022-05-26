@@ -129,6 +129,10 @@ function DevPage() {
     });
   }
 
+  const directApplyNow = () => {
+    ck.apply(process.env.REACT_APP_PI4_PUBLIC_KEY, 'modal', 'development');
+  }
+
   return (
     <>
       <div className="App">
@@ -200,6 +204,8 @@ function DevPage() {
               className="column"
               style={{ marginLeft: "25px" }}>
                 {renderDisplay()}
+
+              <button className="button" onClick={directApplyNow}>Pay in 4 Apply Now</button>
             </div>
           </div>
         </div>
