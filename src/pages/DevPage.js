@@ -17,6 +17,8 @@ import BadButton from "../components/BadButton";
 
 import { ispayin4 } from '../lib/utils';
 
+import ckSDK from '@credit-key/creditkey-js-sdk';
+
 import "../styles/index.scss";
 
 const initialState = {
@@ -129,6 +131,8 @@ function DevPage() {
     });
   }
 
+  const creditkeySDK = ckSDK('test', 'development');
+
   return (
     <>
       <div className="App">
@@ -140,6 +144,9 @@ function DevPage() {
           />{" "}
         CK React Test App
         </h1>
+
+        <div
+          dangerouslySetInnerHTML={{ __html: creditkeySDK.promoDisplay(100) }} />
 
         <hr />
         <div className="container">
