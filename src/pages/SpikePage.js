@@ -1,8 +1,9 @@
 import React from 'react';
-import ckSDK from '@credit-key/creditkey-js-sdk';
+//import ckSDK from '@credit-key/creditkey-js-sdk';
 
 export default function SpikePage() {
-  const creditkeySDK = ckSDK('test_fb43784hf234foh', 'development');
+  console.log(global.ck);
+  //const creditkeySDK = ckSDK('test_fb43784hf234foh', 'development');
 
   /*const beginCreditKeyCheckout = () => {*/
     //return theirPrivateAPI.beginCheckoutWithCreditKey()
@@ -12,10 +13,10 @@ export default function SpikePage() {
 
   return (
     <>
-      <div
+      {/*<div
         dangerouslySetInnerHTML={{ __html: creditkeySDK.promoDisplay(100) }} />
 
-      <button className="button" onClick={() => creditkeySDK.apply('redirect')}>Launch Apply Flow</button>
+      <button className="button" onClick={() => creditkeySDK.apply('redirect')}>Launch Apply Flow</button>*/}
     </>
   );
 }
