@@ -1,4 +1,5 @@
 import ck from "creditkey-js";
+import { faker } from '@faker-js/faker';
 import { client, pi4Client, addEmailTestingConditions } from "./utils";
 
 export default function LoadCheckout(conditions = {}, state, charges) {
@@ -33,13 +34,39 @@ export default function LoadCheckout(conditions = {}, state, charges) {
     state.phone
   )
 
+  const mismatchedAddress1 = new ck.Address(
+    'Test',
+    'User',
+    'Test Company',
+    state.email_override !== "" ? state.email_override : email,
+    faker.address.streetAddress(true),
+    faker.address.secondaryAddress(),
+    faker.address.city(),
+    faker.address.stateAbbr(),
+    faker.address.zipCode(),
+    state.phone
+  );
+
+  const mismatchedAddress2 = new ck.Address(
+    'Test',
+    'User',
+    'Test Company',
+    state.email_override !== "" ? state.email_override : email,
+    faker.address.streetAddress(true),
+    faker.address.secondaryAddress(),
+    faker.address.city(),
+    faker.address.stateAbbr(),
+    faker.address.zipCode(),
+    state.phone
+  );
+
   state.address ? address = state.address : address = defaultAddressData;
 
   sdkClient
     .begin_checkout(
       state.cart,
-      address,
-      address,
+      conditions.address_mismatch ? mismatchedAddress1 : address,
+      conditions.address_mismatch ? mismatchedAddress2 : address,
       charges,
       remoteId,
       customerId,

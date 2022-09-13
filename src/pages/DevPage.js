@@ -269,9 +269,9 @@ function DevPage() {
             <BadButton
               {...state}
               redirect={redirect}
-              config={{ middesk: 'fail', lexis: 'bvi' }}
+              config={{ address_mismatch: true }}
               icon={faSadTear}
-              label="Checkout with Middesk Failure"
+              label="Checkout with Address Mismatch"
             />
           </div>
 
