@@ -1,5 +1,6 @@
 import React, { useReducer, useState } from "react";
-import ck from "creditkey-js";
+import ckSDK from '@credit-key/creditkey-js-sdk';
+
 import {
   faSadTear,
   faSkullCrossbones,
@@ -17,12 +18,15 @@ import BadButton from "../components/BadButton";
 
 import { ispayin4 } from '../lib/utils';
 
-import ckSDK from '@credit-key/creditkey-js-sdk';
-
 import "../styles/index.scss";
 
+const sdk = ckSDK(process.env.REACT_APP_PUBLIC_KEY, process.env.REACT_APP_ENV);
+
 const initialState = {
-  cart: [new ck.CartItem("1", "Test Product", 1000, "1-TP", 1)],
+  cart: [
+    new sdk.helper.cart_item({ price: '1000.00' }), 
+    new sdk.helper.cart_item({ price: '200.00' })
+  ],
   email_override: "",
   phone: makePhoneNumber(),
   username: process.env.REACT_APP_USERNAME,
@@ -131,8 +135,6 @@ function DevPage() {
     });
   }
 
-  const creditkeySDK = ckSDK('test', 'development');
-
   return (
     <>
       <div className="App">
@@ -144,9 +146,6 @@ function DevPage() {
           />{" "}
         CK React Test App
         </h1>
-
-        <div
-          dangerouslySetInnerHTML={{ __html: creditkeySDK.promoDisplay(100) }} />
 
         <hr />
         <div className="container">
@@ -169,7 +168,7 @@ function DevPage() {
               <Email dispatch={dispatch} email={state.email_override} />
             </div>
             <div className="column">
-              <Pricing cart={state.cart} dispatch={dispatch} />
+              {/*<Pricing cart={state.cart} dispatch={dispatch} />*/}
             </div>
             <div className="column">
               <ApplyFlow applyFlow={applyFlow} setApplyFlow={setApplyFlow} handleFlow={handleFlow} />

@@ -1,10 +1,13 @@
 import ck from 'creditkey-js';
+import ckSDK from '@credit-key/creditkey-js-sdk';
 
 function setupCkClient() {
+  //return ckSDK(process.env.REACT_APP_PUBLIC_KEY, process.env.REACT_APP_ENV);
   return new ck.Client(process.env.REACT_APP_PUBLIC_KEY, process.env.REACT_APP_ENV);
 }
 
 function setupPi4Client() {
+  //return ckSDK(process.env.REACT_APP_PI4_PUBLIC_KEY, process.env.REACT_APP_ENV);
   return new ck.Client(process.env.REACT_APP_PI4_PUBLIC_KEY, process.env.REACT_APP_ENV);
 }
 

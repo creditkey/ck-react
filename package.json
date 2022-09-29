@@ -2,6 +2,9 @@
   "name": "ck-es-test",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "../creditkey-js-sdk"
+  ],
   "dependencies": {
     "@babel/core": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
