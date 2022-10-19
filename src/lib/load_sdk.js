@@ -1,13 +1,18 @@
 import ckSDK from '@credit-key/creditkey-js-sdk';
 import { addEmailTestingConditions } from './utils';
 
-const sdk = ckSDK(process.env.REACT_APP_PUBLIC_KEY, process.env.REACT_APP_ENV);
+function setup(env, pi4) {
+  const key = pi4 ? process.env.REACT_APP_PI4_PUBLIC_KEY : process.env.REACT_APP_PUBLIC_KEY;
+  return ckSDK(key, env);
+}
 
-function renderCheckout() {
+function renderCheckout(sdk) {
+  if (!sdk) sdk = setup(process.env.REACT_APP_ENV);
   return sdk.display.checkout();
 }
 
-function renderApply() {
+function renderApply(sdk) {
+  if (!sdk) sdk = setup(process.env.REACT_APP_ENV);
   return sdk.display.apply();
 }
 
@@ -21,6 +26,8 @@ function launchCheckout(props /*conditions = {}, state, charges*/) {
   const conditions = props.conditions;
   const username = props.username;
   const redirect = props.redirect;
+
+  const sdk = setup(process.env.REACT_APP_ENV, props.conditions.pi4);
 
   let address;
 
@@ -63,7 +70,7 @@ function launchCheckout(props /*conditions = {}, state, charges*/) {
     .catch(err => console.log(err));
 }
 
-function launchApply(redirect) {
+function launchApply(sdk, redirect) {
   return sdk
     .async
     .apply(redirect ? 'redirect' : 'modal');
@@ -72,6 +79,7 @@ function launchApply(redirect) {
 export {
   launchApply,
   launchCheckout,
+  setup,
   renderApply,
   renderCheckout
 }
