@@ -1,18 +1,27 @@
 import ckSDK from '@credit-key/creditkey-js-sdk';
 import { addEmailTestingConditions } from './utils';
 
+const defaultSDK = setup(process.env.REACT_APP_ENV);
+
 function setup(env, pi4) {
   const key = pi4 ? process.env.REACT_APP_PI4_PUBLIC_KEY : process.env.REACT_APP_PUBLIC_KEY;
   return ckSDK(key, env);
 }
 
+function launchApply(sdk, redirect) {
+  if (!sdk) sdk = defaultSDK;
+  return sdk
+    .async
+    .apply(redirect ? 'redirect' : 'modal');
+}
+
 function renderCheckout(sdk) {
-  if (!sdk) sdk = setup(process.env.REACT_APP_ENV);
+  if (!sdk) sdk = defaultSDK;
   return sdk.display.checkout();
 }
 
-function renderApply(sdk) {
-  if (!sdk) sdk = setup(process.env.REACT_APP_ENV);
+function renderApply(pi4) {
+  const sdk = setup(process.env.REACT_APP_ENV, pi4);
   return sdk.display.apply();
 }
 
@@ -68,12 +77,6 @@ function launchCheckout(props /*conditions = {}, state, charges*/) {
     )
     .then(res => sdk.action.checkout(res.data.checkout_url, props.redirect ? 'redirect' : 'modal'))
     .catch(err => console.log(err));
-}
-
-function launchApply(sdk, redirect) {
-  return sdk
-    .async
-    .apply(redirect ? 'redirect' : 'modal');
 }
 
 export {

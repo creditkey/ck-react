@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { 
   launchApply, 
+  renderApply,
   launchCheckout,
   renderCheckout
 } from '../lib/load_sdk';
@@ -11,9 +12,16 @@ export default function Display(props) {
 
   //const sdkClient = props.conditions.pi4 ? pi4Client : client;
   //const charges = calcCharges(props.cart)
+  
+  const pi4Apply = () => props.conditions.apply && props.conditions.pi4;
 
   const onClick = () => {
     if (props.conditions.vip) window.location.href = process.env.REACT_APP_VIP_UI;
+
+    if (pi4Apply()) {
+      return launchApply();
+    }
+
     //if (props.conditions.apply && config.extra === 'none') return false; // ??
 
     /*if (props.conditions.apply && config.extra === 'static' && config.cart) return sdkClient.enhanced_pdp_modal(charges, 'cart');*/
@@ -22,6 +30,15 @@ export default function Display(props) {
     //if (props.conditions.apply && config.extra === 'static') return launchApply(props.cart, config.cart);
     return launchCheckout(props);
   }
+
+  useEffect(() => {
+    if (pi4Apply()) {
+      setDisplay(renderApply(props.conditions.pi4));
+    }  else {
+      setDisplay(renderCheckout());
+    }
+
+  }, [props]);
 
   /*useEffect(() => {*/
     /*switch(config.extra) {*/
@@ -42,6 +59,6 @@ export default function Display(props) {
       className="is-size-6 checkout"
       style={{ cursor: 'pointer' }}
       onClick={onClick}
-      dangerouslySetInnerHTML={{ __html: renderCheckout() }} />
+      dangerouslySetInnerHTML={{ __html: display }} />
   );
 }
