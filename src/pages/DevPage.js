@@ -30,81 +30,50 @@ const initialState = {
   email_override: "",
   phone: makePhoneNumber(),
   username: process.env.REACT_APP_USERNAME,
+  redirect: true
 };
 
 function DevPage() {
   const [fico, setFico] = useState();
-  const [redirect, setRedirect] = useState(true);
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [applyFlow, setApplyFlow] = useState("Pay in 4 Apply Now");
+  const [applyFlow, setApplyFlow] = useState("Redirect Apply Now");
 
   let handleFlow = (value) => {
     setApplyFlow(value)
   };
 
   const applyFlows = [{
+    label: 'Redirect Apply Now',
+    dom: <Display
+      {...state}
+      conditions={{ 
+        apply: true
+      }}
+    />
+  }, {
     label: 'Pay in 4 Apply Now',
     dom: <Display
       {...state}
-      conditions={{ apply: true, pi4: true }}
-      config={{
-        extra: "new",
-        type: "pdp",
+      conditions={{ 
+        apply: true, 
+        pi4: true 
       }}
     />
-  },{
+  }, {
     label: 'Modal Apply Now',
     dom: <Display
       {...state}
-      conditions={{ apply: true, pi4: true }}
-      config={{
-        extra: "apply",
-        type: "pdp",
-      }}
-    />
-  }, {
-    label: 'Modal Prequal Flow',
-    dom: <Display
-      {...state}
-      conditions={{ apply: true, pi4: true }}
-      config={{
-        type: "pdp",
-        display: "button",
-        size: "medium",
-        extra: "static"
-      }}
-    />
-  }, {
-    label: 'Modal Prequal Flow for Cart Page',
-    dom: <Display
-      {...state}
-      conditions={{ apply: true, pi4: true }}
-      config={{
-        type: "pdp",
-        display: "button",
-        size: "medium",
-        extra: "static",
-        cart: true
-      }}
-    />
-  }, {
-    label: 'New PDP',
-    dom: <Display
-      {...state}
-      conditions={{ apply: true, pi4: true }}
-      config={{
-        type: "pdp",
-        extra: "new"
+      conditions={{ 
+        apply: true 
       }}
     />
   }, {
     label: 'Cart Page PDP',
     dom: <Display
       {...state}
-      conditions={{ apply: true, pi4: true }}
-      config={{
-        type: "cart-promo",
-        extra: "cart"
+      conditions={{ 
+        apply: true, 
+        template: 'standard_cart' 
       }}
     />
   }, {
@@ -155,9 +124,9 @@ function DevPage() {
               <input
                 type="checkbox"
                 id="use_redirect"
-                onChange={() => setRedirect(!redirect)}
-                checked={redirect}
-                value={redirect}
+                onChange={() => dispatch({ type: 'UPDATE_REDIRECT', redirect: !state.redirect })}
+                checked={state.redirect}
+                value={state.redirect}
               />
               <label htmlFor="use_redirect">Use Redirect</label>
             </div>
@@ -199,7 +168,6 @@ function DevPage() {
               <Display
                 {...state}
                 conditions={{ fico: fico, pi4: ispayin4() }}
-                redirect={redirect}
               />
             </div>
             <div 
@@ -218,63 +186,54 @@ function DevPage() {
             </p>
             <BadButton
               {...state}
-              redirect={redirect}
               config={{ fico: 500 }}
               icon={faSkullCrossbones}
               label="Checkout with low FICO"
             />
             <BadButton
               {...state}
-              redirect={redirect}
               config={{ equifax: "trades_and_collections" }}
               icon={faSkullCrossbones}
               label="Checkout with Collections and too few trades"
             />
             <BadButton
               {...state}
-              redirect={redirect}
               config={{ equifax: "collections" }}
               icon={faSkullCrossbones}
               label="Checkout with Active Collections"
             />
             <BadButton
               {...state}
-              redirect={redirect}
               config={{ fico: 500, equifax: "trades_and_collections" }}
               icon={faSkullCrossbones}
               label="Checkout with Collections and too few trades and Low FICO"
             />
             <BadButton
               {...state}
-              redirect={redirect}
               config={{ equifax: "revolving" }}
               icon={faSkullCrossbones}
               label="Checkout with Low Revolving Credit"
             />
             <BadButton
               {...state}
-              redirect={redirect}
               config={{ lexis: "bvi" }}
               icon={faPencilAlt}
               label="Checkout as Pending"
             />
             <BadButton
               {...state}
-              redirect={redirect}
               config={{ equifax: "frozen" }}
               icon={faIcicles}
               label="Checkout with Frozen Credit Report"
             />
             <BadButton
               {...state}
-              redirect={redirect}
               config={{ equifax: "fraud" }}
               icon={faSadTear}
               label="Checkout with Fraud Alert"
             />
             <BadButton
               {...state}
-              redirect={redirect}
               config={{ middesk: 'fail', lexis: 'bvi' }}
               icon={faSadTear}
               label="Checkout with Middesk Failure"

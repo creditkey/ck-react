@@ -17,6 +17,9 @@ export default function AdminReducer(state, action) {
     case 'UPDATE_USERNAME':
       return setState(state, { username: action.username });
 
+    case 'UPDATE_REDIRECT':
+      return setState(state, { redirect: action.redirect });
+
     default:
       return state;
   }

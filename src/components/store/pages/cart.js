@@ -99,8 +99,11 @@ export default () => {
                   },
                 },
               ]}
-              config={{ type: "cart-promo", extra: "cart" }}
-              conditions={{ apply: true, pi4: ispayin4() }}
+              conditions={{ 
+                apply: true, 
+                template: 'standard_cart', 
+                pi4: ispayin4() 
+              }}
               redirect={true}
             />
           </div>

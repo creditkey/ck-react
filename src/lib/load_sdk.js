@@ -8,21 +8,20 @@ function setup(env, pi4) {
   return ckSDK(key, env);
 }
 
-function launchApply(sdk, redirect) {
-  if (!sdk) sdk = defaultSDK;
-  return sdk
-    .async
-    .apply(redirect ? 'redirect' : 'modal');
-}
-
 function renderCheckout(sdk) {
   if (!sdk) sdk = defaultSDK;
   return sdk.display.checkout();
 }
 
-function renderApply(pi4) {
+function renderApply(amount = 0, redirect = true, template = 'pdp', pi4) {
   const sdk = setup(process.env.REACT_APP_ENV, pi4);
-  return sdk.display.apply();
+  return sdk.display.apply(amount, redirect, template);
+}
+
+function chargesFromCart(cart, pi4) {
+  const sdk = setup(process.env.REACT_APP_ENV, pi4);
+  const amount = new sdk.helper.charges(cart);
+  return amount;
 }
 
 function launchCheckout(props /*conditions = {}, state, charges*/) {
@@ -80,7 +79,7 @@ function launchCheckout(props /*conditions = {}, state, charges*/) {
 }
 
 export {
-  launchApply,
+  chargesFromCart,
   launchCheckout,
   setup,
   renderApply,
