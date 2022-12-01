@@ -1,22 +1,22 @@
-import ck from 'creditkey-js';
+//import ck from 'creditkey-js';
 import ckSDK from '@credit-key/creditkey-js-sdk';
 
 function setupCkClient() {
   //return ckSDK(process.env.REACT_APP_PUBLIC_KEY, process.env.REACT_APP_ENV);
-  return new ck.Client(process.env.REACT_APP_PUBLIC_KEY, process.env.REACT_APP_ENV);
+  //return new ck.Client(process.env.REACT_APP_PUBLIC_KEY, process.env.REACT_APP_ENV);
 }
 
 function setupPi4Client() {
   //return ckSDK(process.env.REACT_APP_PI4_PUBLIC_KEY, process.env.REACT_APP_ENV);
-  return new ck.Client(process.env.REACT_APP_PI4_PUBLIC_KEY, process.env.REACT_APP_ENV);
+  //return new ck.Client(process.env.REACT_APP_PI4_PUBLIC_KEY, process.env.REACT_APP_ENV);
 }
 
 export const ispayin4 = () => {
   return window.location && window.location.hostname.indexOf('payin4') >= 0;
 }
 
-export const client = setupCkClient();
-export const pi4Client = setupPi4Client();
+/*export const client = setupCkClient();*/
+/*export const pi4Client = setupPi4Client();*/
 
 export const makePhoneNumber = () => {
   let segment = (min, max) => (min + Math.random() * (max - min)).toFixed();
@@ -38,12 +38,12 @@ export const addEmailTestingConditions = (username, domain, conditions) => {
 }
 
 export const calcCharges = cart => {
-  let charges =  new ck.Charges(0, 100, 5.50, 0, 105.50);
+  /*let charges =  new ck.Charges(0, 100, 5.50, 0, 105.50);*/
 
-  cart.forEach(c => {
-    charges.data.total += c.data.price;
-    charges.data.grand_total += c.data.price;
-  });
+  //cart.forEach(c => {
+    //charges.data.total += c.data.price;
+    //charges.data.grand_total += c.data.price;
+  /*});*/
 
-  return charges;
+  //return charges;
 }

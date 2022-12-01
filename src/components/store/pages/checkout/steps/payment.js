@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ck from "creditkey-js";
+//import ck from "creditkey-js";
 // import CkPaymentOption from "../../../CkPaymentOption";
 import CheckoutWithCreditKey from "../../../CheckoutWithCreditKey";
 import { makePhoneNumber } from "../../../../../lib/utils";
@@ -10,29 +10,32 @@ import useCart from "../../../../../hooks/cart";
 export default function PaymentStep({ address, setStep }) {
   const { cartProducts, subTotal, total, taxes } = useCart();
   const [method, setMethod] = useState("creditkey");
-  const ckAddress = new ck.Address(
-    address.first_name,
-    address.last_name,
-    "Lancaster Supplies",
-    address.email,
-    address.street,
-    address.suite,
-    address.city,
-    address.state,
-    address.zip,
-    makePhoneNumber()
-  );
-  const ckCartItems = cartProducts.map(
-    (item) =>
-      new ck.CartItem(
-        item.id,
-        item.name,
-        item.formattedPrice(),
-        item.sku,
-        item.slug
-      )
-  );
-  const ckCharges = new ck.Charges(subTotal, 0, taxes, 0, total);
+  /*const ckAddress = new ck.Address(*/
+    //address.first_name,
+    //address.last_name,
+    //"Lancaster Supplies",
+    //address.email,
+    //address.street,
+    //address.suite,
+    //address.city,
+    //address.state,
+    //address.zip,
+    //makePhoneNumber()
+  /*);*/
+  /*const ckCartItems = cartProducts.map(*/
+    //(item) =>
+      //new ck.CartItem(
+        //item.id,
+        //item.name,
+        //item.formattedPrice(),
+        //item.sku,
+        //item.slug
+      //)
+  /*);*/
+  //const ckCharges = new ck.Charges(subTotal, 0, taxes, 0, total);
+  const ckAddress = {};
+  const ckCartItems = [];
+  const ckCharges = {};
 
   return (
     <div className="section--contact-information">
