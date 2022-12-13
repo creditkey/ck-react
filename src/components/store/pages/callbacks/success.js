@@ -15,7 +15,7 @@ export default () => {
     // complete order with backend
     if (creditKeyId) {
       setLoading(true);
-      request(`${ process.env.REACT_APP_BACKEND_URL }${ creditKeyId }`, {})
+      request(`${ process.env.REACT_APP_BACKEND_URL }/process_order/success?id=${ creditKeyId }`, { method: 'GET' })
         .then((res) => {
           if (res) {
             setCheckoutStatus({ status: 200, ...res });
