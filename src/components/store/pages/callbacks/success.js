@@ -1,19 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Page from "../../page";
+import request from "../../../../lib/request";
 
 export default () => {
   const query = new URLSearchParams(useLocation().search);
   const creditKeyId = query.get("id");
+  const [loading, setLoading] = useState(false);
   const [checkoutStatus, setCheckoutStatus] = useState(undefined);
 
   useEffect(() => {
     // complete order with backend
-    fetch(`https://c2rxvcaph7.execute-api.us-west-2.amazonaws.com/staging/demo-success?ckkey=${creditKeyId}`)
-      .then((res) => res.json())
-      .then((json) => {
-        setCheckoutStatus(json);
-      });
+    if (creditKeyId) {
+      setLoading(true);
+      request(`${ process.env.REACT_APP_BACKEND_URL }/process_order/success?id=${ creditKeyId }`, { method: 'GET' })
+        .then((res) => {
+          if (res) {
+            setCheckoutStatus({ status: 200, ...res });
+            setLoading(false);
+          }
+        })
+        .catch(err => {
+          setCheckoutStatus(err);
+          setLoading(false);
+        })
+    }
   }, [creditKeyId]);
 
   return (
