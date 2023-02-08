@@ -11,7 +11,6 @@ import { makePhoneNumber } from "../lib/utils";
 import reducer from "../reducers/admin";
 import Username from "../components/Username";
 import Email from "../components/Email";
-import Pricing from "../components/Pricing";
 import Display from "../components/Display";
 import ApplyFlow from "../components/ApplyFlow";
 import BadButton from "../components/BadButton";
@@ -24,7 +23,7 @@ const sdk = ckSDK(process.env.REACT_APP_PUBLIC_KEY, process.env.REACT_APP_ENV);
 
 const initialState = {
   cart: [
-    new sdk.helper.cart_item({ price: '1000.00' }), 
+    new sdk.helper.cart_item({ price: '1000.00' }),
     new sdk.helper.cart_item({ price: '200.00' })
   ],
   email_override: "",
@@ -46,7 +45,7 @@ function DevPage() {
     label: 'Redirect Apply Now',
     dom: <Display
       {...state}
-      conditions={{ 
+      conditions={{
         apply: true
       }}
     />
@@ -54,26 +53,27 @@ function DevPage() {
     label: 'Pay in 4 Apply Now',
     dom: <Display
       {...state}
-      conditions={{ 
-        apply: true, 
-        pi4: true 
+      conditions={{
+        apply: true,
+        pi4: true
       }}
     />
   }, {
     label: 'Modal Apply Now',
     dom: <Display
       {...state}
-      conditions={{ 
-        apply: true 
+      conditions={{
+        apply: true,
+        redirect: false
       }}
     />
   }, {
     label: 'Cart Page PDP',
     dom: <Display
       {...state}
-      conditions={{ 
-        apply: true, 
-        template: 'standard_cart' 
+      conditions={{
+        apply: true,
+        template: 'standard_cart'
       }}
     />
   }, {
@@ -164,13 +164,13 @@ function DevPage() {
                   </li>
                 </ul>
               </div>
-              
+
               <Display
                 {...state}
                 conditions={{ fico: fico, pi4: ispayin4() }}
               />
             </div>
-            <div 
+            <div
               className="column"
               style={{ marginLeft: "25px" }}>
                 {renderDisplay()}

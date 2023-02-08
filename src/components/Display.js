@@ -16,9 +16,9 @@ export default function Display(props) {
     if (isApply()) {
       setDisplay(
         renderApply(
-          chargesFromCart(props.cart).grand_total, 
-          props.redirect,
-          props.conditions.template, 
+          chargesFromCart(props.cart).grand_total,
+          props.conditions.redirect,
+          props.conditions.template,
           props.conditions.pi4
         )
       );

@@ -15,7 +15,7 @@ function renderCheckout(sdk) {
 
 function renderApply(amount = 0, redirect = true, template = 'pdp', pi4) {
   const sdk = setup(process.env.REACT_APP_ENV, pi4);
-  return sdk.display.apply(amount, redirect, template);
+  return sdk.display.apply(amount, redirect ? 'redirect' : 'modal', template);
 }
 
 function chargesFromCart(cart, pi4) {
