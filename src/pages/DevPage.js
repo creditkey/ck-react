@@ -50,7 +50,7 @@ function DevPage() {
     label: 'Modal Apply Now',
     dom: <Display
       {...state}
-      conditions={{ apply: true, pi4: true }}
+      conditions={{ apply: true, pi4: false }}
       config={{
         extra: "apply",
         type: "pdp",
