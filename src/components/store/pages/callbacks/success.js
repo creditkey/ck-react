@@ -9,7 +9,7 @@ export default () => {
 
   useEffect(() => {
     // complete order with backend
-    fetch(`https://c2rxvcaph7.execute-api.us-west-2.amazonaws.com/staging/demo-success?ckkey=${creditKeyId}`)
+    fetch(`https://store-backend.preview.creditkey.com/process_order/success?id=${creditKeyId}`)
       .then((res) => res.json())
       .then((json) => {
         setCheckoutStatus(json);
