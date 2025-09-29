@@ -31,7 +31,7 @@ export default function Display(props) {
       case "cart":
         return setDisplay(sdkClient.get_cart_display(charges, props.desktop, props.mobile));
       case "apply":
-        return setDisplay(sdkClient.get_apply_now('modal'));
+        return setDisplay(sdkClient.get_apply_now('modal', charges));
       default:
         sdkClient.get_marketing_display(charges, config.type, config.display, config.size, config.extra)
           .then((res) => setDisplay(res));
