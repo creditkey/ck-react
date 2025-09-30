@@ -17,7 +17,7 @@ export default function ApplyFlow({ applyFlow, handleFlow }) {
           <option>Pay in 4 Apply Now</option>
           <option>Modal Apply Now</option>
           <option>Modal Prequal Flow</option>
-          <option>Modal Preqaul Flow for Cart Page</option>
+          <option>Modal Prequal Flow for Cart Page</option>
           <option>New PDP</option>
           <option>Cart Page PDP</option>
           <option>VIP Apply Now</option>
