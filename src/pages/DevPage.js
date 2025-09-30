@@ -60,7 +60,7 @@ function DevPage() {
     label: 'Modal Prequal Flow',
     dom: <Display
       {...state}
-      conditions={{ apply: true, pi4: true }}
+      conditions={{ apply: true, pi4: false }}
       config={{
         type: "pdp",
         display: "button",
@@ -72,7 +72,7 @@ function DevPage() {
     label: 'Modal Prequal Flow for Cart Page',
     dom: <Display
       {...state}
-      conditions={{ apply: true, pi4: true }}
+      conditions={{ apply: true, pi4: false }}
       config={{
         type: "pdp",
         display: "button",
@@ -85,7 +85,7 @@ function DevPage() {
     label: 'New PDP',
     dom: <Display
       {...state}
-      conditions={{ apply: true, pi4: true }}
+      conditions={{ apply: true, pi4: false }}
       config={{
         type: "pdp",
         extra: "new"
@@ -95,7 +95,7 @@ function DevPage() {
     label: 'Cart Page PDP',
     dom: <Display
       {...state}
-      conditions={{ apply: true, pi4: true }}
+      conditions={{ apply: true, pi4: false }}
       config={{
         type: "cart-promo",
         extra: "cart"
