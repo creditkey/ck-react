@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ck from "creditkey-js";
+import ck from "@credit-key/creditkey-js";
 import { client } from "../../lib/utils";
 import useCart from "../../hooks/cart";
 

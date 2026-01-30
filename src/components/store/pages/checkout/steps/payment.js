@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ck from "creditkey-js";
+import ck from "@credit-key/creditkey-js";
 // import CkPaymentOption from "../../../CkPaymentOption";
 import CheckoutWithCreditKey from "../../../CheckoutWithCreditKey";
 import { makePhoneNumber } from "../../../../../lib/utils";

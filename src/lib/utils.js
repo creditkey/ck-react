@@ -1,4 +1,4 @@
-import ck from 'creditkey-js';
+import ck from '@credit-key/creditkey-js';
 
 function setupCkClient() {
   return new ck.Client(process.env.REACT_APP_PUBLIC_KEY, process.env.REACT_APP_ENV);
