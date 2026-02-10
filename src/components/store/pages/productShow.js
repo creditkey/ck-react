@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect, useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import ck from "creditkey-js";
 import { ispayin4 } from "../../../lib/utils";
 
@@ -89,6 +89,6 @@ export default () => {
       </Page>
     );
   } else {
-    return <Redirect to="/store" />;
+    return <Navigate to="/store" replace />;
   }
 };

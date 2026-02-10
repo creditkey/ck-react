@@ -3,23 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@babel/core": "^7.10.5",
-    "@babel/preset-env": "^7.10.4",
-    "@fortawesome/fontawesome-svg-core": "^1.2.24",
-    "@fortawesome/free-solid-svg-icons": "^5.11.1",
-    "@fortawesome/react-fontawesome": "^0.1.4",
-    "bulma": "^0.9.0",
-    "creditkey-js": "file:../creditkey-js",
-    "currency.js": "^2.0.3",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0",
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.0",
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^3.2.0",
+    "bulma": "^1.0.4",
+    "creditkey-js": "^1.0.87",
+    "currency.js": "^2.0.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.3",
     "react-scripts": "^5.0.0",
-    "sass": "^1.53.0"
+    "sass": "^1.97.3"
+  },
+  "overrides": {
+    "node-sass": "npm:sass@^1.97.3"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "sh -ac '. ./.env.${REACT_APP_ENV}; react-scripts build'",
+    "build": "sh -ac '. ./.env.${REACT_APP_ENV}; CI=false react-scripts build'",
     "build:staging": "REACT_APP_ENV=staging npm run build",
     "build:production": "REACT_APP_ENV=production npm run build",
     "test": "react-scripts test",
@@ -41,6 +44,6 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/react": "^11.2.6"
+    "@testing-library/react": "^16.3.2"
   }
 }

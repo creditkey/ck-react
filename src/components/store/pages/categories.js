@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect, useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 
 import Page from "../page";
 import Grid from "../grid";
@@ -10,7 +10,7 @@ export default () => {
   const { category } = useParams();
   const products = Product.forCategory(category);
 
-  if (!products) return <Redirect to="/store" />;
+  if (!products) return <Navigate to="/store" replace />;
   const items = products.map((product) => <GridProduct product={product} />);
 
   return (
