@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 // Pages
 import HomePage from "../pages/home";
@@ -24,32 +24,15 @@ export default (props) => {
       </section>
       <Header />
       <div className="container">
-        <Switch>
-          <Route exact path="/store/checkout" component={CheckoutPage} />
-          <Route exact path="/store" component={HomePage} />
-          <Route exact path="/store/cart" component={CartPage} />
-          <Route exact path="/store/checkout" component={CheckoutPage} />
-          <Route
-            exact
-            path="/store/:category"
-            component={CategoriesIndexPage}
-          />
-          <Route
-            exact
-            path="/store/products/:category/:slug"
-            component={ProductShowPage}
-          />
-          <Route
-            exact
-            path="/store/credit-key/success"
-            component={CreditKeySuccessPage}
-          />
-          <Route
-            exact
-            path="/store/credit-key/cancelled"
-            component={CreditKeyCancelledPage}
-          />
-        </Switch>
+        <Routes>
+          <Route path="checkout" element={<CheckoutPage />} />
+          <Route path="" element={<HomePage />} />
+          <Route path="cart" element={<CartPage />} />
+          <Route path=":category" element={<CategoriesIndexPage />} />
+          <Route path="products/:category/:slug" element={<ProductShowPage />} />
+          <Route path="credit-key/success" element={<CreditKeySuccessPage />} />
+          <Route path="credit-key/cancelled" element={<CreditKeyCancelledPage />} />
+        </Routes>
         </div>
       <Footer />
     </>
