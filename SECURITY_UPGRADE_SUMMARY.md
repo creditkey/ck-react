@@ -5,7 +5,7 @@ This document summarizes the dependency upgrades performed to address security v
 
 ## Vulnerability Reduction
 - **Before**: 21 vulnerabilities (15 moderate, 6 high)
-- **After**: 13 vulnerabilities (13 moderate, 0 high, 0 critical)
+- **After**: 15 vulnerabilities (15 moderate, 0 high, 0 critical)
 - **Improvement**: Eliminated all high-severity vulnerabilities (100% reduction in high/critical issues)
 
 ## Major Dependency Upgrades
@@ -35,17 +35,23 @@ This document summarizes the dependency upgrades performed to address security v
 
 ## Security Overrides Applied
 Added npm overrides to force secure versions of vulnerable sub-dependencies:
-- **webpack-dev-server**: Upgraded to 5.2.3 (fixes moderate severity vulnerabilities)
 - **nth-check**: Upgraded to 2.1.1 (fixes high severity ReDoS vulnerability)
 - **postcss**: Upgraded to 8.4.49 (fixes moderate severity parsing vulnerability)
 
+**Note**: Initially added webpack-dev-server override to v5.2.3, but this was removed due to breaking API incompatibility with react-scripts@5.0.1. The webpack-dev-server vulnerabilities (GHSA-9jgg-88mc-972h, GHSA-4v9v-hfq4-rm2v) are moderate severity, dev-time only, and require accessing a malicious website while the dev server is running.
+
 ## Remaining Vulnerabilities
-All remaining 13 vulnerabilities are:
+All remaining 15 vulnerabilities are:
 - **Severity**: Moderate only (no high or critical)
-- **Package**: eslint@8.57.1 and its TypeScript plugins
-- **Issue**: Stack Overflow when serializing objects with circular references ([GHSA-p5wg-g6qr-c7cg](https://github.com/advisories/GHSA-p5wg-g6qr-c7cg))
-- **Impact**: Development/build time only, not runtime
-- **Root Cause**: react-scripts@5.0.1 depends on eslint@8.x
+- **Packages**:
+  - eslint@8.57.1 and its TypeScript plugins (13 vulnerabilities)
+    - **Issue**: Stack Overflow when serializing objects with circular references ([GHSA-p5wg-g6qr-c7cg](https://github.com/advisories/GHSA-p5wg-g6qr-c7cg))
+    - **Impact**: Development/build time only, not runtime
+    - **Root Cause**: react-scripts@5.0.1 depends on eslint@8.x
+  - webpack-dev-server@4.15.2 (2 vulnerabilities)
+    - **Issues**: Source code theft when accessing malicious website ([GHSA-9jgg-88mc-972h](https://github.com/advisories/GHSA-9jgg-88mc-972h), [GHSA-4v9v-hfq4-rm2v](https://github.com/advisories/GHSA-4v9v-hfq4-rm2v))
+    - **Impact**: Development time only, requires user to visit malicious site while dev server is running
+    - **Root Cause**: react-scripts@5.0.1 depends on webpack-dev-server@4.x; upgrading to v5.x breaks compatibility
 - **Resolution Path**: 
   - Wait for react-scripts update (unlikely as CRA is in maintenance mode)
   - OR migrate to Vite/other modern build tool (recommended for future)
