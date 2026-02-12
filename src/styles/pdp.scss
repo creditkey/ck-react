@@ -23,12 +23,14 @@
             background: $white;
             box-sizing: border-box;
             border-radius: 3px;
+            color: #363636;
             &:hover {
                 background-color: $black;
                 color: $white;
                 transition: all 0.5s ease;
             }
             strong {
+                color: #363636;
                 text-transform: uppercase;
                 font-family: Lato;
                 font-size: 14px;
