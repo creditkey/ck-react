@@ -15,7 +15,33 @@
     --bulma-scheme-main-bis-l: 98%;
     --bulma-scheme-main-ter-l: 96%;
     --bulma-background-l: 100%;
+    --bulma-input-placeholder-color: rgba(0, 0, 0, 0.3);
   }
+}
+
+// Fix placeholder text color for all inputs
+input::placeholder,
+textarea::placeholder {
+  color: rgba(0, 0, 0, 0.3) !important;
+  opacity: 1;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.3) !important;
+  opacity: 1;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.3) !important;
+  opacity: 1;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.3) !important;
+  opacity: 1;
 }
 
 @import 'store.scss';
