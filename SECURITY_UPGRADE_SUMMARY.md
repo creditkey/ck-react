@@ -31,7 +31,7 @@ This document summarizes the dependency upgrades performed to address security v
 
 ### Other
 - **Currency.js**: 2.0.3 → 2.0.4
-- **creditkey-js**: Replaced local file dependency with npm package @credit-key/creditkey-js@1.3.1
+- **creditkey-js**: Kept as local file dependency `file:../creditkey-js`
 
 ## Security Overrides Applied
 Added npm overrides to force secure versions of vulnerable sub-dependencies:
@@ -78,15 +78,6 @@ Updated routing API across multiple files:
 - `component={Component}` → `element={<Component />}`
 - Removed `exact` prop (default behavior in v6)
 - Updated route paths (removed `/store` prefix in nested routes)
-
-### Package Name Updates
-Updated all imports from `"creditkey-js"` to `"@credit-key/creditkey-js"` in:
-- src/pages/DevPage.js
-- src/components/store/CkPaymentOption.js
-- src/components/store/pages/checkout/steps/payment.js
-- src/components/store/pages/productShow.js
-- src/lib/utils.js
-- src/lib/load_checkout.js
 
 ## Testing
 - ✅ Application builds successfully

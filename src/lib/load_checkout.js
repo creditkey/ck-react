@@ -1,4 +1,4 @@
-import ck from "@credit-key/creditkey-js";
+import ck from "creditkey-js";
 import { client, pi4Client, addEmailTestingConditions } from "./utils";
 
 export default function LoadCheckout(conditions = {}, state, charges) {

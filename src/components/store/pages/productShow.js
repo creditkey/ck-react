@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
-import ck from "@credit-key/creditkey-js";
+import ck from "creditkey-js";
 import { ispayin4 } from "../../../lib/utils";
 
 import Product from "../../../models/product";
