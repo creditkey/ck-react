@@ -1,5 +1,23 @@
-@import '~bulma';
 @import 'variables.scss';
+@import '~bulma';
+
+// Override Bulma's dark mode to force light theme
+// This prevents the automatic dark mode switching based on system preferences
+:root {
+  color-scheme: light !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bulma-scheme-h: 0;
+    --bulma-scheme-s: 0%;
+    --bulma-scheme-main-l: 100%;
+    --bulma-scheme-main-bis-l: 98%;
+    --bulma-scheme-main-ter-l: 96%;
+    --bulma-background-l: 100%;
+  }
+}
+
 @import 'store.scss';
 @import 'header.scss';
 @import 'footer.scss';
