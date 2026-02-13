@@ -41,7 +41,7 @@ export default () => {
                 />
               </p>
               <div className="control">
-                <Link to="/store" className="button is-danger">
+                <Link to="/store" className="button">
                   <SearchIcon />
                 </Link>
               </div>
@@ -50,7 +50,7 @@ export default () => {
 
           <div className="level-right">
             <div className="level-item create-account">
-              <a href="#" className="button is-danger">
+              <a href="#" className="button">
                 CREATE A FREE ACCOUNT
               </a>
             </div>
