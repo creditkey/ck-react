@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository contains a React-based demonstration application for the Credit Key payment platform. It serves as a reference implementation showcasing how to integrate Credit Key's financing and Pay-in-4 payment options into an e-commerce storefront. The application is built with Create React App and demonstrates a modern React architecture using hooks, context API, and functional components.
+This repository contains a React-based demonstration application for the Credit Key payment platform. It serves as a reference implementation showcasing how to integrate Credit Key's financing and Pay-in-4 payment options into an e-commerce storefront. The application is built with Create React App and demonstrates a modern React architecture using hooks, Context API, and functional components.
 
 ## Technology Stack
 
