@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This is a demonstration application for Credit Key payment integration. For detailed information about the project architecture, components, and patterns, see [ARCHITECTURE.md](./ARCHITECTURE.md).
+
 ## Getting Started
 
 ### `yarn install` 
