@@ -6,7 +6,7 @@ This repository contains a React-based demonstration application for Credit Key 
 
 ### Code Style and Conventions
 
-- Use functional components with React hooks (no class components)
+- Prefer functional components with React hooks for all new or updated code. Avoid introducing new class components; there is some existing legacy class-based code (for example, the Customer component) that may be gradually refactored over time.
 - Use Context API with useReducer for state management (this is appropriate for the current scope of this demo application; consider more robust state management libraries like Redux or Zustand for complex production applications with extensive global state needs)
 - Follow existing naming conventions:
   - PascalCase for component files

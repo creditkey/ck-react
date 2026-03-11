@@ -41,10 +41,10 @@ This repository contains a React-based demonstration application for the Credit 
 │   │   │   ├── pages/    # Page-level components
 │   │   │   ├── product/  # Product-related components
 │   │   │   ├── icons/    # Icon components
-│   │   │   └── inputs/   # Form input components
-│   │   ├── ApplyFlow.js  # Credit Key application flow
-│   │   ├── CheckoutWithCreditKey.js  # Checkout integration
-│   │   └── ...
+│   │   │   ├── inputs/   # Form input components
+│   │   │   ├── ApplyFlow.js  # Credit Key application flow
+│   │   │   ├── CheckoutWithCreditKey.js  # Checkout integration
+│   │   │   └── ...
 │   │
 │   ├── pages/            # Page components (routes)
 │   │   └── DevPage.js    # Development/testing page
@@ -204,7 +204,7 @@ Environment variables are managed through `.env` files:
 npm test          # Run test suite
 ```
 
-Tests use React Testing Library for component testing.
+React Testing Library is included for component testing.
 
 ## Code Style & Conventions
 
@@ -227,7 +227,7 @@ Tests use React Testing Library for component testing.
 
 ## Security Considerations
 
-- API keys are environment-specific and not committed to repository
+- Public frontend API keys (e.g., `REACT_APP_PUBLIC_KEY`, `REACT_APP_PI4_PUBLIC_KEY`) are stored in `.env` files and may be committed for this demo, but any secrets/private keys must never be committed and should be provided via secure environment configuration outside version control
 - Customer data is ephemeral (test data only in this demo)
 - HTTPS enforced in production (via CloudFront)
 
