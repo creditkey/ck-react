@@ -4,9 +4,16 @@
 This document summarizes the dependency upgrades performed to address security vulnerabilities in the ck-react repository.
 
 ## Vulnerability Reduction
-- **Before**: 21 vulnerabilities (15 moderate, 6 high)
-- **After**: 11 vulnerabilities (9 low, 2 moderate, 0 high, 0 critical)
+
+### Cumulative (all security work to date)
+- **Original baseline**: 21 vulnerabilities (15 moderate, 6 high) — before any security remediation
+- **Current state**: 11 vulnerabilities (9 low, 2 moderate, 0 high, 0 critical)
 - **Improvement**: Eliminated all high-severity vulnerabilities (100% reduction in high/critical issues)
+
+### This PR (sc-21281)
+- **Before**: 30 vulnerabilities (10 low, 4 moderate, 16 high) — as reported by `npm audit` at start of sc-21281
+- **After**: 11 vulnerabilities (9 low, 2 moderate, 0 high, 0 critical)
+- **Improvement**: Resolved all 16 high-severity vulnerabilities identified in this sprint
 
 ## Major Dependency Upgrades
 
@@ -53,6 +60,8 @@ The following high-severity vulnerabilities identified by Vanta/Dependabot were 
 | rollup | < 2.80.0 (CVE-2026-27606) | 2.80.0 | `npm audit fix` |
 | immutable | 5.0.0–5.1.4 (CVE-2026-29063) | 5.1.5 | `npm audit fix` |
 | svgo | 2.1.0–2.8.0 (CVE-2026-29074) | 2.8.2 | `npm audit fix` |
+| lodash | ≤ 4.17.23 (GHSA-r5fr-rjxr-66jc, GHSA-f23m-r3pf-42rh) | 4.18.1 | `npm audit fix` |
+| path-to-regexp | < 0.1.13 (GHSA-37ch-88jc-xwx2) | 0.1.13 | `npm audit fix` |
 | serialize-javascript | ≤ 7.0.2 (GHSA-5c6j-r48x-rmvq) | 7.0.5 | override in package.json |
 | underscore | ≤ 1.13.7 (CVE-2026-27601) | 1.13.8 | override in package.json |
 

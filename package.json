@@ -40,6 +40,9 @@
       "last 1 safari version"
     ]
   },
+  "engines": {
+    "node": ">=20"
+  },
   "devDependencies": {
     "@testing-library/react": "^16.3.2"
   },
