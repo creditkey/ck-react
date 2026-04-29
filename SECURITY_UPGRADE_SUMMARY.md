@@ -4,9 +4,16 @@
 This document summarizes the dependency upgrades performed to address security vulnerabilities in the ck-react repository.
 
 ## Vulnerability Reduction
-- **Before**: 21 vulnerabilities (15 moderate, 6 high)
-- **After**: 15 vulnerabilities (15 moderate, 0 high, 0 critical)
+
+### Cumulative (all security work to date)
+- **Original baseline**: 21 vulnerabilities (15 moderate, 6 high) — before any security remediation
+- **Current state**: 11 vulnerabilities (9 low, 2 moderate, 0 high, 0 critical)
 - **Improvement**: Eliminated all high-severity vulnerabilities (100% reduction in high/critical issues)
+
+### This PR (sc-21281)
+- **Before**: 30 vulnerabilities (10 low, 4 moderate, 16 high) — as reported by `npm audit` at start of sc-21281
+- **After**: 11 vulnerabilities (9 low, 2 moderate, 0 high, 0 critical)
+- **Improvement**: Resolved all 16 high-severity vulnerabilities identified in this sprint
 
 ## Major Dependency Upgrades
 
@@ -37,18 +44,34 @@ This document summarizes the dependency upgrades performed to address security v
 Added npm overrides to force secure versions of vulnerable sub-dependencies:
 - **nth-check**: Upgraded to 2.1.1 (fixes high severity ReDoS vulnerability)
 - **postcss**: Upgraded to 8.4.49 (fixes moderate severity parsing vulnerability)
+- **serialize-javascript**: Upgraded to 7.0.5 (fixes GHSA-5c6j-r48x-rmvq — RCE via RegExp.flags/Date.toISOString and DoS via crafted array-like objects)
+- **underscore**: Upgraded to 1.13.8 (fixes CVE-2026-27601 — unlimited recursion in _.flatten and _.isEqual)
 
 **Note**: Initially added webpack-dev-server override to v5.2.3, but this was removed due to breaking API incompatibility with react-scripts@5.0.1. The webpack-dev-server vulnerabilities (GHSA-9jgg-88mc-972h, GHSA-4v9v-hfq4-rm2v) are moderate severity, dev-time only, and require accessing a malicious website while the dev server is running.
 
+## Vanta High Vulnerability Remediation (sc-21281)
+The following high-severity vulnerabilities identified by Vanta/Dependabot were remediated:
+
+| Package | Vulnerable Range | Fix Applied | Method |
+|---------|-----------------|-------------|--------|
+| jsonpath | ≤ 1.2.1 (CVE-2026-1615) | 1.3.0 | `npm audit fix` |
+| minimatch | < 3.1.3 (CVE-2026-26996, CVE-2026-27903, CVE-2026-27904) | 3.1.5 | `npm audit fix` |
+| minimatch | 5.0.0–5.1.7 (CVE-2026-26996, CVE-2026-27903, CVE-2026-27904) | 5.1.9 | `npm audit fix` |
+| rollup | < 2.80.0 (CVE-2026-27606) | 2.80.0 | `npm audit fix` |
+| immutable | 5.0.0–5.1.4 (CVE-2026-29063) | 5.1.5 | `npm audit fix` |
+| svgo | 2.1.0–2.8.0 (CVE-2026-29074) | 2.8.2 | `npm audit fix` |
+| lodash | ≤ 4.17.23 (GHSA-r5fr-rjxr-66jc, GHSA-f23m-r3pf-42rh) | 4.18.1 | `npm audit fix` |
+| path-to-regexp | < 0.1.13 (GHSA-37ch-88jc-xwx2) | 0.1.13 | `npm audit fix` |
+| serialize-javascript | ≤ 7.0.2 (GHSA-5c6j-r48x-rmvq) | 7.0.5 | override in package.json |
+| underscore | ≤ 1.13.7 (CVE-2026-27601) | 1.13.8 | override in package.json |
+
 ## Remaining Vulnerabilities
-All remaining 15 vulnerabilities are:
-- **Severity**: Moderate only (no high or critical)
+All remaining 11 vulnerabilities are:
+- **Severity**: Low (9) and Moderate (2) only (no high or critical)
 - **Packages**:
-  - eslint@8.57.1 and its TypeScript plugins (13 vulnerabilities)
-    - **Issue**: Stack Overflow when serializing objects with circular references ([GHSA-p5wg-g6qr-c7cg](https://github.com/advisories/GHSA-p5wg-g6qr-c7cg))
-    - **Impact**: Development/build time only, not runtime
-    - **Root Cause**: react-scripts@5.0.1 depends on eslint@8.x
-  - webpack-dev-server@4.15.2 (2 vulnerabilities)
+  - jest-related packages (9 low vulnerabilities)
+    - **Root Cause**: react-scripts@5.0.1 depends on jest@27.x
+  - webpack-dev-server@4.15.2 (2 moderate vulnerabilities)
     - **Issues**: Source code theft when accessing malicious website ([GHSA-9jgg-88mc-972h](https://github.com/advisories/GHSA-9jgg-88mc-972h), [GHSA-4v9v-hfq4-rm2v](https://github.com/advisories/GHSA-4v9v-hfq4-rm2v))
     - **Impact**: Development time only, requires user to visit malicious site while dev server is running
     - **Root Cause**: react-scripts@5.0.1 depends on webpack-dev-server@4.x; upgrading to v5.x breaks compatibility
