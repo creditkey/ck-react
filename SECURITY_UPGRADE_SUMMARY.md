@@ -7,13 +7,13 @@ This document summarizes the dependency upgrades performed to address security v
 
 ### Cumulative (all security work to date)
 - **Original baseline**: 21 vulnerabilities (15 moderate, 6 high) — before any security remediation
-- **Current state**: 10 vulnerabilities (10 low, 0 moderate, 0 high, 0 critical)
-- **Improvement**: Eliminated all non-low vulnerabilities from the latest Vanta scope
+- **Current state**: 15 vulnerabilities (9 low, 6 moderate, 0 high, 0 critical)
+- **Improvement**: Eliminated all high-severity findings from the latest Vanta scope and reduced the moderate count, while retaining the `react-scripts`-compatible `webpack-dev-server` 4.x line
 
 ### This PR (sc-22722)
 - **Before**: 18 vulnerabilities (9 low, 7 moderate, 2 high) — as reported by `npm audit` at start of sc-22722
-- **After**: 10 vulnerabilities (10 low, 0 moderate, 0 high, 0 critical)
-- **Improvement**: Remediated all issue-listed non-low findings for `@babel/plugin-transform-modules-systemjs`, `fast-uri`, `webpack-dev-server`, `postcss`, and `uuid`
+- **After**: 15 vulnerabilities (9 low, 6 moderate, 0 high, 0 critical)
+- **Improvement**: Remediated the high-severity findings for `@babel/plugin-transform-modules-systemjs` and `fast-uri`, plus the `postcss` and `uuid` findings; `webpack-dev-server` remains on 4.15.2 because 5.2.4 is not compatible with `react-scripts@5.0.1`
 
 ### This PR (sc-21281)
 - **Before**: 30 vulnerabilities (10 low, 4 moderate, 16 high) — as reported by `npm audit` at start of sc-21281
@@ -54,10 +54,10 @@ Added npm overrides to force secure versions of vulnerable sub-dependencies:
 - **serialize-javascript**: Upgraded to 7.0.5 (fixes GHSA-5c6j-r48x-rmvq — RCE via RegExp.flags/Date.toISOString and DoS via crafted array-like objects)
 - **underscore**: Upgraded to 1.13.8 (fixes CVE-2026-27601 — unlimited recursion in _.flatten and _.isEqual)
 - **uuid**: Upgraded to 11.1.1 (fixes CVE-2026-41907)
-- **webpack-dev-server**: Upgraded to 5.2.4 (fixes CVE-2025-30359, CVE-2025-30360, CVE-2026-6402)
+- **webpack-dev-server**: Kept on 4.15.2 because `react-scripts@5.0.1` is incompatible with 5.2.4; forcing 5.2.4 caused `npm start` to fail
 - **ws**: Upgraded to 8.20.1 (removes remaining moderate advisory in transitive tree)
 
-**Note**: The lockfile now resolves webpack-dev-server to v5.2.4 via override to address the Vanta-listed moderate findings.
+**Note**: The lockfile now resolves `webpack-dev-server` to v4.15.2 via a `react-scripts`-scoped override. The Vanta-listed `webpack-dev-server` moderate findings remain open until the app can move off `react-scripts` or otherwise adopt a compatible 5.x dev-server path.
 
 ## Vanta High Vulnerability Remediation (sc-21281)
 The following high-severity vulnerabilities identified by Vanta/Dependabot were remediated:
@@ -76,9 +76,11 @@ The following high-severity vulnerabilities identified by Vanta/Dependabot were 
 | underscore | ≤ 1.13.7 (CVE-2026-27601) | 1.13.8 | override in package.json |
 
 ## Remaining Vulnerabilities
-All remaining vulnerabilities are low severity only:
-- **Severity**: Low (10), no medium/high/critical
-- **Packages**: Jest/jsdom transitive dependencies via `react-scripts@5.0.1`
+The remaining vulnerabilities are limited to the `react-scripts@5.0.1` toolchain:
+- **Severity**: Low (9), Moderate (6), no high/critical
+- **Packages**:
+  - `webpack-dev-server` 4.15.2 and its `react-scripts` dev-server chain (`@pmmmwh/react-refresh-webpack-plugin`, `express`, `body-parser`, `qs`)
+  - Jest/jsdom transitive dependencies via `react-scripts@5.0.1`
 - **Resolution Path**:
   - Wait for upstream `react-scripts` maintenance updates, or
   - Migrate from CRA/react-scripts to a modern maintained toolchain (for example, Vite)
@@ -107,10 +109,10 @@ Updated routing API across multiple files:
 - Updated route paths (removed `/store` prefix in nested routes)
 
 ## Testing
-- ✅ Application builds successfully
-- ✅ No compilation errors
-- ✅ React 18 rendering works correctly
-- ✅ React Router v6 navigation works correctly
+- ✅ `npm ci`
+- ✅ `npm test -- --watchAll=false` (CRA test runner starts; no repository tests are defined)
+- ⚠️ `npm run build` is blocked in this sandbox because `creditkey-js` is a required sibling checkout (`file:../creditkey-js`) and is not present here
+- ⚠️ `npm start` with `webpack-dev-server` 5.2.4 was not kept because it failed under `react-scripts@5.0.1`
 
 ## Recommendations
 
