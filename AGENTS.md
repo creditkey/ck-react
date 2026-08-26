@@ -1,18 +1,32 @@
 # ck-react Repository Instructions
 
-## Purpose and workflow
+## Repository map and local setup
 
 `ck-react` is a React demonstration application for Credit Key financing and
 Pay-in-4 integrations. It uses the local `creditkey-js` dependency from
 `../creditkey-js`; keep that dependency relationship intact.
 
-Use the scripts defined in `package.json`:
+`public/` contains static assets and the application HTML shell. `src/`
+contains the React application, including components, contexts, reducers, and
+SDK utilities.
+
+Use Node.js `>=20`. Before installing dependencies, set
+`FONTAWESOME_NPM_AUTH_TOKEN`; `.npmrc` uses it to authenticate to the Font
+Awesome npm registry. Then install with:
+
+```bash
+npm ci
+```
+
+The package scripts are:
 
 ```bash
 npm start
 npm test
+npm run build
 npm run build:staging
 npm run build:production
+npm run eject
 ```
 
 The build scripts load `.env.staging` or `.env.production`. Do not commit API
@@ -25,8 +39,10 @@ keys, credentials, or other sensitive environment values.
 - Use React Router v6 APIs and preserve the established checkout success and
   cancelled callback routes.
 - Keep cart state in `cartContext` and administrative/testing overrides in
-  `adminContext`. Reducers must remain pure and predictable; persist cart data
-  to `localStorage` where appropriate.
+  `adminContext`. `src/reducers/cart.js` is a legacy exception: its reducer
+  paths persist cart data to `localStorage`. Do not describe it as pure; any
+  change must preserve this persistence behavior or explicitly handle its
+  migration.
 - Follow existing naming and layout conventions: PascalCase component files,
   camelCase utility files and functions, and focused components. Use Bulma
   classes with custom SCSS as needed.
