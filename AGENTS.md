@@ -29,8 +29,11 @@ npm run build:production
 npm run eject
 ```
 
-The build scripts load `.env.staging` or `.env.production`. Do not commit API
-keys, credentials, or other sensitive environment values.
+The build scripts load `.env.staging` or `.env.production`. Do not commit
+secrets, private credentials, or other sensitive environment values. Public
+frontend configuration, including the demo's `REACT_APP_PUBLIC_KEY` and
+`REACT_APP_PI4_PUBLIC_KEY`, may be committed as documented in
+`ARCHITECTURE.md`.
 
 ## Implementation rules
 
