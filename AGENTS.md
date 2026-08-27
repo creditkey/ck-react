@@ -12,7 +12,9 @@ SDK utilities.
 
 Use Node.js `>=20`. Before installing dependencies, set
 `FONTAWESOME_NPM_AUTH_TOKEN`; `.npmrc` uses it to authenticate to the Font
-Awesome npm registry. Then install with:
+Awesome npm registry. Clone the sibling `creditkey-js` repository next to
+`ck-react` so the `file:../creditkey-js` dependency can resolve. Then install
+with:
 
 ```bash
 npm ci
@@ -71,4 +73,3 @@ frontend configuration, including the demo's `REACT_APP_PUBLIC_KEY` and
 
 - [README](README.md)
 - [Architecture](ARCHITECTURE.md)
-- [Shortcut story 24453](https://app.shortcut.com/credit-key/story/24453)
