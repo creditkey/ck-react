@@ -46,7 +46,7 @@ frontend configuration, including the demo's `REACT_APP_PUBLIC_KEY` and
   paths persist cart data to `localStorage`. Do not describe it as pure; any
   change must preserve this persistence behavior or explicitly handle its
   migration.
-- Follow the repository’s existing file-naming conventions; component filenames are mixed case, while utility files and functions use camelCase.
+- Follow the repository’s existing file-naming conventions; component filenames are mixed case. Prefer camelCase for new utility files and functions, while recognizing that legacy utility code may use other naming conventions.
 - Do not modify deployment scripts without coordinating with the team.
 - Use focused components and Bulma classes with custom SCSS as needed.
 - Initialize Credit Key SDK clients in `src/lib/utils.js`, use environment
