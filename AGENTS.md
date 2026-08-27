@@ -10,7 +10,7 @@ Pay-in-4 integrations. It uses the local `creditkey-js` dependency from
 contains the React application, including components, contexts, reducers, and
 SDK utilities.
 
-Use Node.js `>=20`. Before installing dependencies, set
+Use Node.js `>=22.20.0`. Before installing dependencies, set
 `FONTAWESOME_NPM_AUTH_TOKEN`; `.npmrc` uses it to authenticate to the Font
 Awesome npm registry. Clone the sibling `creditkey-js` repository next to
 `ck-react` so the `file:../creditkey-js` dependency can resolve. Then install
