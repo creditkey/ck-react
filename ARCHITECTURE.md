@@ -150,8 +150,13 @@ The application integrates with Credit Key's SDK for financing and Pay-in-4 opti
 
 ### Development
 
+Clone the sibling `creditkey-js` repository next to `ck-react` so the
+`file:../creditkey-js` dependency can resolve. Before installing dependencies,
+set `FONTAWESOME_NPM_AUTH_TOKEN`; `.npmrc` uses it to authenticate to the Font
+Awesome npm registry. Then install dependencies with `npm ci`.
+
 ```bash
-npm install        # Install dependencies
+npm ci              # Install dependencies
 npm start          # Start development server (port 3000)
 ```
 

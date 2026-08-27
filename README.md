@@ -4,13 +4,15 @@ This is a demonstration application for Credit Key payment integration. For deta
 
 ## Getting Started
 
-### `yarn install` 
+### `npm ci`
+
+Before installing dependencies, clone the sibling `creditkey-js` repository next to this project so the local `file:../creditkey-js` dependency can resolve. Set `FONTAWESOME_NPM_AUTH_TOKEN` with access to the Font Awesome npm registry, then run `npm ci`.
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `yarn start`
+### `npm start`
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
