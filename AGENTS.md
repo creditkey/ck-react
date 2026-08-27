@@ -59,6 +59,8 @@ frontend configuration, including the demo's `REACT_APP_PUBLIC_KEY` and
 
 - Add or update focused React Testing Library tests for behavior changes, then
   run the relevant checks from `package.json` before completion.
+- For deterministic verification, run `CI=true npm test -- --watchAll=false --passWithNoTests` for tests, `npx eslint "src/**/*.{js,jsx}"` for linting, and `npm run build:staging` (or `npm run build:production`) for a build.
+- No database migrations apply to this Create React App repository.
 - Update `README.md` for user-facing, setup, usage, or environment changes.
   Update `ARCHITECTURE.md` for significant component, routing, state,
   dependency, build/deployment, or environment-configuration changes.
@@ -69,3 +71,4 @@ frontend configuration, including the demo's `REACT_APP_PUBLIC_KEY` and
 
 - [README](README.md)
 - [Architecture](ARCHITECTURE.md)
+- [Shortcut story 24453](https://app.shortcut.com/credit-key/story/24453)
